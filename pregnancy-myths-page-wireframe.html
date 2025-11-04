@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Pregnancy Myths - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .page-intro {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Interactive Diagram Section */
+        .diagram-section {
+            margin: 60px 0;
+            position: relative;
+            min-height: 800px;
+        }
+        
+        .instruction-text {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        
+        /* Central Body Illustration */
+        .body-diagram-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .body-illustration {
+            width: 100%;
+            height: 600px;
+            background-color: #f9f9f9;
+            border-radius: 200px 200px 50px 50px;
+            border: 3px solid #a64d79;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        /* Myth Cards Positioned Around Body */
+        .myths-container {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .myth-card {
+            position: absolute;
+            width: 280px;
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .myth-card:hover {
+            transform: scale(1.05);
+            border-color: #a64d79;
+            box-shadow: 0 5px 20px rgba(166, 77, 121, 0.3);
+        }
+        
+        .myth-number {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: #a64d79;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .myth-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .myth-preview {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .click-hint {
+            font-size: 12px;
+            color: #a64d79;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        /* Positioning for each myth card */
+        .myth-1 { top: 50px; left: -320px; }
+        .myth-2 { top: 200px; left: -320px; }
+        .myth-3 { top: 350px; left: -320px; }
+        .myth-4 { top: 50px; right: -320px; }
+        .myth-5 { top: 200px; right: -320px; }
+        .myth-6 { top: 350px; right: -320px; }
+        
+        /* Connector Lines */
+        .connector {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, #a64d79 0%, transparent 100%);
+            z-index: -1;
+        }
+        
+        .connector-left {
+            background: linear-gradient(90deg, transparent 0%, #a64d79 100%);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: block;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 50px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close-modal:hover {
+            color: #a64d79;
+        }
+        
+        .modal-header {
+            margin-bottom: 30px;
+        }
+        
+        .modal-myth-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #a64d79;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+            line-height: 1.3;
+        }
+        
+        .truth-label {
+            display: inline-block;
+            background-color: #d32f2f;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .modal-text {
+            font-size: 17px;
+            color: #444;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        
+        .truth-section {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin-top: 25px;
+            border-radius: 4px;
+        }
+        
+        .truth-title {
+            font-size: 20px;
+            color: #2e7d32;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .truth-text {
+            font-size: 16px;
+            color: #1b5e20;
+            line-height: 1.7;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1200px) {
+            .myths-container {
+                position: static;
+            }
+            
+            .myth-card {
+                position: static !important;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .body-illustration {
+                height: 400px;
+                margin-bottom: 40px;
+            }
+            
+            .diagram-section {
+                min-height: auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <span class="hero-banner-placeholder">[Pregnancy/Mother-Baby Image]</span>
+    </div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">Common Pregnancy Myths</h1>
+            <p class="page-intro">
+                There are many common pregnancy myths that are simply not true, and in a world where anyone can publish information online, it is crucial you as an expectant parent are armed with the right tools and information to lead an empowered pregnancy.
+            </p>
+        </div>
+        
+        <!-- Interactive Diagram Section -->
+        <div class="diagram-section">
+            <p class="instruction-text">Click on any myth to learn the truth</p>
+            
+            <div class="myths-container">
+                <!-- Central Body Illustration -->
+                <div class="body-diagram-container">
+                    <div class="body-illustration">
+                        [Pregnant Body Illustration]
+                    </div>
+                </div>
+                
+                <!-- Myth Cards - Left Side -->
+                <div class="myth-card myth-1" onclick="openModal('myth1')">
+                    <div class="myth-number">1</div>
+                    <div class="myth-title">"If your baby's movements slow down, drink cold ice-water to get them moving again."</div>
+                    <div class="myth-preview">This dangerous myth could delay critical medical attention...</div>
+                    <div class="click-hint">Click to learn the truth →</div>
+                </div>
+                
+                <div class="myth-card myth-2" onclick="openModal('myth2')">
+                    <div class="myth-number">2</div>
+                    <div class="myth-title">"If your placenta is at the front you won't be able to feel your baby's movements."</div>
+                    <div class="myth-preview">While an anterior placenta may cushion movements...</div>
+                    <div class="click-hint">Click to learn the truth →</div>
+                </div>
+                
+                <div class="myth-card myth-3" onclick="openModal('myth3')">
+                    <div class="myth-number">3</div>
+                    <div class="myth-title">"My baby will 'slow down' before being born as it will 'run out of room to move'."</div>
+                    <div class="myth-preview">Babies should maintain consistent patterns throughout...</div>
+                    <div class="click-hint">Click to learn the truth →</div>
+                </div>
+                
+                <!-- Myth Cards - Right Side -->
+                <div class="myth-card myth-4" onclick="openModal('myth4')">
+                    <div class="myth-number">4</div>
+                    <div class="myth-title">"I should aim to count 10 kicks a day, right?"</div>
+                    <div class="myth-preview">Counting kicks is outdated advice that misses the bigger picture...</div>
+                    <div class="click-hint">Click to learn the truth →</div>
+                </div>
+                
+                <div class="myth-card myth-5" onclick="openModal('myth5')">
+                    <div class="myth-number">5</div>
+                    <div class="myth-title">"When my baby is 'going crazy' this is good, because any increase in movements is good!"</div>
+                    <div class="myth-preview">Excessive or frantic movements can sometimes indicate distress...</div>
+                    <div class="click-hint">Click to learn the truth →</div>
+                </div>
+                
+                <div class="myth-card myth-6" onclick="openModal('myth6')">
+                    <div class="myth-number">6</div>
+                    <div class="myth-title">Women should avoid sex during pregnancy.</div>
+                    <div class="myth-preview">For most healthy pregnancies, sex is perfectly safe...</div>
+                    <div class="click-hint">Click to learn the truth →</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modals for Each Myth -->
+    <div id="modal-myth1" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('myth1')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-myth-number">1</div>
+                <h2 class="modal-title">"If your baby's movements slow down, drink cold ice-water to get them moving again."</h2>
+                <div class="truth-label">FALSE - DANGEROUS MYTH</div>
+            </div>
+            <p class="modal-text">
+                This is 100% not true. If you ever present a change in your baby's movements and are told to go home and drink cold water, disregard this advice immediately and DO NOT leave your clinic until you are reviewed properly.
+            </p>
+            <div class="truth-section">
+                <div class="truth-title">The Truth:</div>
+                <div class="truth-text">
+                    Any change in your baby's movement patterns requires immediate medical assessment. Decreased fetal movement can be a warning sign that your baby needs attention. Never try home remedies to stimulate movement - contact your healthcare provider right away.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-myth2" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('myth2')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-myth-number">2</div>
+                <h2 class="modal-title">"If your placenta is at the front you won't be able to feel your baby's movements."</h2>
+                <div class="truth-label">FALSE</div>
+            </div>
+            <p class="modal-text">
+                While it's true that an anterior placenta (placenta at the front) can cushion some movements, you should still be able to feel your baby move regularly.
+            </p>
+            <div class="truth-section">
+                <div class="truth-title">The Truth:</div>
+                <div class="truth-text">
+                    An anterior placenta may make movements feel different or more subtle, but you will still establish a pattern unique to your baby. If you're not feeling regular movements, contact your healthcare provider regardless of placenta position.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-myth3" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('myth3')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-myth-number">3</div>
+                <h2 class="modal-title">"My baby will 'slow down' before being born as it will 'run out of room to move'."</h2>
+                <div class="truth-label">FALSE</div>
+            </div>
+            <p class="modal-text">
+                This is one of the most dangerous myths in pregnancy. While the type of movements may change as your baby grows, the frequency should remain consistent.
+            </p>
+            <div class="truth-section">
+                <div class="truth-title">The Truth:</div>
+                <div class="truth-text">
+                    Your baby should maintain their individual pattern of movement right up until birth. Movements may feel different (more rolling than kicks) as baby grows, but they should not decrease. A reduction in fetal movement requires immediate medical attention.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-myth4" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('myth4')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-myth-number">4</div>
+                <h2 class="modal-title">"I should aim to count 10 kicks a day, right?"</h2>
+                <div class="truth-label">OUTDATED ADVICE</div>
+            </div>
+            <p class="modal-text">
+                Kick counting is outdated advice that focuses on a fixed number rather than your baby's individual pattern.
+            </p>
+            <div class="truth-section">
+                <div class="truth-title">The Truth:</div>
+                <div class="truth-text">
+                    Instead of counting to 10, focus on knowing your baby's normal pattern of movement. Every baby is different - some are more active than others. What matters is noticing any change from what is normal for YOUR baby. If movements decrease or change significantly, contact your healthcare provider immediately.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-myth5" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('myth5')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-myth-number">5</div>
+                <h2 class="modal-title">"When my baby is 'going crazy' this is good, because any increase in movements is good!"</h2>
+                <div class="truth-label">FALSE</div>
+            </div>
+            <p class="modal-text">
+                While movement is good, excessive or frantic movements that are out of character for your baby can sometimes indicate distress.
+            </p>
+            <div class="truth-section">
+                <div class="truth-title">The Truth:</div>
+                <div class="truth-text">
+                    Erratic, intense, or "crazy" movements that are very different from your baby's normal pattern should be checked by your healthcare provider. Trust your instincts - if something feels different or concerning, it's always better to get it checked.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-myth6" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('myth6')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-myth-number">6</div>
+                <h2 class="modal-title">Women should avoid sex during pregnancy.</h2>
+                <div class="truth-label">FALSE</div>
+            </div>
+            <p class="modal-text">
+                For most healthy pregnancies, sex is perfectly safe and will not harm your baby or cause early labor.
+            </p>
+            <div class="truth-section">
+                <div class="truth-title">The Truth:</div>
+                <div class="truth-text">
+                    Unless your healthcare provider has given you specific reasons to avoid intercourse (such as placenta previa or risk of preterm labor), sex during pregnancy is safe. Your baby is well protected by the amniotic sac and uterine muscles. Always discuss any concerns with your healthcare provider.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openModal(mythId) {
+            document.getElementById('modal-' + mythId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(mythId) {
+            document.getElementById('modal-' + mythId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

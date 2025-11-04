@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Risk Factors - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        /* Clinician Banner */
+        .clinician-banner {
+            background-color: #f0e6ec;
+            border-left: 4px solid #a64d79;
+            padding: 25px 30px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+        
+        .clinician-banner p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        .clinician-banner a {
+            color: #a64d79;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        
+        /* Disclaimer */
+        .disclaimer-box {
+            background-color: #fff8e1;
+            border: 2px solid #ffc107;
+            padding: 25px;
+            margin-bottom: 50px;
+            border-radius: 4px;
+        }
+        
+        .disclaimer-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .disclaimer-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            color: #a64d79;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .section-subtitle {
+            font-size: 16px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Risk Factors Tabs */
+        .tabs-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .tab-button {
+            padding: 15px 30px;
+            background-color: white;
+            border: 2px solid #a64d79;
+            color: #a64d79;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .tab-button:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .tab-button.active {
+            background-color: #a64d79;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Risk Factors Grid */
+        .risk-factors-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .risk-factor-card {
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .risk-factor-card:hover {
+            border-color: #a64d79;
+            box-shadow: 0 2px 8px rgba(166, 77, 121, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .risk-factor-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .risk-factor-detail {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* Key Insight Box */
+        .key-insight {
+            background-color: #f9f9f9;
+            border-left: 4px solid #a64d79;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 4px;
+        }
+        
+        .key-insight-title {
+            font-size: 20px;
+            color: #a64d79;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .key-insight-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* Image Break Sections */
+        .image-break {
+            margin: 60px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .image-break-large {
+            width: 100%;
+            height: 400px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+            padding: 30px;
+            color: white;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .split-image-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 60px 0;
+        }
+        
+        .split-image {
+            height: 300px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .split-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(166, 77, 121, 0.9);
+            padding: 15px;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        /* Research Section */
+        .research-section {
+            margin: 60px 0;
+            padding: 40px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .research-section h3 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        
+        .research-item {
+            padding: 20px;
+            background-color: white;
+            border-left: 3px solid #a64d79;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        
+        .research-item p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin: 50px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #a64d79 0%, #8a3d63 100%);
+            border-radius: 8px;
+            color: white;
+        }
+        
+        .cta-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .cta-text {
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: white;
+            color: #a64d79;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #f0e6ec;
+            transform: translateY(-2px);
+        }
+        
+        /* References */
+        .references-section {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .references-title {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .references-note {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .tabs-container {
+                flex-direction: column;
+            }
+            
+            .tab-button {
+                width: 100%;
+            }
+            
+            .risk-factors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-break-large {
+                height: 300px;
+            }
+            
+            .split-image-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <span class="hero-banner-placeholder">[Medical Professional/Pregnancy Care Image]</span>
+    </div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">Understanding Risk Factors</h1>
+        </div>
+        
+        <!-- Clinician Banner -->
+        <div class="clinician-banner">
+            <p><strong>Are you a clinician?</strong> Access our <a href="#">published research data</a> to help identify risk factors for stillbirth. Through antenatal care, each expectant family's individual history should be considered, with open conversations about potential risk factors.</p>
+        </div>
+        
+        <!-- Disclaimer -->
+        <div class="disclaimer-box">
+            <div class="disclaimer-title">Important Disclaimer</div>
+            <div class="disclaimer-text">
+                This information is not intended to replace the advice of a trained medical professional. Still Aware provides this knowledge as a courtesy, not as a substitute for personalized medical advice. We encourage expectant families and clinicians to have informed conversations about risk factors. Quality antenatal care that is accessible to all has the potential to reduce stillbirth rates. Multiple risk factors may warrant closer or more regular monitoring, particularly in the third trimester.
+            </div>
+        </div>
+        
+        <!-- Key Insight -->
+        <div class="key-insight">
+            <div class="key-insight-title">Knowledge Empowers Prevention</div>
+            <div class="key-insight-text">
+                Understanding risk factors doesn't mean pregnancy complications are inevitable—it means healthcare providers can offer more personalized monitoring and care. Early identification and proactive management can make a significant difference.
+            </div>
+        </div>
+        
+        <!-- Tabs -->
+        <div class="section-header">
+            <h2 class="section-title">Risk Factors for Stillbirth</h2>
+            <p class="section-subtitle">Explore maternal and fetal risk factors that may require additional monitoring during pregnancy</p>
+        </div>
+        
+        <div class="tabs-container">
+            <button class="tab-button active" onclick="switchTab('maternal')">Maternal Risk Factors</button>
+            <button class="tab-button" onclick="switchTab('fetal')">Fetal Risk Factors</button>
+        </div>
+        
+        <!-- Maternal Risk Factors -->
+        <div id="maternal-tab" class="tab-content active">
+            <div class="risk-factors-grid">
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">First-Time Mothers</div>
+                    <div class="risk-factor-detail">Primiparity (first pregnancy)</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Maternal Age</div>
+                    <div class="risk-factor-detail">Under 18 or 35 years and above</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Assisted Reproduction</div>
+                    <div class="risk-factor-detail">IVF pregnancy</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Body Mass Index</div>
+                    <div class="risk-factor-detail">BMI of 30 or above</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Ethnic Background</div>
+                    <div class="risk-factor-detail">South Asian descent, Australian Indigenous, or new immigrant groups</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Previous Stillbirth</div>
+                    <div class="risk-factor-detail">History of previous pregnancy loss</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Previous Caesarean</div>
+                    <div class="risk-factor-detail">Prior C-section delivery</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Diabetes</div>
+                    <div class="risk-factor-detail">Pre-existing or gestational diabetes</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Smoking</div>
+                    <div class="risk-factor-detail">Tobacco use during pregnancy</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Alcohol Use</div>
+                    <div class="risk-factor-detail">Alcohol consumption during pregnancy</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Illicit Drug Use</div>
+                    <div class="risk-factor-detail">Use of illegal substances</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Folic Acid Deficiency</div>
+                    <div class="risk-factor-detail">Lack of adequate folic acid supplementation</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">High Blood Pressure</div>
+                    <div class="risk-factor-detail">Pre-existing hypertension or pre-eclampsia</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Multiple Pregnancy</div>
+                    <div class="risk-factor-detail">Twins, triplets, or more</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Infection</div>
+                    <div class="risk-factor-detail">Maternal infections during pregnancy</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Socioeconomic Factors</div>
+                    <div class="risk-factor-detail">Low socioeconomic status</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Poor Antenatal Attendance</div>
+                    <div class="risk-factor-detail">Less than 50% of planned visits attended</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Fetal Risk Factors -->
+        <div id="fetal-tab" class="tab-content">
+            <div class="risk-factors-grid">
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Decreased Fetal Movement</div>
+                    <div class="risk-factor-detail">Reduction from what's normal for the individual baby</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Erratic Increased Movement</div>
+                    <div class="risk-factor-detail">Unusual, intense or out-of-control movement patterns</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Fetal Growth Restriction</div>
+                    <div class="risk-factor-detail">Crossing centiles from expected growth curve</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Low Amniotic Fluid</div>
+                    <div class="risk-factor-detail">Oligohydramnios</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Placental Blood Flow</div>
+                    <div class="risk-factor-detail">Restricted blood flow to placenta</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Post-Term Pregnancy</div>
+                    <div class="risk-factor-detail">Gestational age 41 weeks or more</div>
+                </div>
+                
+                <div class="risk-factor-card">
+                    <div class="risk-factor-name">Male Sex</div>
+                    <div class="risk-factor-detail">Male babies have slightly higher risk</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Image Break -->
+        <div class="image-break">
+            <div class="image-break-large">
+                [Healthcare Professional with Expectant Mother Image]
+                <div class="image-caption">
+                    Quality antenatal care and open communication between healthcare providers and expectant families are essential to identifying and managing risk factors early.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Split Images -->
+        <div class="split-image-section">
+            <div class="split-image">
+                [Ultrasound/Monitoring Image]
+                <div class="split-caption">Regular monitoring throughout pregnancy</div>
+            </div>
+            <div class="split-image">
+                [Doctor-Patient Consultation Image]
+                <div class="split-caption">Personalized care for each family</div>
+            </div>
+        </div>
+        
+        <!-- Research Section -->
+        <div class="research-section">
+            <h3>Key Research Findings</h3>
+            
+            <div class="research-item">
+                <p>Implementation of national perinatal mortality audit programs aimed at improving the quality of care could substantially reduce stillbirths.</p>
+            </div>
+            
+            <div class="research-item">
+                <p>Microarray analysis is more likely than karyotype analysis to provide a genetic diagnosis, primarily because of its success with nonviable tissue. This is especially valuable in analyses of stillbirths with congenital anomalies or in cases where karyotype results cannot be obtained.</p>
+            </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title">Want to Learn More?</h2>
+            <p class="cta-text">Explore our comprehensive stillbirth research database and stay updated with the latest findings</p>
+            <a href="#" class="cta-button">Visit Research Page</a>
+        </div>
+        
+        <div class="cta-section">
+            <h2 class="cta-title">Clinicians: Order Free Resources</h2>
+            <p class="cta-text">Get Still Aware resources for your clinic or hospital to support informed conversations with expectant families</p>
+            <a href="#" class="cta-button">Order Resources</a>
+        </div>
+        
+        <!-- References -->
+        <div class="references-section">
+            <div class="references-title">References</div>
+            <div class="references-note">
+                Full references available upon request. All information is based on published peer-reviewed research and clinical guidelines.
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function switchTab(tab) {
+            // Update buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tab + '-tab').classList.add('active');
+        }
+    </script>
+</body>
+</html>

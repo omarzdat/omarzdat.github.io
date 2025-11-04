@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Header Section */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+        
+        .section-subtitle {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        
+        /* Mission and Story Text */
+        .mission-text {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .mission-text a {
+            color: #a64d79;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        /* Values Section */
+        .values-section {
+            margin: 60px 0;
+        }
+        
+        .values-title {
+            font-size: 28px;
+            color: #a64d79;
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .value-card-wrapper {
+            perspective: 1000px;
+            height: 180px;
+        }
+        
+        .value-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        
+        .value-card-wrapper:hover .value-card {
+            transform: rotateY(180deg);
+        }
+        
+        .value-card-front,
+        .value-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border: 2px solid #a64d79;
+            border-radius: 8px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .value-card-back {
+            transform: rotateY(180deg);
+            background-color: #f0e6ec;
+        }
+        
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #f0e6ec;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: #a64d79;
+            border: 2px solid #a64d79;
+        }
+        
+        .value-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+        
+        .value-description {
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        /* People Section */
+        .people-section {
+            margin: 60px 0;
+        }
+        
+        .people-title {
+            font-size: 28px;
+            color: #a64d79;
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+        
+        .person-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .person-image {
+            width: 100%;
+            max-width: 350px;
+            height: 400px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 20px;
+            flex-direction: column;
+        }
+        
+        .person-signature {
+            margin-top: 20px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 42px;
+            color: #a64d79;
+        }
+        
+        .person-content {
+            width: 100%;
+        }
+        
+        .person-content h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .person-text {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .people-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <span class="hero-banner-placeholder">[Community Event Photo]</span>
+    </div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">Our Story</h1>
+            <h2 class="section-subtitle">Australia's first Stillbirth Awareness Charity</h2>
+            
+            <p class="mission-text">
+                In Australia, Stillbirth is the leading cause of infant death. Many of these deaths are preventable. Still Aware's mission is to end preventable stillbirth through awareness and education.
+            </p>
+            
+            <p class="mission-text">
+                Still Aware was founded in 2014 by Claire Foord-Heath, after Alfie Foord-Heath was born without breath on February 12, 2014. With no rhyme or reason for the death of this healthy baby girl, her mother and father - under the guidance of the <a href="#">Still Aware Board</a> and <a href="#">Clinical Advisory Board</a>, along with your help - seek to change how stillbirth is understood prior to the tragedy, educating for awareness and raising awareness for prevention.
+            </p>
+        </div>
+        
+        <!-- Values -->
+        <div class="values-section">
+            <h2 class="values-title">Our Charity Values</h2>
+            <div class="values-grid">
+                <div class="value-card-wrapper">
+                    <div class="value-card">
+                        <div class="value-card-front">
+                            <div class="value-icon">[Icon]</div>
+                            <div class="value-name">Respect</div>
+                        </div>
+                        <div class="value-card-back">
+                            <div class="value-description">[How we embody Respect]</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="value-card-wrapper">
+                    <div class="value-card">
+                        <div class="value-card-front">
+                            <div class="value-icon">[Icon]</div>
+                            <div class="value-name">Transparency</div>
+                        </div>
+                        <div class="value-card-back">
+                            <div class="value-description">[How we embody Transparency]</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="value-card-wrapper">
+                    <div class="value-card">
+                        <div class="value-card-front">
+                            <div class="value-icon">[Icon]</div>
+                            <div class="value-name">Passion and Commitment</div>
+                        </div>
+                        <div class="value-card-back">
+                            <div class="value-description">[How we embody Passion and Commitment]</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="value-card-wrapper">
+                    <div class="value-card">
+                        <div class="value-card-front">
+                            <div class="value-icon">[Icon]</div>
+                            <div class="value-name">Honesty and Integrity</div>
+                        </div>
+                        <div class="value-card-back">
+                            <div class="value-description">[How we embody Honesty and Integrity]</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="value-card-wrapper">
+                    <div class="value-card">
+                        <div class="value-card-front">
+                            <div class="value-icon">[Icon]</div>
+                            <div class="value-name">Collaboration</div>
+                        </div>
+                        <div class="value-card-back">
+                            <div class="value-description">[How we embody Collaboration]</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="value-card-wrapper">
+                    <div class="value-card">
+                        <div class="value-card-front">
+                            <div class="value-icon">[Icon]</div>
+                            <div class="value-name">Accountability</div>
+                        </div>
+                        <div class="value-card-back">
+                            <div class="value-description">[How we embody Accountability]</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="value-card-wrapper">
+                    <div class="value-card">
+                        <div class="value-card-front">
+                            <div class="value-icon">[Icon]</div>
+                            <div class="value-name">Resilience</div>
+                        </div>
+                        <div class="value-card-back">
+                            <div class="value-description">[How we embody Resilience]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- People Section -->
+        <div class="people-section">
+            <h2 class="people-title">Our Team</h2>
+            <div class="people-grid">
+                <!-- Claire Foord -->
+                <div class="person-card">
+                    <div class="person-image">
+                        [Claire Photo]
+                        <div class="person-signature">Claire</div>
+                    </div>
+                    <div class="person-content">
+                        <h3>Our Founder, Claire Foord</h3>
+                        <p class="person-text">
+                            Claire founded Still Aware in 2014 after the stillbirth of her daughter Alfie. Determined to prevent other families from experiencing this tragedy, Claire has dedicated herself to raising awareness and advocating for change in pregnancy health. Her efforts have been recognized with South Australian of the Year in 2018. Claire's leadership continues to drive Still Aware's mission forward.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Vale Robert Foord -->
+                <div class="person-card">
+                    <div class="person-image">
+                        [Robert Photo]
+                    </div>
+                    <div class="person-content">
+                        <h3>Vale Robert Foord<br/>Still Aware Advisor (8/10/1950 – 12/12/2017)</h3>
+                        <p class="person-text">
+                            Robert Foord was instrumental in establishing Still Aware and remained a passionate advocate until his passing. As Chairman of Proud Australia Group of Companies, Robert brought decades of business and philanthropic experience. His dedication, energy, and commitment to raising stillbirth awareness laid the foundation for Still Aware's success. His legacy continues to inspire our work.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Optional: Add click functionality for mobile
+        document.querySelectorAll('.value-card-wrapper').forEach(card => {
+            card.addEventListener('click', function() {
+                this.querySelector('.value-card').style.transform = 
+                    this.querySelector('.value-card').style.transform === 'rotateY(180deg)' 
+                    ? 'rotateY(0deg)' 
+                    : 'rotateY(180deg)';
+            });
+        });
+    </script>

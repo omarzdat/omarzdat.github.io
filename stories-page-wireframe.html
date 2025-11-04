@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories of Hope/Remembrance - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .page-intro {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Stories Grid */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .story-card {
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(166, 77, 121, 0.2);
+            border-color: #a64d79;
+        }
+        
+        .story-image {
+            width: 100%;
+            height: 250px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            position: relative;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .story-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(166, 77, 121, 0.9);
+            color: white;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        
+        .story-content {
+            padding: 25px;
+        }
+        
+        .story-title {
+            font-size: 22px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .story-excerpt {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: #a64d79;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .read-more::after {
+            content: "→";
+            margin-left: 8px;
+            transition: margin-left 0.3s;
+        }
+        
+        .story-card:hover .read-more::after {
+            margin-left: 12px;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: block;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 3% auto;
+            padding: 0;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            line-height: 1;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-modal:hover {
+            background-color: rgba(166, 77, 121, 0.8);
+        }
+        
+        .modal-header {
+            position: relative;
+            height: 400px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-header-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            padding: 40px;
+            color: white;
+        }
+        
+        .modal-category {
+            background-color: #a64d79;
+            color: white;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .modal-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .modal-body {
+            padding: 50px;
+        }
+        
+        .modal-text {
+            font-size: 17px;
+            color: #444;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        
+        .modal-text:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Share Section */
+        .share-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+        }
+        
+        .share-title {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .share-button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #a64d79;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 12px;
+            transition: background-color 0.3s;
+        }
+        
+        .share-button:hover {
+            background-color: #8a3d63;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            margin-top: 60px;
+            padding: 50px 40px;
+            background: linear-gradient(135deg, #a64d79 0%, #8a3d63 100%);
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .cta-text {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background-color: white;
+            color: #a64d79;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #f0e6ec;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-header {
+                height: 300px;
+            }
+            
+            .modal-title {
+                font-size: 28px;
+            }
+            
+            .modal-body {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <span class="hero-banner-placeholder">[Hope/Family Image]</span>
+    </div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">Stories of Hope/Remembrance</h1>
+            <p class="page-intro">
+                If you have a story of hope—a baby who is here with you today because of intuition, intervention, bonding with your bump, or divinity—we would love you to share your baby's story here too. Yours is a voice of hope to oh so many.
+            </p>
+        </div>
+        
+        <!-- Stories Grid -->
+        <div class="stories-grid">
+            <div class="story-card" onclick="openModal('elsie')">
+                <div class="story-image">
+                    [Placeholder Image]
+                    <div class="story-category">Stories Of Hope</div>
+                </div>
+                <div class="story-content">
+                    <h3 class="story-title">Elsie</h3>
+                    <p class="story-excerpt">A mother's intuition saved Elsie's life when she trusted her instincts about decreased movement...</p>
+                    <a href="#" class="read-more">Read Story</a>
+                </div>
+            </div>
+            
+            <div class="story-card" onclick="openModal('charlotte')">
+                <div class="story-image">
+                    [Placeholder Image]
+                    <div class="story-category">Stories Of Hope</div>
+                </div>
+                <div class="story-content">
+                    <h3 class="story-title">Charlotte Consulea Hext</h3>
+                    <p class="story-excerpt">Charlotte's story is one of awareness and quick action that made all the difference...</p>
+                    <a href="#" class="read-more">Read Story</a>
+                </div>
+            </div>
+            
+            <div class="story-card" onclick="openModal('liam')">
+                <div class="story-image">
+                    [Placeholder Image]
+                    <div class="story-category">Stories Of Hope</div>
+                </div>
+                <div class="story-content">
+                    <h3 class="story-title">Liam Searle</h3>
+                    <p class="story-excerpt">When something felt different, Liam's parents acted immediately, leading to his safe arrival...</p>
+                    <a href="#" class="read-more">Read Story</a>
+                </div>
+            </div>
+            
+            <div class="story-card" onclick="openModal('sophie')">
+                <div class="story-image">
+                    [Sophie Image with Hat]
+                    <div class="story-category">Stories Of Hope</div>
+                </div>
+                <div class="story-content">
+                    <h3 class="story-title">Sophie Marie</h3>
+                    <p class="story-excerpt">Sophie's journey reminds us of the power of monitoring and trusting your bond with your baby...</p>
+                    <a href="#" class="read-more">Read Story</a>
+                </div>
+            </div>
+            
+            <div class="story-card" onclick="openModal('georgia')">
+                <div class="story-image">
+                    [Georgia Image]
+                    <div class="story-category">Stories Of Hope</div>
+                </div>
+                <div class="story-content">
+                    <h3 class="story-title">Georgia Evelyn-Jean</h3>
+                    <p class="story-excerpt">Georgia's early arrival was thanks to her mother's awareness and her care team's swift response...</p>
+                    <a href="#" class="read-more">Read Story</a>
+                </div>
+            </div>
+            
+            <div class="story-card" onclick="openModal('rosie')">
+                <div class="story-image">
+                    [Rosie Image]
+                    <div class="story-category">Stories Of Hope</div>
+                </div>
+                <div class="story-content">
+                    <h3 class="story-title">Rosie</h3>
+                    <p class="story-excerpt">Rosie's story is a testament to the importance of fetal movement awareness during pregnancy...</p>
+                    <a href="#" class="read-more">Read Story</a>
+                </div>
+            </div>
+            
+            <div class="story-card" onclick="openModal('clay')">
+                <div class="story-image">
+                    [Clay Image]
+                    <div class="story-category">Stories Of Hope</div>
+                </div>
+                <div class="story-content">
+                    <h3 class="story-title">Clay Reid Wallace</h3>
+                    <p class="story-excerpt">Clay's miracle arrival shows how education and intervention can save precious lives...</p>
+                    <a href="#" class="read-more">Read Story</a>
+                </div>
+            </div>
+            
+            <div class="story-card" onclick="openModal('henlee')">
+                <div class="story-image">
+                    [Placeholder Image]
+                    <div class="story-category">Stories Of Hope</div>
+                </div>
+                <div class="story-content">
+                    <h3 class="story-title">Henlee</h3>
+                    <p class="story-excerpt">Henlee's parents' vigilance and trust in their instincts brought their baby safely home...</p>
+                    <a href="#" class="read-more">Read Story</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Share Your Story</h2>
+            <p class="cta-text">Your story of hope or remembrance can help other families. We would be honored to share it.</p>
+            <a href="#" class="cta-button">Submit Your Story</a>
+        </div>
+    </div>
+    
+    <!-- Modal for Elsie -->
+    <div id="modal-elsie" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('elsie')">&times;</span>
+            <div class="modal-header">
+                [Elsie's Image]
+                <div class="modal-header-overlay">
+                    <div class="modal-category">Stories Of Hope</div>
+                    <h2 class="modal-title">Elsie's Story</h2>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p class="modal-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                </p>
+                <p class="modal-text">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                </p>
+                <p class="modal-text">
+                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
+                </p>
+                <p class="modal-text">
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+                </p>
+                
+                <div class="share-section">
+                    <div class="share-title">Share this story</div>
+                    <div class="share-buttons">
+                        <a href="#" class="share-button">[FB]</a>
+                        <a href="#" class="share-button">[TW]</a>
+                        <a href="#" class="share-button">[LI]</a>
+                        <a href="#" class="share-button">[📧]</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Additional modals for other stories (Charlotte, Liam, etc.) -->
+    <div id="modal-charlotte" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('charlotte')">&times;</span>
+            <div class="modal-header">
+                [Charlotte's Image]
+                <div class="modal-header-overlay">
+                    <div class="modal-category">Stories Of Hope</div>
+                    <h2 class="modal-title">Charlotte's Story</h2>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula mauris vel nisi hendrerit, at volutpat urna ultricies. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <p class="modal-text">Suspendisse potenti. Curabitur aliquet quam id dui posuere blandit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.</p>
+                <p class="modal-text">Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.</p>
+                <div class="share-section">
+                    <div class="share-title">Share this story</div>
+                    <div class="share-buttons">
+                        <a href="#" class="share-button">[FB]</a>
+                        <a href="#" class="share-button">[TW]</a>
+                        <a href="#" class="share-button">[LI]</a>
+                        <a href="#" class="share-button">[📧]</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Simplified modal structure for remaining stories -->
+    <div id="modal-liam" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('liam')">&times;</span><div class="modal-header">[Liam's Image]<div class="modal-header-overlay"><div class="modal-category">Stories Of Hope</div><h2 class="modal-title">Liam's Story</h2></div></div><div class="modal-body"><p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio praesent libero sed cursus ante dapibus diam.</p><p class="modal-text">Sed nisi nulla quis sem at nibh elementum imperdiet duis sagittis ipsum praesent mauris fusce nec tellus sed augue semper porta.</p><p class="modal-text">Mauris blandit aliquet elit eget tincidunt nibh pulvinar a proin gravida hendrerit lectus a molestie lorem laoreet vel.</p><div class="share-section"><div class="share-title">Share this story</div><div class="share-buttons"><a href="#" class="share-button">[FB]</a><a href="#" class="share-button">[TW]</a><a href="#" class="share-button">[LI]</a><a href="#" class="share-button">[📧]</a></div></div></div></div></div>
+    
+    <div id="modal-sophie" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('sophie')">&times;</span><div class="modal-header">[Sophie's Image]<div class="modal-header-overlay"><div class="modal-category">Stories Of Hope</div><h2 class="modal-title">Sophie Marie's Story</h2></div></div><div class="modal-body"><p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque velit nisi pretium ut lacinia in elementum id enim.</p><p class="modal-text">Donec sollicitudin molestie malesuada pellentesque in ipsum id orci porta non pulvinar neque laoreet suspendisse faucibus interdum.</p><p class="modal-text">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui donec rutrum congue leo eget malesuada.</p><div class="share-section"><div class="share-title">Share this story</div><div class="share-buttons"><a href="#" class="share-button">[FB]</a><a href="#" class="share-button">[TW]</a><a href="#" class="share-button">[LI]</a><a href="#" class="share-button">[📧]</a></div></div></div></div></div>
+    
+    <div id="modal-georgia" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('georgia')">&times;</span><div class="modal-header">[Georgia's Image]<div class="modal-header-overlay"><div class="modal-category">Stories Of Hope</div><h2 class="modal-title">Georgia Evelyn-Jean's Story</h2></div></div><div class="modal-body"><p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultricies ligula sed magna dictum porta vivamus suscipit tortor eget felis.</p><p class="modal-text">Porttitor leo a diam sollicitudin tempor id eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit amet risus.</p><p class="modal-text">Nullam vehicula ipsum a arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque.</p><div class="share-section"><div class="share-title">Share this story</div><div class="share-buttons"><a href="#" class="share-button">[FB]</a><a href="#" class="share-button">[TW]</a><a href="#" class="share-button">[LI]</a><a href="#" class="share-button">[📧]</a></div></div></div></div></div>
+    
+    <div id="modal-rosie" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('rosie')">&times;</span><div class="modal-header">[Rosie's Image]<div class="modal-header-overlay"><div class="modal-category">Stories Of Hope</div><h2 class="modal-title">Rosie's Story</h2></div></div><div class="modal-body"><p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor lectus nibh nulla porttitor massa id neque aliquam vestibulum.</p><p class="modal-text">Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus.</p><p class="modal-text">Et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra.</p><div class="share-section"><div class="share-title">Share this story</div><div class="share-buttons"><a href="#" class="share-button">[FB]</a><a href="#" class="share-button">[TW]</a><a href="#" class="share-button">[LI]</a><a href="#" class="share-button">[📧]</a></div></div></div></div></div>
+    
+    <div id="modal-clay" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('clay')">&times;</span><div class="modal-header">[Clay's Image]<div class="modal-header-overlay"><div class="modal-category">Stories Of Hope</div><h2 class="modal-title">Clay Reid Wallace's Story</h2></div></div><div class="modal-body"><p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna.</p><p class="modal-text">Curabitur arcu erat accumsan id imperdiet et porttitor at sem quisque velit nisi pretium ut lacinia in elementum id enim.</p><p class="modal-text">Donec rutrum congue leo eget malesuada vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p><div class="share-section"><div class="share-title">Share this story</div><div class="share-buttons"><a href="#" class="share-button">[FB]</a><a href="#" class="share-button">[TW]</a><a href="#" class="share-button">[LI]</a><a href="#" class="share-button">[📧]</a></div></div></div></div></div>
+    
+    <div id="modal-henlee" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('henlee')">&times;</span><div class="modal-header">[Henlee's Image]<div class="modal-header-overlay"><div class="modal-category">Stories Of Hope</div><h2 class="modal-title">Henlee's Story</h2></div></div><div class="modal-body"><p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquet quam id dui posuere blandit proin eget tortor risus.</p><p class="modal-text">Pellentesque in ipsum id orci porta dapibus vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p><p class="modal-text">Donec sollicitudin molestie malesuada nulla porttitor massa id neque aliquam vestibulum morbi blandit cursus risus at ultrices mi.</p><div class="share-section"><div class="share-title">Share this story</div><div class="share-buttons"><a href="#" class="share-button">[FB]</a><a href="#" class="share-button">[TW]</a><a href="#" class="share-button">[LI]</a><a href="#" class="share-button">[📧]</a></div></div></div></div></div>
+    
+    <script>
+        function openModal(storyId) {
+            document.getElementById('modal-' + storyId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(storyId) {
+            document.getElementById('modal-' + storyId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

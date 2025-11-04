@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supporting a Loved One - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .page-subtitle {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Intro Content */
+        .intro-section {
+            margin-bottom: 50px;
+        }
+        
+        .intro-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        /* Quote Box */
+        .quote-box {
+            background-color: #f0e6ec;
+            border-left: 4px solid #a64d79;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        .quote-mark {
+            font-size: 60px;
+            color: #a64d79;
+            opacity: 0.3;
+            line-height: 1;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .quote-text {
+            font-size: 20px;
+            font-style: italic;
+            color: #333;
+            line-height: 1.7;
+            padding-left: 40px;
+        }
+        
+        /* Attribution */
+        .attribution-box {
+            background-color: #fff8e1;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            margin: 40px 0;
+            border-radius: 4px;
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Donation CTA */
+        .donation-cta {
+            margin: 60px 0 0;
+            padding: 50px 40px;
+            background: linear-gradient(135deg, #a64d79 0%, #8a3d63 100%);
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+        }
+        
+        .donation-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .donation-text {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .donation-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background-color: white;
+            color: #a64d79;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .donation-button:hover {
+            background-color: #f0e6ec;
+            transform: translateY(-2px);
+        }
+        
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            color: #a64d79;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .section-subtitle {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Tips Grid */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .tip-card-wrapper {
+            perspective: 1000px;
+            height: 200px;
+        }
+        
+        .tip-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        
+        .tip-card-wrapper:hover .tip-card {
+            transform: rotateY(180deg);
+        }
+        
+        .tip-card-front,
+        .tip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border: 2px solid #a64d79;
+            border-radius: 8px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .tip-card-back {
+            transform: rotateY(180deg);
+            background-color: #f0e6ec;
+        }
+        
+        .tip-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #a64d79;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .tip-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+        
+        .tip-summary {
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .click-hint {
+            position: absolute;
+            bottom: 10px;
+            font-size: 11px;
+            color: #999;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: block;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 50px;
+            border: 3px solid #333;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close-modal:hover {
+            color: #a64d79;
+        }
+        
+        .modal-title {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #a64d79;
+            font-weight: bold;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 250px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        
+        .modal-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tip-card-wrapper {
+                height: 180px;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <span class="hero-banner-placeholder">[Supportive/Comfort Image]</span>
+    </div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">Supporting a Loved One</h1>
+            <p class="page-subtitle">Guidance for family, friends and colleagues navigating how to support someone after pregnancy loss.</p>
+        </div>
+        
+        <!-- Intro Content -->
+        <div class="intro-section">
+            <p class="intro-text">
+                When someone you care about experiences stillbirth, knowing what to say or do can feel overwhelming—especially when you're processing your own grief for the baby you've lost as a grandparent, sibling, friend, or colleague.
+            </p>
+        </div>
+        
+        <!-- Quote -->
+        <div class="quote-box">
+            <div class="quote-mark">"</div>
+            <p class="quote-text">While it may be terrifying to imagine saying or doing the wrong thing, it's important to know that saying nothing is worst.</p>
+        </div>
+        
+        <!-- More Intro Content -->
+        <div class="intro-section">
+            <p class="intro-text">
+                Understanding what your loved one is experiencing is a powerful first step. You're not here to fix their pain—that's not possible. But by learning about their journey, you'll feel more equipped to offer meaningful support.
+            </p>
+            <p class="intro-text">
+                Grief looks different for everyone. Rather than making assumptions about what they need, the simplest and most powerful question you can ask is: "How can I help?"
+            </p>
+            <p class="intro-text">
+                Your presence and support can profoundly impact how bereaved parents navigate their grief. Even small gestures of care can make an enormous difference.
+            </p>
+        </div>
+        
+        <!-- Tips Grid -->
+        <div class="tips-grid">
+            <div class="tip-card-wrapper" onclick="openModal('dont-avoid')">
+                <div class="tip-card">
+                    <div class="tip-card-front">
+                        <div class="tip-icon">[Icon]</div>
+                        <div class="tip-title">Don't Avoid Them</div>
+                        <div class="click-hint">Click for more</div>
+                    </div>
+                    <div class="tip-card-back">
+                        <div class="tip-summary">Be there for them - your presence matters more than perfect words</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-card-wrapper" onclick="openModal('listen')">
+                <div class="tip-card">
+                    <div class="tip-card-front">
+                        <div class="tip-icon">[Icon]</div>
+                        <div class="tip-title">Listen</div>
+                        <div class="click-hint">Click for more</div>
+                    </div>
+                    <div class="tip-card-back">
+                        <div class="tip-summary">Sometimes the best support is simply listening without judgment</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-card-wrapper" onclick="openModal('support-family')">
+                <div class="tip-card">
+                    <div class="tip-card-front">
+                        <div class="tip-icon">[Icon]</div>
+                        <div class="tip-title">Support the Family</div>
+                        <div class="click-hint">Click for more</div>
+                    </div>
+                    <div class="tip-card-back">
+                        <div class="tip-summary">The whole family is affected - offer support to everyone</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-card-wrapper" onclick="openModal('meeting-baby')">
+                <div class="tip-card">
+                    <div class="tip-card-front">
+                        <div class="tip-icon">[Icon]</div>
+                        <div class="tip-title">Meeting the Baby</div>
+                        <div class="click-hint">Click for more</div>
+                    </div>
+                    <div class="tip-card-back">
+                        <div class="tip-summary">Respect their wishes about meeting and holding their baby</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-card-wrapper" onclick="openModal('acknowledge')">
+                <div class="tip-card">
+                    <div class="tip-card-front">
+                        <div class="tip-icon">[Icon]</div>
+                        <div class="tip-title">Acknowledge the Baby</div>
+                        <div class="click-hint">Click for more</div>
+                    </div>
+                    <div class="tip-card-back">
+                        <div class="tip-summary">Use the baby's name and recognize their existence</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-card-wrapper" onclick="openModal('follow-lead')">
+                <div class="tip-card">
+                    <div class="tip-card-front">
+                        <div class="tip-icon">[Icon]</div>
+                        <div class="tip-title">Follow Their Lead</div>
+                        <div class="click-hint">Click for more</div>
+                    </div>
+                    <div class="tip-card-back">
+                        <div class="tip-summary">Let them guide conversations and what feels comfortable</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-card-wrapper" onclick="openModal('choose-words')">
+                <div class="tip-card">
+                    <div class="tip-card-front">
+                        <div class="tip-icon">[Icon]</div>
+                        <div class="tip-title">Choose Your Words Carefully</div>
+                        <div class="click-hint">Click for more</div>
+                    </div>
+                    <div class="tip-card-back">
+                        <div class="tip-summary">Avoid clichés - simple, honest words work best</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-card-wrapper" onclick="openModal('practical-help')">
+                <div class="tip-card">
+                    <div class="tip-card-front">
+                        <div class="tip-icon">[Icon]</div>
+                        <div class="tip-title">Offer Practical Help</div>
+                        <div class="click-hint">Click for more</div>
+                    </div>
+                    <div class="tip-card-back">
+                        <div class="tip-summary">Concrete actions like meals or errands can be invaluable</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-card-wrapper" onclick="openModal('dont-throw-away')">
+                <div class="tip-card">
+                    <div class="tip-card-front">
+                        <div class="tip-icon">[Icon]</div>
+                        <div class="tip-title">Don't Throw Things Away</div>
+                        <div class="click-hint">Click for more</div>
+                    </div>
+                    <div class="tip-card-back">
+                        <div class="tip-summary">Let parents decide what to keep or remove in their own time</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-card-wrapper" onclick="openModal('pregnancy-babies')">
+                <div class="tip-card">
+                    <div class="tip-card-front">
+                        <div class="tip-icon">[Icon]</div>
+                        <div class="tip-title">Pregnancy and Babies</div>
+                        <div class="click-hint">Click for more</div>
+                    </div>
+                    <div class="tip-card-back">
+                        <div class="tip-summary">Be mindful about discussions of other pregnancies and babies</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-card-wrapper" onclick="openModal('remember')">
+                <div class="tip-card">
+                    <div class="tip-card-front">
+                        <div class="tip-icon">[Icon]</div>
+                        <div class="tip-title">Remember the Baby</div>
+                        <div class="click-hint">Click for more</div>
+                    </div>
+                    <div class="tip-card-back">
+                        <div class="tip-summary">Continue to acknowledge their baby on special dates and occasions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Attribution -->
+        <div class="attribution-box">
+            The following information is direct from a fellow awareness and prevention organisation, <strong>Tommy's UK</strong>, who we believe have provided the very best in advice on supporting a loved one following a stillbirth (thank you Tommy's for all that you do in raising awareness and providing support!).
+        </div>
+        
+        <!-- Donation CTA -->
+        <div class="donation-cta">
+            <h2 class="donation-title">Support Our Work</h2>
+            <p class="donation-text">Help us continue providing resources and support for families affected by stillbirth</p>
+            <a href="#" class="donation-button">Make a Donation</a>
+        </div>
+    </div>
+    
+    <!-- Modals for each tip -->
+    <div id="modal-dont-avoid" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('dont-avoid')">&times;</span>
+            <h2 class="modal-title">Don't Avoid Them - Be There for Them</h2>
+            <div class="modal-image">[Supportive Presence Image]</div>
+            <p class="modal-text">[Detailed information about not avoiding grieving parents and being present for them]</p>
+        </div>
+    </div>
+    
+    <div id="modal-listen" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('listen')">&times;</span>
+            <h2 class="modal-title">Listen</h2>
+            <div class="modal-image">[Listening/Compassion Image]</div>
+            <p class="modal-text">[Detailed information about the importance of listening]</p>
+        </div>
+    </div>
+    
+    <div id="modal-support-family" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('support-family')">&times;</span>
+            <h2 class="modal-title">Support the Family</h2>
+            <div class="modal-image">[Family Support Image]</div>
+            <p class="modal-text">[Detailed information about supporting the whole family]</p>
+        </div>
+    </div>
+    
+    <div id="modal-meeting-baby" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('meeting-baby')">&times;</span>
+            <h2 class="modal-title">Meeting the Baby</h2>
+            <div class="modal-image">[Gentle/Respectful Image]</div>
+            <p class="modal-text">[Detailed information about meeting and holding the baby]</p>
+        </div>
+    </div>
+    
+    <div id="modal-acknowledge" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('acknowledge')">&times;</span>
+            <h2 class="modal-title">Acknowledge the Baby</h2>
+            <div class="modal-image">[Memorial/Remembrance Image]</div>
+            <p class="modal-text">[Detailed information about acknowledging the baby's existence]</p>
+        </div>
+    </div>
+    
+    <div id="modal-follow-lead" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('follow-lead')">&times;</span>
+            <h2 class="modal-title">Follow Their Lead</h2>
+            <div class="modal-image">[Guidance/Direction Image]</div>
+            <p class="modal-text">[Detailed information about following the parents' lead]</p>
+        </div>
+    </div>
+    
+    <div id="modal-choose-words" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('choose-words')">&times;</span>
+            <h2 class="modal-title">Choose Your Words Carefully</h2>
+            <div class="modal-image">[Communication/Conversation Image]</div>
+            <p class="modal-text">[Detailed information about choosing appropriate words]</p>
+        </div>
+    </div>
+    
+    <div id="modal-practical-help" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('practical-help')">&times;</span>
+            <h2 class="modal-title">Offer Practical Help</h2>
+            <div class="modal-image">[Helping Hands/Support Image]</div>
+            <p class="modal-text">[Detailed information about offering practical support]</p>
+        </div>
+    </div>
+    
+    <div id="modal-dont-throw-away" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('dont-throw-away')">&times;</span>
+            <h2 class="modal-title">Don't Throw Things Away</h2>
+            <div class="modal-image">[Mementos/Keepsakes Image]</div>
+            <p class="modal-text">[Detailed information about respecting parents' belongings and mementos]</p>
+        </div>
+    </div>
+    
+    <div id="modal-pregnancy-babies" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('pregnancy-babies')">&times;</span>
+            <h2 class="modal-title">Pregnancy and Babies</h2>
+            <div class="modal-image">[Sensitivity/Awareness Image]</div>
+            <p class="modal-text">[Detailed information about navigating discussions of pregnancies and babies]</p>
+        </div>
+    </div>
+    
+    <div id="modal-remember" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('remember')">&times;</span>
+            <h2 class="modal-title">Remember the Baby</h2>
+            <div class="modal-image">[Remembrance/Anniversary Image]</div>
+            <p class="modal-text">[Detailed information about continuing to remember and acknowledge the baby]</p>
+        </div>
+    </div>
+    
+    <script>
+        function openModal(modalId) {
+            document.getElementById('modal-' + modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById('modal-' + modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

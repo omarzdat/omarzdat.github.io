@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Events - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .hero-section {
+            height: 100vh;
+            background-color: #ddd;
+            background-image: url('placeholder');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-bottom: 3px solid #333;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 56px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-link {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #333;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-link:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        .hero-placeholder-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #999;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            font-weight: normal;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .event-card {
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 25px 30px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 120px;
+        }
+        
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: 0;
+            transition: all 0.2s ease;
+        }
+        
+        .event-card:hover::before {
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+        
+        .event-card:hover {
+            transform: translateX(5px);
+        }
+        
+        .event-card::after {
+            content: '[Event Image]';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+            color: #ccc;
+            z-index: 0;
+        }
+        
+        .event-info {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .event-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .event-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .event-date,
+        .event-location,
+        .event-status {
+            display: flex;
+            align-items: center;
+        }
+        
+        .event-status {
+            font-weight: bold;
+        }
+        
+        .status-upcoming {
+            color: #0066cc;
+        }
+        
+        .status-past {
+            color: #999;
+        }
+        
+        .event-arrow {
+            font-size: 24px;
+            color: #333;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+            font-size: 16px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .event-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .event-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .event-arrow {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="hero-placeholder-text">[Hero Image Background]</div>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1 class="hero-title">Our Events</h1>
+                <a href="#events-content" class="hero-link">Explore Events</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" id="events-content">
+        <h1>Our Events</h1>
+        
+        <div class="section">
+            <div class="section-title">Upcoming Events</div>
+            <div class="events-list">
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-title">Gala Dinner</div>
+                        <div class="event-meta">
+                            <span class="event-date">📅 December 15, 2025</span>
+                            <span class="event-location">📍 Grand Ballroom</span>
+                            <span class="event-status status-upcoming">Upcoming</span>
+                        </div>
+                    </div>
+                    <div class="event-arrow">→</div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-title">Birthday for Babies</div>
+                        <div class="event-meta">
+                            <span class="event-date">📅 January 20, 2026</span>
+                            <span class="event-location">📍 Community Center</span>
+                            <span class="event-status status-upcoming">Upcoming</span>
+                        </div>
+                    </div>
+                    <div class="event-arrow">→</div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-title">Gala Dinner 2026</div>
+                        <div class="event-meta">
+                            <span class="event-date">📅 March 10, 2026</span>
+                            <span class="event-location">📍 Convention Center</span>
+                            <span class="event-status status-upcoming">Upcoming</span>
+                        </div>
+                    </div>
+                    <div class="event-arrow">→</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Past Events</div>
+            <div class="events-list">
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-title">Annual Fundraiser 2024</div>
+                        <div class="event-meta">
+                            <span class="event-date">📅 October 5, 2024</span>
+                            <span class="event-location">📍 City Hall</span>
+                            <span class="event-status status-past">Past</span>
+                        </div>
+                    </div>
+                    <div class="event-arrow">→</div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-info">
+                        <div class="event-title">Summer Gala 2024</div>
+                        <div class="event-meta">
+                            <span class="event-date">📅 July 15, 2024</span>
+                            <span class="event-location">📍 Waterfront Venue</span>
+                            <span class="event-status status-past">Past</span>
+                        </div>
+                    </div>
+                    <div class="event-arrow">→</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

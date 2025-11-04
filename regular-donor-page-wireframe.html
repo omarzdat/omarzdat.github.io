@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Regular Donor - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Header */
+        .page-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .main-title {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .intro-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Donation Box */
+        .donation-box {
+            margin: 50px 0;
+            padding: 40px;
+            border: 3px solid #a64d79;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        
+        .donation-form {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .donation-sentence {
+            font-size: 28px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            line-height: 1.6;
+        }
+        
+        .donation-sentence span {
+            display: inline-block;
+        }
+        
+        .amount-input {
+            width: 120px;
+            padding: 12px 15px;
+            font-size: 24px;
+            border: 2px solid #a64d79;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .amount-input:focus {
+            outline: none;
+            border-color: #8a3d63;
+        }
+        
+        .frequency-select {
+            padding: 12px 20px;
+            font-size: 24px;
+            border: 2px solid #a64d79;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .frequency-select:focus {
+            outline: none;
+            border-color: #8a3d63;
+        }
+        
+        .register-button {
+            width: 100%;
+            padding: 18px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .register-button:hover {
+            background-color: #8a3d63;
+        }
+        
+        /* Why Give Section */
+        .why-give-section {
+            margin: 60px 0;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .why-give-content h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        
+        .why-give-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .why-give-item {
+            padding: 12px 0 12px 25px;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+            position: relative;
+        }
+        
+        .why-give-item::before {
+            content: "•";
+            color: #a64d79;
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+        
+        .why-give-image {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            background-color: #e0e0e0;
+            border: 2px solid #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* One Time Donation CTA */
+        .onetime-cta-section {
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .onetime-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        
+        .onetime-button {
+            padding: 18px 50px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .onetime-button:hover {
+            background-color: #8a3d63;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .main-title {
+                font-size: 32px;
+            }
+            
+            .donation-sentence {
+                font-size: 22px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .amount-input,
+            .frequency-select {
+                font-size: 20px;
+            }
+            
+            .why-give-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .why-give-image {
+                min-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <span class="hero-banner-placeholder">[Relevant Hero Image]</span>
+    </div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="main-title">Become a Regular Donor</h1>
+            <p class="intro-text">
+                Regular giving provides the stable foundation that allows Still Aware to plan for the future and focus on our mission of preventing stillbirth. Your ongoing support, no matter the amount, helps us continue our vital work in education, awareness, and supporting families. When you become a regular donor, you join a community of dedicated supporters who are making a lasting difference in pregnancy health across Australia.
+            </p>
+        </div>
+        
+        <!-- Donation Box -->
+        <div class="donation-box">
+            <form class="donation-form">
+                <div class="donation-sentence">
+                    <span>I want to donate</span>
+                    <input type="number" class="amount-input" placeholder="25" min="1" value="25">
+                    <span>every</span>
+                    <select class="frequency-select">
+                        <option value="week">week</option>
+                        <option value="month" selected>month</option>
+                        <option value="year">year</option>
+                    </select>
+                </div>
+                <button type="submit" class="register-button">Register Your Donation</button>
+            </form>
+        </div>
+        
+        <!-- Why Give Regularly -->
+        <div class="why-give-section">
+            <div class="why-give-content">
+                <h2>Why become a Regular Giver?</h2>
+                <ul class="why-give-list">
+                    <li class="why-give-item">You can choose an amount that suits you, and choose your payment schedule.</li>
+                    <li class="why-give-item">Should your circumstances change, you can easily amend or stop your payment at any time.</li>
+                    <li class="why-give-item">Regular Giving is a more effective way to donate than once-off donations, even if smaller in value. This allows us to focus less on the financial situation of our organization, and more on our core mission of keeping babies safe.</li>
+                    <li class="why-give-item">There are no contracts or paperwork!</li>
+                </ul>
+            </div>
+            
+            <div class="why-give-image">[Image]</div>
+        </div>
+        
+        <!-- One Time Donation CTA -->
+        <div class="onetime-cta-section">
+            <h2 class="onetime-title">Prefer a one time donation?</h2>
+            <button class="onetime-button">Make a One Time Donation</button>
+        </div>
+    </div>
+    
+    <script>
+        // Handle form submission
+        document.querySelector('.donation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const amount = document.querySelector('.amount-input').value;
+            const frequency = document.querySelector('.frequency-select').value;
+            alert(`Redirecting to register your donation of $${amount} every ${frequency}...`);
+        });
+        
+        // Handle one-time donation button
+        document.querySelector('.onetime-button').addEventListener('click', function() {
+            alert('Redirecting to one-time donation page...');
+        });
+    </script>
+</body>
+</html>

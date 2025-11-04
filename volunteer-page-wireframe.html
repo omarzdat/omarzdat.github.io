@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer With Us - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-placeholder {
+            position: absolute;
+            font-size: 18px;
+            color: #999;
+        }
+        
+        /* Header Section */
+        .header-section {
+            background-color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .main-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .flavor-text {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 40px;
+        }
+        
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .section-white {
+            background-color: white;
+        }
+        
+        .section-gray {
+            background-color: #f9f9f9;
+        }
+        
+        /* Why Volunteer Section */
+        .why-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .text-content h2 {
+            font-size: 36px;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        
+        .text-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #333;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            color: #333;
+        }
+        
+        .image-placeholder {
+            aspect-ratio: 4/3;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #333;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #999;
+        }
+        
+        /* What We Do Section */
+        .what-section {
+            text-align: center;
+        }
+        
+        .what-section h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .activity-card {
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .activity-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #e0e0e0;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .activity-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .activity-description {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            text-align: center;
+            color: #333;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .quote-mark {
+            font-size: 60px;
+            color: #e0e0e0;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .testimonial-text {
+            font-size: 16px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #999;
+        }
+        
+        .author-info {
+            flex: 1;
+        }
+        
+        .author-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 3px;
+        }
+        
+        .author-role {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Final CTA Section */
+        .final-cta-section {
+            min-height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            padding: 80px 40px;
+        }
+        
+        .cta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+        
+        .cta-content h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .cta-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .cta-button-white {
+            background-color: white;
+            color: #333;
+        }
+        
+        .cta-button-white:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: block;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 50px;
+            border: 3px solid #333;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close-modal:hover {
+            color: #666;
+        }
+        
+        .modal-title {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #333;
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            border: 2px solid #333;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-button:hover {
+            background-color: white;
+            color: #333;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .why-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-title {
+                font-size: 36px;
+            }
+            
+            .text-content h2,
+            .what-section h2,
+            .testimonials-section h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-section">
+        <div class="hero-placeholder">[Volunteers in Action Image]</div>
+    </div>
+    
+    <!-- Header -->
+    <div class="header-section">
+        <h1 class="main-title">Volunteer With Us</h1>
+        <p class="flavor-text">Join our community of passionate individuals making a real difference. Every hour you give creates ripples of positive change.</p>
+    </div>
+    
+    <!-- Why Volunteer Section -->
+    <div class="content-section section-white">
+        <div class="content-wrapper">
+            <div class="why-section">
+                <div class="text-content">
+                    <h2>Why Volunteer?</h2>
+                    <p>Volunteering isn't just about giving back—it's about growing, connecting, and discovering your capacity to create change.</p>
+                    <p>You'll develop new skills, meet incredible people, and be part of something bigger than yourself. Whether you have a few hours a month or can commit to regular involvement, your contribution matters.</p>
+                    <p>Our volunteers consistently tell us that the experience has enriched their lives in unexpected ways, building confidence, expanding perspectives, and creating lasting friendships.</p>
+                    <button class="cta-button" onclick="openModal()">Sign Up to Volunteer</button>
+                </div>
+                <div class="image-placeholder">[Inspiring Volunteer Photo]</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- What We Do Section -->
+    <div class="content-section section-gray">
+        <div class="content-wrapper what-section">
+            <h2>What You'll Do</h2>
+            <p style="font-size: 18px; color: #666; max-width: 800px; margin: 0 auto 40px;">Our volunteers engage in diverse activities that match their interests and skills. Here's what you could be involved in:</p>
+            
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-icon">[Icon]</div>
+                    <div class="activity-title">Event Support</div>
+                    <div class="activity-description">Help organize and run our community events, from setup to guest services to coordination.</div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-icon">[Icon]</div>
+                    <div class="activity-title">Community Outreach</div>
+                    <div class="activity-description">Connect with community members, spread awareness, and build relationships that matter.</div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-icon">[Icon]</div>
+                    <div class="activity-title">Administrative Support</div>
+                    <div class="activity-description">Assist with behind-the-scenes tasks that keep our organization running smoothly.</div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-icon">[Icon]</div>
+                    <div class="activity-title">Fundraising</div>
+                    <div class="activity-description">Support our mission by helping coordinate fundraising campaigns and donor relations.</div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-icon">[Icon]</div>
+                    <div class="activity-title">Skills-Based Projects</div>
+                    <div class="activity-description">Apply your professional expertise in areas like marketing, design, or technology.</div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-icon">[Icon]</div>
+                    <div class="activity-title">Mentorship</div>
+                    <div class="activity-description">Share your experience and guide others in their personal and professional development.</div>
+                </div>
+            </div>
+            
+            <button class="cta-button" onclick="openModal()" style="margin-top: 50px;">Get Started Today</button>
+        </div>
+    </div>
+    
+    <!-- Testimonials Section -->
+    <div class="content-section section-white">
+        <div class="content-wrapper testimonials-section">
+            <h2>Hear From Our Volunteers</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-mark">"</div>
+                    <div class="testimonial-text">
+                        Volunteering here has been one of the most rewarding experiences of my life. I've met amazing people and learned so much about myself and my community. It's given me a sense of purpose I didn't know I was missing.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-photo">[Photo]</div>
+                        <div class="author-info">
+                            <div class="author-name">Sarah Mitchell</div>
+                            <div class="author-role">Volunteer since 2023</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="quote-mark">"</div>
+                    <div class="testimonial-text">
+                        I started volunteering to give back, but I've received so much more than I've given. The friendships I've made and the skills I've developed have been incredible. It's become an essential part of my life.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-photo">[Photo]</div>
+                        <div class="author-info">
+                            <div class="author-name">James Chen</div>
+                            <div class="author-role">Volunteer since 2022</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="quote-mark">"</div>
+                    <div class="testimonial-text">
+                        The flexibility and variety of opportunities make it easy to fit volunteering into my busy schedule. Whether I have an afternoon or a full day, there's always something meaningful I can contribute to.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-photo">[Photo]</div>
+                        <div class="author-info">
+                            <div class="author-name">Maria Rodriguez</div>
+                            <div class="author-role">Volunteer since 2024</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="quote-mark">"</div>
+                    <div class="testimonial-text">
+                        Being part of this volunteer community has opened doors I never expected. I've grown professionally and personally, and I'm proud to be making a real difference in people's lives.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-photo">[Photo]</div>
+                        <div class="author-info">
+                            <div class="author-name">David Thompson</div>
+                            <div class="author-role">Volunteer since 2021</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Final CTA Section -->
+    <div class="final-cta-section">
+        <div class="hero-placeholder" style="z-index: 0;">[Inspiring CTA Background Image]</div>
+        <div class="cta-overlay"></div>
+        <div class="cta-content">
+            <h2>Ready to Make a Difference?</h2>
+            <p>Join our volunteer community today and start your journey of impact.</p>
+            <button class="cta-button cta-button-white" onclick="openModal()">Sign Up Now</button>
+        </div>
+    </div>
+    
+    <!-- Modal Form -->
+    <div id="volunteerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 class="modal-title">Volunteer Application</h2>
+            
+            <form id="volunteerForm">
+                <div class="form-group">
+                    <label class="form-label">First Name *</label>
+                    <input type="text" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Last Name *</label>
+                    <input type="text" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email Address *</label>
+                    <input type="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Phone Number *</label>
+                    <input type="tel" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Address</label>
+                    <input type="text" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Availability *</label>
+                    <select class="form-select" required>
+                        <option value="">Select your availability</option>
+                        <option value="weekdays">Weekdays</option>
+                        <option value="weekends">Weekends</option>
+                        <option value="both">Both</option>
+                        <option value="flexible">Flexible</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Areas of Interest *</label>
+                    <select class="form-select" required>
+                        <option value="">Select an area</option>
+                        <option value="events">Event Support</option>
+                        <option value="outreach">Community Outreach</option>
+                        <option value="admin">Administrative Support</option>
+                        <option value="fundraising">Fundraising</option>
+                        <option value="skills">Skills-Based Projects</option>
+                        <option value="mentorship">Mentorship</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Tell us about yourself and why you want to volunteer *</label>
+                    <textarea class="form-textarea" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Relevant Skills or Experience</label>
+                    <textarea class="form-textarea"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button">Submit Application</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function openModal() {
+            document.getElementById('volunteerModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('volunteerModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('volunteerModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+        
+        // Handle form submission
+        document.getElementById('volunteerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest in volunteering! We will be in touch soon.');
+            closeModal();
+            this.reset();
+        });
+    </script>
+</body>
+</html>

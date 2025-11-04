@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinician Workshops - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        /* CTA Section */
+        .cta-banner {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #a64d79 0%, #8a3d63 100%);
+            border-radius: 8px;
+            margin-bottom: 50px;
+            color: white;
+        }
+        
+        .cta-banner-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .cta-banner-text {
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .register-button {
+            padding: 18px 50px;
+            background-color: white;
+            color: #a64d79;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .register-button:hover {
+            background-color: #f0e6ec;
+            transform: translateY(-2px);
+        }
+        
+        /* Intro Section */
+        .intro-section {
+            margin-bottom: 50px;
+        }
+        
+        .intro-text {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Workshop Details Grid */
+        .workshop-details {
+            margin: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            color: #a64d79;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .topics-outcomes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .detail-box {
+            padding: 35px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-top: 4px solid #a64d79;
+        }
+        
+        .detail-box h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .detail-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .detail-item {
+            padding: 10px 0 10px 25px;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+            position: relative;
+        }
+        
+        .detail-item::before {
+            content: "✓";
+            color: #a64d79;
+            font-size: 18px;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+        
+        /* Image Grid */
+        .image-grid-section {
+            margin: 60px 0;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .grid-image {
+            width: 100%;
+            height: 280px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #ddd;
+        }
+        
+        .grid-image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(166, 77, 121, 0.9);
+            padding: 15px;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Testimonial */
+        .testimonial-section {
+            margin: 60px 0;
+            padding: 40px;
+            background-color: #f0e6ec;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .quote-mark {
+            font-size: 80px;
+            color: #a64d79;
+            opacity: 0.3;
+            line-height: 1;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+        }
+        
+        .testimonial-text {
+            font-size: 16px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            padding-left: 40px;
+        }
+        
+        .testimonial-author {
+            text-align: right;
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+            padding-right: 20px;
+        }
+        
+        /* Resources Banner */
+        .resources-banner {
+            margin: 60px 0;
+            padding: 35px;
+            background-color: #fff8e1;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .resources-banner h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .resources-banner p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .resources-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #ffc107;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .resources-link:hover {
+            background-color: #ffb300;
+        }
+        
+        /* Side-by-side Bottom Section */
+        .bottom-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .resources-banner,
+        .feedback-section {
+            margin: 0;
+        }
+        
+        /* Feedback Section */
+        .feedback-section {
+            margin: 60px 0;
+            padding: 40px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .feedback-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .feedback-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .feedback-button {
+            padding: 15px 40px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .feedback-button:hover {
+            background-color: #8a3d63;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: block;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 3% auto;
+            padding: 50px;
+            border: 3px solid #333;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close-modal:hover {
+            color: #a64d79;
+        }
+        
+        .modal-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #a64d79;
+            font-weight: bold;
+        }
+        
+        /* Form Styles */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .required {
+            color: #d32f2f;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #a64d79;
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .checkbox-group {
+            margin: 20px 0;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-input {
+            margin-right: 10px;
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .checkbox-label {
+            font-size: 15px;
+            color: #555;
+            cursor: pointer;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-input {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 18px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .submit-button:hover {
+            background-color: #8a3d63;
+        }
+        
+        .rating-scale {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .rating-option {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .rating-option input[type="radio"] {
+            display: block;
+            margin: 0 auto 5px;
+        }
+        
+        .rating-option label {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .topics-outcomes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-image {
+                height: 220px;
+            }
+            
+            .bottom-sections {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <span class="hero-banner-placeholder">[Clinical Education/Workshop Image]</span>
+    </div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">Clinician Workshops</h1>
+        </div>
+        
+        <!-- CTA Banner -->
+        <div class="cta-banner">
+            <h2 class="cta-banner-title">Register Your Interest</h2>
+            <p class="cta-banner-text">Join our next workshop session and gain valuable tools for stillbirth prevention</p>
+            <button class="register-button" onclick="openRegistrationModal()">Register Now</button>
+        </div>
+        
+        <!-- Intro -->
+        <div class="intro-section">
+            <p class="intro-text">
+                Still Aware's Clinical Training offers guidance on how to talk to women about stillbirth prevention, better understand fetal movements, and effectively communicate with expectant parents. We translate evidence-based research into easy-to-understand, measurable tools for implementation in clinical and consumer practice.
+            </p>
+        </div>
+        
+        <!-- Workshop Details -->
+        <div class="workshop-details">
+            <h2 class="section-title">Stillbirth Prevention Workshops</h2>
+            
+            <div class="topics-outcomes-grid">
+                <div class="detail-box">
+                    <h3>Key Topics</h3>
+                    <ul class="detail-list">
+                        <li class="detail-item">A baby's movements in utero</li>
+                        <li class="detail-item">An expectant mother's sleeping position</li>
+                        <li class="detail-item">Intuitive pregnancy</li>
+                        <li class="detail-item">Action-based communication</li>
+                    </ul>
+                </div>
+                
+                <div class="detail-box">
+                    <h3>Workshop Outcomes</h3>
+                    <ul class="detail-list">
+                        <li class="detail-item">Understand maternity care providers' role in detecting and managing risk factors</li>
+                        <li class="detail-item">Recognize stillbirth's impact on the community</li>
+                        <li class="detail-item">Learn effective communication with expectant families</li>
+                        <li class="detail-item">Understand fetal movement monitoring as surveillance</li>
+                        <li class="detail-item">Know how, why, and when to discuss stillbirth</li>
+                        <li class="detail-item">Identify warning signs requiring investigation</li>
+                        <li class="detail-item">Name at-risk indicators for mother and baby</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Image Grid -->
+        <div class="image-grid-section">
+            <div class="image-grid">
+                <div class="grid-image">
+                    [Workshop Session Image]
+                    <div class="grid-image-caption">Interactive Learning Sessions</div>
+                </div>
+                <div class="grid-image">
+                    [Clinical Discussion Image]
+                    <div class="grid-image-caption">Evidence-Based Discussion</div>
+                </div>
+                <div class="grid-image">
+                    [Healthcare Professionals Image]
+                    <div class="grid-image-caption">Expert-Led Training</div>
+                </div>
+                <div class="grid-image">
+                    [Resources & Materials Image]
+                    <div class="grid-image-caption">Practical Resources Provided</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Testimonial -->
+        <div class="testimonial-section">
+            <div class="quote-mark">"</div>
+            <p class="testimonial-text">
+                I really enjoyed your clinical zoom for caregivers a couple of weeks ago. Last Thursday in my web ex antenatal class I used your brilliant Pool, Spa, Bath example for FMF. On Monday one of the participants rang citing the bath example and she hadn't felt anything at 37 weeks. Coincidence I answered her phone call and told her to come straight in. 15 mins on a flat CTG, Cat 1 Emergency called and baby safely delivered, flat but well now in SCN. Your education saved another family, and your work will continue. I just wanted to let you know that your words educate us for brilliant outcomes.
+            </p>
+            <p class="testimonial-author">— Debra Graham, St John of God Hospital, Geelong</p>
+        </div>
+        
+        <!-- Bottom Sections Side-by-Side -->
+        <div class="bottom-sections">
+            <!-- Resources Banner -->
+            <div class="resources-banner">
+                <h3>Access Recent Education Sessions</h3>
+                <p>Recordings from our most recent Education Sessions are readily available for download</p>
+                <a href="#" class="resources-link">Download Recordings</a>
+            </div>
+            
+            <!-- Feedback Section -->
+            <div class="feedback-section">
+                <h2 class="feedback-title">Already Attended a Workshop?</h2>
+                <p class="feedback-text">We'd love to hear your feedback to help us continually improve our program</p>
+                <button class="feedback-button" onclick="openFeedbackModal()">Submit Feedback</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeRegistrationModal()">&times;</span>
+            <h2 class="modal-title">Register Your Interest</h2>
+            
+            <form id="registrationForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">First Name<span class="required">*</span></label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Last Name<span class="required">*</span></label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email<span class="required">*</span></label>
+                    <input type="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">City / Town<span class="required">*</span></label>
+                    <input type="text" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Preferred Date<span class="required">*</span></label>
+                    <input type="date" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Clinician Type<span class="required">*</span></label>
+                    <select class="form-select" required>
+                        <option value="">Select type</option>
+                        <option value="obstetrician">Obstetrician</option>
+                        <option value="midwife">Midwife</option>
+                        <option value="nurse">Registered Nurse</option>
+                        <option value="gp">General Practitioner</option>
+                        <option value="doula">Doula</option>
+                        <option value="student-midwife">Student Midwife</option>
+                        <option value="medical-student">Medical Student</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label">Any other comments?</label>
+                    <textarea class="form-textarea"></textarea>
+                </div>
+                
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="checkbox-input" id="mailingList">
+                        <label class="checkbox-label" for="mailingList">Sign up for Still Aware mailing list</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-button">Submit Registration</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeFeedbackModal()">&times;</span>
+            <h2 class="modal-title">Workshop Evaluation</h2>
+            
+            <form id="feedbackForm">
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="checkbox-input" id="anonymous">
+                        <label class="checkbox-label" for="anonymous">I wish to remain anonymous for feedback purposes</label>
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-input">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Education Session Attended<span class="required">*</span></label>
+                    <input type="text" class="form-input" placeholder="Please state which city/town" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Clinician Type<span class="required">*</span></label>
+                    <select class="form-select" required>
+                        <option value="">Select type</option>
+                        <option value="obstetrician">Obstetrician</option>
+                        <option value="midwife">Midwife</option>
+                        <option value="birthing-centre">Birthing Centre</option>
+                        <option value="prenatal-carer">Prenatal Carer</option>
+                        <option value="nurse">Registered Nurse</option>
+                        <option value="gp">General Practitioner</option>
+                        <option value="midwifery-group">Midwifery Group Practice</option>
+                        <option value="doula">Doula</option>
+                        <option value="hypnobirthing">Hypnobirthing Instructor</option>
+                        <option value="yoga">Prenatal Yoga Instructor</option>
+                        <option value="pilates">Prenatal Pilates Instructor</option>
+                        <option value="acupuncturist">Pregnancy Acupuncturist</option>
+                        <option value="consultant">Midwifery Consultant</option>
+                        <option value="student">Student Midwife</option>
+                        <option value="osteopath">Osteopath</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label">Overall Content<span class="required">*</span></label>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <input type="radio" name="content" value="excellent" required>
+                            <label>Excellent</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="content" value="good">
+                            <label>Good</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="content" value="satisfactory">
+                            <label>Satisfactory</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="content" value="fair">
+                            <label>Fair</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="content" value="poor">
+                            <label>Poor</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label">Delivery of the Program<span class="required">*</span></label>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <input type="radio" name="delivery" value="excellent" required>
+                            <label>Excellent</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="delivery" value="good">
+                            <label>Good</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="delivery" value="satisfactory">
+                            <label>Satisfactory</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="delivery" value="fair">
+                            <label>Fair</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="delivery" value="poor">
+                            <label>Poor</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label">Has Still Aware's workshop influenced a positive change in your practice?<span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" class="radio-input" name="practice-change" value="yes" required>
+                            <label>Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" class="radio-input" name="practice-change" value="no">
+                            <label>No</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" class="radio-input" name="practice-change" value="somewhat">
+                            <label>Somewhat</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label">Any other comments or feedback</label>
+                    <textarea class="form-textarea"></textarea>
+                </div>
+                
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="checkbox-input" id="updates">
+                        <label class="checkbox-label" for="updates">Receive information and updates</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" class="checkbox-input" id="advocate">
+                        <label class="checkbox-label" for="advocate">Become a Still Aware Advocate</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-button">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Registration Modal
+        function openRegistrationModal() {
+            document.getElementById('registrationModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeRegistrationModal() {
+            document.getElementById('registrationModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Feedback Modal
+        function openFeedbackModal() {
+            document.getElementById('feedbackModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeFeedbackModal() {
+            document.getElementById('feedbackModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const regModal = document.getElementById('registrationModal');
+            const feedModal = document.getElementById('feedbackModal');
+            if (event.target === regModal) {
+                closeRegistrationModal();
+            }
+            if (event.target === feedModal) {
+                closeFeedbackModal();
+            }
+        }
+        
+        // Handle registration form
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for registering! We will be in touch soon with workshop details.');
+            closeRegistrationModal();
+            this.reset();
+        });
+        
+        // Handle feedback form
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your feedback! Your input helps us improve our workshops.');
+            closeFeedbackModal();
+            this.reset();
+        });
+    </script>
+</body>
+</html>

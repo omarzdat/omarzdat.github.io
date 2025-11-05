@@ -1,6 +1,6 @@
 # Stillbirth Site Wireframes
 
-Below is the repository for all wirefranes for this project.
+Below is the repository for all wireframes for this project.
 The purpose of wireframing in HTML is to get a feel for the responsiveness, layout, and interactions while still keeping a reduced design and a low-code implementation. For a project such as this, the content and images may change, but the crux of the project is in its interactions, which this wireframe implementation showcases as best as possible.
 
 Where necessary, comments explain functionality that would otherwise be difficult to implement in this redux wireframe set.
@@ -8,61 +8,67 @@ Where necessary, comments explain functionality that would otherwise be difficul
 
 ## 0. Homepage
 
-* Stillaware.org (Home)
+* [Stillaware.org (Home)](https://omarzdat.github.io/homepage-wireframe.html)
 
 ## 1. About Stillbirth
 
 The pages in this section cover the core information about stillbirth.
 
-* What is Stillbirth?
-* Understanding Stillbirth
-* Resarch and Evidence
-* Advocacy
-* Winds of Change Project
+* [What is Stillbirth?](https://omarzdat.github.io/what-is-stillbirth-page-wireframe.html)
+* Understanding Stillbirth - *Content for this page needs to be greenlit or copywritten. The point is to add more detail compared to the "what is stillbirth" page*
+* [Research and Evidence](https://omarzdat.github.io/research-evidence-page-wireframe.html)
+* [Advocacy](https://omarzdat.github.io/advocacy-page-wireframe.html)
+* [Winds of Change Project](https://omarzdat.github.io/winds-project-page-wireframe.html)
 
 ## 2. Pregnancy and Prevention
 
-This section focuses on prevention, education, and managing a subsequent pregnancy.
+This section focuses on prevention, education, and managing a subsequent pregnancy. *The six actions previously detailed.*
 
-* Prevention Guide
-* Getting To Know Your Baby
-* For Partners and Family
-* [Myths and the like](omarzdat.github.site/pregnancy-myths-page-wireframe.html)
-* Get Resources
+* [Daily Prevention](https://omarzdat.github.io/daily-actions-page-wireframe.html)
+* [I Am Expecting](https://omarzdat.github.io/i-am-expecting-page-wireframe.html) - *Trimesters page with dynamic content that responds to the user, a step by step guide included as a consolidated checklist*
+* [Tracking Your Pregnancy](https://omarzdat.github.io/track-pregnancy-page-wireframe.html) - *Fetal movement tracking, engagement tools, any research re this*
+* [For Partners and Family](https://omarzdat.github.io/partners-family-page-wireframe.html) - *What you need to know (as partner/family), how to help monitor, providing support throughout*
+* [Common Myths](https://omarzdat.github.io/pregnancy-myths-page-wireframe.html) - *Existing myths across the site*
+* Get Resources - *Anything that is downloadable as a resource and does not cost anything should live here - the section can be made salient in the dropdown menu. For the time being, this can redirect to stillaware.shop*
 
 ## 3. Support After Loss
 
-Pages dedicated to providing resources and support for those who have experienced a loss and their loved ones.
+Pages dedicated to providing resources and support for those who have experienced a loss and their loved ones. *A different emotional and informative approach to breaking down stillbirth, resource for families after loss.*
 
 * For Bereaved Parents
-* [Supporting a Loved One](omarzdat.github.site/supporting-loved-one-page-wireframe.html)
-* [Stories of Rememberance](omarzdat.github.site/stories-page-wireframe.html)
-* Stories of Hope - matches the above stories of Rememberance in format and implementation
+* [Supporting a Loved One](https://omarzdat.github.io/supporting-loved-one-page-wireframe.html) - *Guidance for friends/family supporting bereaved parents*
+* [Stories of Remembrance](https://omarzdat.github.io/stories-page-wireframe.html) - *Consolidated stories*
+* Stories of Remembrance (matches the format of the stories of rememberance page, or merges with it depending on your goals)
 
 ## 4. Clinicians and Midwives
 
 Resources and information aimed at clinical professionals.
 
-* Understanding Risk Factors
-* Resources and Articles
-* [Workshops](omarzdat.github.site/clinician-workshops-page-wireframe.html)
+* [Risk Factors](https://omarzdat.github.io/risk-factors-page-wireframe.html) - *Clinical eval content*
+* Resources and Articles - *Any resources being ordered for patients can be ordered here*
+* [Workshops](https://omarzdat.github.io/clinician-workshops-page-wireframe.html) - *This page consolidates workshop and any related information - upcoming session, evaluation, etc*
 
 ## 5. About Us
 
 Information about the organisation, its history, and how to get in touch.
 
-* [Our Story](omarzdat.github.site/our-story-page-wireframe.html)
-* [Meet the Team](omarzdat.github.site/meet-the-team-wireframe.html)
-* [Contact Us](omarzdat.github.site/contact-page-wireframe.html)
+* [Our Story](https://omarzdat.github.io/our-story-page-wireframe.html) - *Takes the top spot if mission centric, but we can also prioritise the meet the team for a different emotional approach*
+* [Meet the Team](https://omarzdat.github.io/meet-the-team-wireframe.html) - *Consolidates all people related pages. I think we should still keep records of almost everyone - its homely - but no need to segment the pages*
+* [Contact Us](https://omarzdat.github.io/contact-page-wireframe.html) - *Comprehensive contact page*
 
 ## 6. Get Involved
 
 Opportunities for the public to support the organisation.
 
-* [Become a Regular Donor](omarzdat.github.site/regular-donor-page-wireframe.html)
-* [Join Stillbirth (Membership)](omarzdat.github.site/membership-page-wireframe.html)
-* [Host a Fundraiser](omarzdat.github.site/fundraiser-page-wireframe.html)
-* Become an Ambassador
-* [Volunteer With Us](omarzdat.github.site/volunteer-page-wireframe.html)
-* [Our Events](omarzdat.github.site/events-page-wireframe.html)
+* [Become a Regular Giver](https://omarzdat.github.io/regular-donor-page-wireframe.html) - *All regular giving goes through a separate page now, reachable at the foot*
+* [Still Aware Membership](https://omarzdat.github.io/membership-page-wireframe.html) - *Membership should gain/lose popularity depending on what your internal tracking says about the number of people signing up for this*
+* [Host a Fundraiser](https://omarzdat.github.io/fundraiser-page-wireframe.html) - *This page can be used to both host regular agnostic fundraisers or to participate in the Fun Scrubs initiative*
+* Become an Ambassador - *This page carried over from one of the sitemaps but I do not seem to see it on the website*
+* [Volunteer with Us](https://omarzdat.github.io/volunteer-page-wireframe.html) - *Motivational content, full volunteer signup workflow and testimonials*
+* [Our Events](https://omarzdat.github.io/events-page-wireframe.html) - *Event repository, displays upcoming, and past events. Each event has a page of its own to manage signups, or communicate important details*
 
+## Pages with Incomplete Status
+
+The following pages are noted as having "initial pages" status and may need further development:
+
+* Pregnancy Myths - current status: initial pages

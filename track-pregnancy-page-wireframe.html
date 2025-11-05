@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Pregnancy - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .page-intro {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+        
+        .page-prompt {
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+        
+        /* Week Input Section */
+        .week-input-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .week-input-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 20px;
+            color: #333;
+        }
+        
+        .week-input {
+            width: 80px;
+            padding: 12px 15px;
+            font-size: 20px;
+            border: 2px solid #a64d79;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            color: #a64d79;
+        }
+        
+        .week-input:focus {
+            outline: none;
+            border-color: #7d3a5c;
+            box-shadow: 0 0 10px rgba(166, 77, 121, 0.3);
+        }
+        
+        /* Simple Timeline Navigation */
+        .simple-timeline-container {
+            margin: 60px 0;
+            padding: 40px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .simple-timeline-title {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .simple-timeline {
+            display: flex;
+            gap: 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .trimester-block {
+            flex: 1;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid white;
+            position: relative;
+        }
+        
+        .trimester-block.first {
+            background-color: #d97fa6;
+            border-radius: 8px 0 0 8px;
+        }
+        
+        .trimester-block.second {
+            background-color: #5eb59b;
+        }
+        
+        .trimester-block.third {
+            background-color: #a64d79;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .trimester-block:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        
+        .trimester-block.active {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border-color: #333;
+        }
+        
+        .trimester-label {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .trimester-weeks {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+        
+        /* Detailed Timeline */
+        .detailed-timeline {
+            display: none;
+            margin: 60px 0;
+            animation: slideDown 0.5s ease-out;
+        }
+        
+        .detailed-timeline.active {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .flash-animation {
+            animation: flash 0.6s ease-in-out 2;
+        }
+        
+        /* Timeline Header */
+        .timeline-header {
+            background: linear-gradient(135deg, #a64d79 0%, #c97fa0 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+        }
+        
+        .timeline-header.first-trimester {
+            background: linear-gradient(135deg, #d97fa6 0%, #e8a7c3 100%);
+        }
+        
+        .timeline-header.second-trimester {
+            background: linear-gradient(135deg, #5eb59b 0%, #7dc7b3 100%);
+        }
+        
+        .timeline-header.third-trimester {
+            background: linear-gradient(135deg, #a64d79 0%, #c97fa0 100%);
+        }
+        
+        .timeline-trimester-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-week-range {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* Week Timeline Visual */
+        .week-timeline {
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-top: none;
+            padding: 40px 20px;
+            position: relative;
+        }
+        
+        .week-markers {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 60px;
+        }
+        
+        .week-marker {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .week-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #f0e6ec;
+            color: #a64d79;
+            border: 3px solid #a64d79;
+            line-height: 44px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .week-marker:hover .week-number {
+            transform: scale(1.2);
+            background-color: #a64d79;
+            color: white;
+        }
+        
+        .week-marker.has-milestone .week-number {
+            background-color: #a64d79;
+            color: white;
+        }
+        
+        /* Milestone Icons */
+        .milestone-icon {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border: 2px solid #a64d79;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        
+        .week-marker:hover .milestone-icon {
+            transform: translateX(-50%) scale(1.2);
+            box-shadow: 0 5px 15px rgba(166, 77, 121, 0.3);
+        }
+        
+        /* Week Details Popup */
+        .week-details {
+            display: none;
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            background-color: white;
+            border: 2px solid #a64d79;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+        }
+        
+        .week-marker:hover .week-details {
+            display: block;
+        }
+        
+        .week-details-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #a64d79;
+            margin-bottom: 10px;
+        }
+        
+        .week-details-text {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* Connecting Line */
+        .timeline-line {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+        
+        /* Trimester Info Box */
+        .trimester-info-box {
+            margin-top: 40px;
+            padding: 40px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #a64d79;
+        }
+        
+        .info-section {
+            margin-bottom: 30px;
+        }
+        
+        .info-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .info-section h3 {
+            font-size: 24px;
+            color: #a64d79;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .info-section p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .info-section ul {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .info-section li {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .info-section li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #a64d79;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .did-you-know-box {
+            background-color: #f0e6ec;
+            padding: 25px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        
+        .did-you-know-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #a64d79;
+            margin-bottom: 15px;
+        }
+        
+        /* Moving Forward Box */
+        .moving-forward-box {
+            background-color: white;
+            border: 2px solid #a64d79;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .moving-forward-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #a64d79;
+            margin-bottom: 20px;
+        }
+        
+        .moving-forward-box ol {
+            margin-left: 20px;
+        }
+        
+        .moving-forward-box li {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background-color: #a64d79;
+            color: white;
+            padding: 50px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 60px 0 0 0;
+        }
+        
+        .cta-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .cta-text {
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: white;
+            color: #a64d79;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #f9f9f9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-banner-placeholder">
+            [Hero Banner Image: Pregnant Woman with Tracking Journal]
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Tracking Your Pregnancy</h1>
+            <p class="page-intro">
+                You're pregnant—congratulations! Whether you've been tracking your pregnancy through fertility assistance or you've just found out naturally along the way, taking care of yourself and your baby starts now. Understanding what happens during each stage of pregnancy helps you stay informed, prepared, and connected to your baby's development.
+            </p>
+            <p class="page-prompt">
+                Explore the timeline by trimester, or enter your week below:
+            </p>
+        </div>
+        
+        <!-- Week Input -->
+        <div class="week-input-section">
+            <div class="week-input-container">
+                <span>I am</span>
+                <input type="number" id="week-input" class="week-input" placeholder="##" min="1" max="40">
+                <span>weeks pregnant</span>
+            </div>
+        </div>
+        
+        <!-- Simple Timeline Navigation -->
+        <div class="simple-timeline-container">
+            <div class="simple-timeline-title">Select your trimester to explore week-by-week guidance</div>
+            <div class="simple-timeline">
+                <div class="trimester-block first" onclick="showTrimester(1)">
+                    <div class="trimester-label">First Trimester</div>
+                    <div class="trimester-weeks">Weeks 1-12</div>
+                </div>
+                <div class="trimester-block second" onclick="showTrimester(2)">
+                    <div class="trimester-label">Second Trimester</div>
+                    <div class="trimester-weeks">Weeks 13-27</div>
+                </div>
+                <div class="trimester-block third" onclick="showTrimester(3)">
+                    <div class="trimester-label">Third Trimester</div>
+                    <div class="trimester-weeks">Weeks 28-40+</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Detailed Timeline: First Trimester -->
+        <div id="timeline-1" class="detailed-timeline">
+            <div class="timeline-header first-trimester">
+                <div class="timeline-trimester-title">First Trimester</div>
+                <div class="timeline-week-range">Weeks 1-12</div>
+            </div>
+            <div class="week-timeline">
+                <div class="timeline-line"></div>
+                <div class="week-markers">
+                    <div class="week-marker" data-week="1">
+                        <div class="week-number">1</div>
+                    </div>
+                    <div class="week-marker" data-week="2">
+                        <div class="week-number">2</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="3">
+                        <div class="milestone-icon">🧬</div>
+                        <div class="week-number">3</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 3: Development Begins</div>
+                            <div class="week-details-text">Your baby's genetic makeup is forming. Important organ development begins.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker" data-week="4">
+                        <div class="week-number">4</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="5">
+                        <div class="milestone-icon">❤️</div>
+                        <div class="week-number">5</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 5: Baby's Heartbeat</div>
+                            <div class="week-details-text">Your baby's heart begins to beat. You may officially learn you're pregnant!</div>
+                        </div>
+                    </div>
+                    <div class="week-marker" data-week="6">
+                        <div class="week-number">6</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="7">
+                        <div class="milestone-icon">🤰</div>
+                        <div class="week-number">7</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 7: Your Baby is Growing</div>
+                            <div class="week-details-text">Your baby is about the size of a grape! Major organ development continues.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="8">
+                        <div class="milestone-icon">👶</div>
+                        <div class="week-number">8</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 8: Features Forming</div>
+                            <div class="week-details-text">Fingers and toes are developing. Your baby's features are becoming more defined.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker" data-week="9">
+                        <div class="week-number">9</div>
+                    </div>
+                    <div class="week-marker" data-week="10">
+                        <div class="week-number">10</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="11">
+                        <div class="milestone-icon">💪</div>
+                        <div class="week-number">11</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 11: First Movements</div>
+                            <div class="week-details-text">Your baby can now move, though you likely won't feel it yet. Near the time to start taking supplements.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="12">
+                        <div class="milestone-icon">📅</div>
+                        <div class="week-number">12</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 12: End of First Trimester</div>
+                            <div class="week-details-text">You've completed your first trimester! Many symptoms may start to ease.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trimester Info -->
+            <div class="trimester-info-box">
+                <div class="info-section">
+                    <h3>About the First Trimester</h3>
+                    <p>
+                        Find out below some important factors to remember when tracking your first trimester of pregnancy. (Note: we are currently applying for funding to help us make this section more interactive for an easier experience).
+                    </p>
+                </div>
+                
+                <div class="did-you-know-box">
+                    <div class="did-you-know-title">Did you know?</div>
+                    <ul>
+                        <li>Increasing your folic acid intake during the first trimester is important to help prevent birth defects known as neural tube defects, such as spina bifida.</li>
+                        <li>Your baby is the size of a grape by 8 weeks gestation.</li>
+                        <li>Your baby's placenta is forming. An important organ that acts as a lifeline between you and your baby. At scans you can ask where your placenta is positioned - anterior or posterior - as this may impact when you start to feel baby move.</li>
+                        <li>It is highly recommended to avoid smoking and drinking during pregnancy for the safety of you and your baby.</li>
+                    </ul>
+                </div>
+                
+                <div class="moving-forward-box">
+                    <div class="moving-forward-title">Moving Forward:</div>
+                    <ol>
+                        <li><strong>Remember that you and your baby are unique.</strong> Try not to compare your pregnancy to others.</li>
+                        <li><strong>Start practicing sleeping on your side.</strong> If you are not a natural side sleeper, it may be wise to start practicing side sleeping now, as you will be sleeping on your side from 28 weeks onward.</li>
+                        <li><strong>You will be the one who knows your baby best.</strong> Don't be afraid to ask questions when meeting with your healthcare providers. You, your baby, and your healthcare providers are a team - remember this moving forward.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Detailed Timeline: Second Trimester -->
+        <div id="timeline-2" class="detailed-timeline">
+            <div class="timeline-header second-trimester">
+                <div class="timeline-trimester-title">Second Trimester</div>
+                <div class="timeline-week-range">Weeks 13-27</div>
+            </div>
+            <div class="week-timeline">
+                <div class="timeline-line"></div>
+                <div class="week-markers">
+                    <div class="week-marker" data-week="13">
+                        <div class="week-number">13</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="14">
+                        <div class="milestone-icon">👂</div>
+                        <div class="week-number">14</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 14: Baby Can Hear</div>
+                            <div class="week-details-text">Your baby is the size of a lemon and can hear sounds from the outside world.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="15">
+                        <div class="milestone-icon">🎵</div>
+                        <div class="week-number">15</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 15: Responding to Sound</div>
+                            <div class="week-details-text">Your baby can now hear your voice and may respond to sound.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="16">
+                        <div class="milestone-icon">🦴</div>
+                        <div class="week-number">16</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 16: Bones Strengthening</div>
+                            <div class="week-details-text">Your baby's bones are getting stronger. You may start to feel baby move between 16-24 weeks.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker" data-week="17">
+                        <div class="week-number">17</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="18">
+                        <div class="milestone-icon">🤸</div>
+                        <div class="week-number">18</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 18: More Movement</div>
+                            <div class="week-details-text">Your baby is officially "real" now. You're having an ultrasound and may feel movements.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker" data-week="19">
+                        <div class="week-number">19</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="20">
+                        <div class="milestone-icon">💉</div>
+                        <div class="week-number">20</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 20: Anatomy Scan</div>
+                            <div class="week-details-text">Your baby is about the size of a banana. Blood sugar test for gestational diabetes might happen now.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker" data-week="21">
+                        <div class="week-number">21</div>
+                    </div>
+                    <div class="week-marker" data-week="22">
+                        <div class="week-number">22</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="23">
+                        <div class="milestone-icon">🩺</div>
+                        <div class="week-number">23</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 23: Regular Checkups</div>
+                            <div class="week-details-text">Continue your regular checkups. Baby is developing rapidly.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker" data-week="24">
+                        <div class="week-number">24</div>
+                    </div>
+                    <div class="week-marker" data-week="25">
+                        <div class="week-number">25</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="26">
+                        <div class="milestone-icon">💓</div>
+                        <div class="week-number">26</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 26: Getting Stronger</div>
+                            <div class="week-details-text">Your baby's movements are becoming stronger and more regular.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker" data-week="27">
+                        <div class="week-number">27</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trimester Info -->
+            <div class="trimester-info-box">
+                <div class="info-section">
+                    <h3>About the Second Trimester</h3>
+                    <p>
+                        As your tummy starts to grow, so does your baby and the important bond you will create with your 'bump'. This stage in pregnancy is when many expectant parents start to feel their pregnancy is more real, and by 16 weeks you may already be starting to feel baby move.
+                    </p>
+                </div>
+                
+                <div class="info-section">
+                    <p>
+                        During this trimester it's important to remember that every baby, every body, and every pregnancy is different. <strong>There is no set number of normal movements, and no set time during pregnancy when you should start to feel your baby move.</strong> We encourage mothers not to compare their pregnancies with others, but rather to trust themselves and their baby's to develop their own pattern of movements.
+                    </p>
+                    <p>
+                        This trimester is a busy one for Mum with several tests and ultrasounds to book in. Luckily you may have more energy than you did in the first trimester, which will hopefully bring you some relief from any sickness or fatigue!
+                    </p>
+                </div>
+                
+                <div class="did-you-know-box">
+                    <div class="did-you-know-title">Did you know?</div>
+                    <ul>
+                        <li>Your baby is the size of an apple by 15 weeks gestation.</li>
+                        <li>Your baby can hear your voice by 18 weeks gestation.</li>
+                        <li>In Australia, the Whooping Cough vaccination is recommended before your baby is born and is free for all pregnant women.</li>
+                        <li>You may start to feel "flutters" during this trimester, many women describe this feeling as butterflies or feeling like they have 'gas.' You baby will move more and more up to 32 weeks then stay the same until you give birth.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Detailed Timeline: Third Trimester -->
+        <div id="timeline-3" class="detailed-timeline">
+            <div class="timeline-header third-trimester">
+                <div class="timeline-trimester-title">Third Trimester</div>
+                <div class="timeline-week-range">Weeks 28-40+</div>
+            </div>
+            <div class="week-timeline">
+                <div class="timeline-line"></div>
+                <div class="week-markers">
+                    <div class="week-marker has-milestone" data-week="28">
+                        <div class="milestone-icon">🛌</div>
+                        <div class="week-number">28</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 28: Sleep On Your Side</div>
+                            <div class="week-details-text">Start sleeping on your side. Your baby has likely developed a regular pattern of movements now.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker" data-week="29">
+                        <div class="week-number">29</div>
+                    </div>
+                    <div class="week-marker" data-week="30">
+                        <div class="week-number">30</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="31">
+                        <div class="milestone-icon">👁️</div>
+                        <div class="week-number">31</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 31: Vision Developing</div>
+                            <div class="week-details-text">Your baby's eyes are developing rapidly and can respond to light.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker" data-week="32">
+                        <div class="week-number">32</div>
+                    </div>
+                    <div class="week-marker" data-week="33">
+                        <div class="week-number">33</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="34">
+                        <div class="milestone-icon">🧠</div>
+                        <div class="week-number">34</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 34: Brain Development</div>
+                            <div class="week-details-text">Your baby is the size of a rockmelon. Brain and nervous system development continues.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker" data-week="35">
+                        <div class="week-number">35</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="36">
+                        <div class="milestone-icon">🏥</div>
+                        <div class="week-number">36</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 36: Almost There!</div>
+                            <div class="week-details-text">Your baby is getting ready for birth. Keep monitoring movements closely.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="37">
+                        <div class="milestone-icon">✅</div>
+                        <div class="week-number">37</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 37: Full Term</div>
+                            <div class="week-details-text">Your baby is officially full term! Birth could happen any time now.</div>
+                        </div>
+                    </div>
+                    <div class="week-marker" data-week="38">
+                        <div class="week-number">38</div>
+                    </div>
+                    <div class="week-marker" data-week="39">
+                        <div class="week-number">39</div>
+                    </div>
+                    <div class="week-marker has-milestone" data-week="40">
+                        <div class="milestone-icon">👶</div>
+                        <div class="week-number">40+</div>
+                        <div class="week-details">
+                            <div class="week-details-title">Week 40+: Due Date</div>
+                            <div class="week-details-text">Your due date! Your baby will arrive when they're ready.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trimester Info -->
+            <div class="trimester-info-box">
+                <div class="info-section">
+                    <h3>About the Third Trimester</h3>
+                    <p>
+                        Welcome to the final stage of your pregnancy. You may be feeling a mixture of emotions at this stage, from excitement to anxiousness. Research has shown that monitoring your baby's movements can help alleviate some of your anxiety, but it is also important at this stage for you and your baby's health.
+                    </p>
+                </div>
+                
+                <div class="info-section">
+                    <p>
+                        <strong>By 28 weeks your baby will likely have developed a regular pattern of movements.</strong> This is when it is most crucial to monitor the frequency and strength of your baby's movements, to know that they are well. There is no set number of normal movements, but getting to know what is normal for your baby is essential.
+                    </p>
+                </div>
+                
+                <div class="did-you-know-box">
+                    <div class="did-you-know-title">Did you know?</div>
+                    <ul>
+                        <li>Research shows that you should start to <strong>sleep on your side</strong> from 28 weeks, this helps keep your baby safe and prevent a stillbirth.</li>
+                        <li>The amount of amniotic fluid around your baby should remain the same, so you can ask more about this at your scan.</li>
+                        <li>Your baby is the size of a rockmelon by 34 weeks gestation.</li>
+                        <li>Research says some women, such as South Asians, have a shorter gestation and this could change their actual due date.</li>
+                    </ul>
+                </div>
+                
+                <div class="moving-forward-box">
+                    <div class="moving-forward-title">Critical Warning:</div>
+                    <p style="margin-bottom: 20px; font-weight: bold; color: #a64d79;">
+                        Any sudden onset of severe or excessive symptoms needs to be reported to your doctor or midwife and investigated. Do not wait until your next appointment or until a set period of time has passed. Act immediately. DO NOT WAIT!
+                    </p>
+                    <p style="margin-bottom: 20px;">
+                        If you notice that the frequency of movement with regard to your baby's pattern has changed or you have a negative blood type, you may be offered extra monitoring or scans throughout the third trimester. Talk to your care provider about what support you would find most helpful, whether that's emotional or physical support.</p>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Pregnancy Myths</h3>
+                    <p>
+                        In a world full of information it's important to arm yourself with accurate and up-to-date information to lead a safe and empowered pregnancy. In the final trimester it's especially important, so be sure to check out our complete list of <a href="#" style="color: #a64d79; font-weight: bold;">Pregnancy Myths</a> to help you navigate your final trimester!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Need More Support?</h2>
+            <p class="cta-text">
+                We offer a range of affordable and informative online training sessions to help both clinicians and expectant parents lead a safer pregnancy.
+            </p>
+            <a href="#" class="cta-button">Explore Training Sessions</a>
+        </div>
+    </div>
+    
+    <script>
+        let currentTrimester = null;
+        
+        // Handle trimester selection
+        function showTrimester(trimesterNumber) {
+            // Hide all timelines
+            document.querySelectorAll('.detailed-timeline').forEach(timeline => {
+                timeline.classList.remove('active');
+            });
+            
+            // Remove active from all trimester blocks
+            document.querySelectorAll('.trimester-block').forEach(block => {
+                block.classList.remove('active');
+            });
+            
+            // Show selected timeline
+            document.getElementById('timeline-' + trimesterNumber).classList.add('active');
+            
+            // Add active to clicked trimester
+            event.target.classList.add('active');
+            
+            // Scroll to timeline
+            setTimeout(() => {
+                document.getElementById('timeline-' + trimesterNumber).scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
+            
+            currentTrimester = trimesterNumber;
+        }
+        
+        // Handle week input
+        document.getElementById('week-input').addEventListener('change', function(e) {
+            const weekNumber = parseInt(e.target.value);
+            
+            if (weekNumber < 1 || weekNumber > 40) {
+                alert('Please enter a week between 1 and 40');
+                return;
+            }
+            
+            // Determine which trimester
+            let trimester;
+            if (weekNumber <= 12) {
+                trimester = 1;
+            } else if (weekNumber <= 27) {
+                trimester = 2;
+            } else {
+                trimester = 3;
+            }
+            
+            // Show the trimester
+            showTrimester(trimester);
+            
+            // Wait for animation, then flash the week
+            setTimeout(() => {
+                const weekMarker = document.querySelector(`#timeline-${trimester} .week-marker[data-week="${weekNumber}"]`);
+                if (weekMarker) {
+                    weekMarker.classList.add('flash-animation');
+                    weekMarker.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    
+                    // Remove flash animation after it completes
+                    setTimeout(() => {
+                        weekMarker.classList.remove('flash-animation');
+                    }, 1200);
+                }
+            }, 600);
+        });
+        
+        // Also allow Enter key
+        document.getElementById('week-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.target.blur();
+                e.target.dispatchEvent(new Event('change'));
+            }
+        });
+    </script>
+</body>
+</html>

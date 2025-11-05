@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Stillbirth? - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .page-intro {
+            font-size: 20px;
+            color: #333;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+        
+        /* Split Hero Section */
+        .split-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin: 60px 0;
+            min-height: 400px;
+        }
+        
+        .split-image {
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 16px;
+        }
+        
+        .split-question {
+            background: linear-gradient(135deg, #a64d79 0%, #c97fa0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            color: white;
+        }
+        
+        .question-text {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.4;
+        }
+        
+        /* Definition Section */
+        .definition-section {
+            background-color: #f0e6ec;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 60px 0;
+            border-left: 6px solid #a64d79;
+        }
+        
+        .definition-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #a64d79;
+            margin-bottom: 15px;
+        }
+        
+        .definition-text {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        /* More Than Definition */
+        .meaning-section {
+            margin: 60px 0;
+        }
+        
+        .meaning-section h2 {
+            font-size: 32px;
+            color: #a64d79;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        
+        .meaning-section p {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .meaning-section strong {
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .emphasis-text {
+            font-size: 18px;
+            color: #a64d79;
+            font-weight: bold;
+            font-style: italic;
+            margin: 25px 0;
+        }
+        
+        /* Image Break */
+        .image-break {
+            margin: 80px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .image-break-large {
+            background-color: #ddd;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 16px;
+        }
+        
+        /* Statistics Section */
+        .statistics-section {
+            margin: 80px 0;
+            text-align: center;
+        }
+        
+        .statistics-header {
+            font-size: 36px;
+            color: #a64d79;
+            margin-bottom: 50px;
+            font-weight: bold;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .stat-card {
+            background-color: white;
+            border: 3px solid #a64d79;
+            border-radius: 12px;
+            padding: 50px 40px;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(166, 77, 121, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 72px;
+            font-weight: bold;
+            color: #a64d79;
+            margin-bottom: 15px;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+        
+        .stat-description {
+            font-size: 20px;
+            color: #333;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+        
+        .stat-subtext {
+            font-size: 15px;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        /* Impact Statement */
+        .impact-statement {
+            background: linear-gradient(135deg, #a64d79 0%, #c97fa0 100%);
+            color: white;
+            padding: 60px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 80px 0;
+        }
+        
+        .impact-statement h3 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .impact-statement p {
+            font-size: 20px;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Facts Section */
+        .facts-section {
+            margin: 80px 0;
+        }
+        
+        .facts-header {
+            font-size: 36px;
+            color: #a64d79;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+        
+        .facts-intro {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .facts-emphasis {
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        
+        .facts-list {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 40px;
+        }
+        
+        .fact-item {
+            padding: 25px;
+            margin-bottom: 20px;
+            background-color: white;
+            border-left: 4px solid #a64d79;
+            border-radius: 4px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .fact-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(166, 77, 121, 0.15);
+        }
+        
+        .fact-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .fact-text {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        .fact-text strong {
+            color: #a64d79;
+            font-weight: bold;
+        }
+        
+        .fact-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #a64d79;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 14px;
+        }
+        
+        /* Time-Based Impact */
+        .time-impact-section {
+            background-color: #fff8e1;
+            border: 3px solid #ffc107;
+            border-radius: 8px;
+            padding: 50px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .time-impact-title {
+            font-size: 28px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .time-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            border: 2px solid #ffc107;
+        }
+        
+        .time-value {
+            font-size: 48px;
+            font-weight: bold;
+            color: #a64d79;
+            margin-bottom: 10px;
+        }
+        
+        .time-label {
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        /* Awareness Message */
+        .awareness-section {
+            margin: 80px 0;
+            text-align: center;
+        }
+        
+        .awareness-section h3 {
+            font-size: 32px;
+            color: #a64d79;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        
+        .awareness-section p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+        
+        /* CTA Boxes */
+        .cta-boxes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 60px 0 0 0;
+        }
+        
+        .cta-box {
+            background-color: #f0e6ec;
+            padding: 40px;
+            border-radius: 8px;
+            border: 2px solid #a64d79;
+            transition: all 0.3s;
+        }
+        
+        .cta-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(166, 77, 121, 0.2);
+        }
+        
+        .cta-box h4 {
+            font-size: 24px;
+            color: #a64d79;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .cta-box p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .cta-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #a64d79;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .cta-link:hover {
+            background-color: #7d3a5c;
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .split-hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid,
+            .time-grid,
+            .cta-boxes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-banner-placeholder">
+            [Hero Banner Image: Sensitive Still Aware Imagery]
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">What is Stillbirth?</h1>
+        </div>
+        
+        <!-- Split Hero Definition -->
+        <div class="split-hero">
+            <div class="split-image">
+                [Image: Empty Bassinet]
+            </div>
+            <div class="split-question">
+                <div class="question-text">
+                    The death of a baby<br>
+                    beyond 20 weeks<br>
+                    gestation
+                </div>
+            </div>
+        </div>
+        
+        <!-- More Than Definition -->
+        <div class="meaning-section">
+            <h2>However, stillbirth has far more meaning than that.</h2>
+            
+            <p>
+                <strong>To birth a baby stillborn is a gut-wrenching devastation</strong> that no family should ever have to endure, particularly in this day and age. The profound loss of a child who was anticipated, loved, and dreamed about leaves an immeasurable void in the hearts of parents, siblings, grandparents, and the wider community.
+            </p>
+            
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            
+            <p class="emphasis-text">
+                The loss of a child at any age is unthinkable and is too often unspoken.
+            </p>
+            
+            <p>
+                Thankfully, there are support organisations that can help families to live with their loss and others that are conducting crucial research into the causes of stillbirth. Unfortunately, there is minimal financial support for this cause. <strong>At Still Aware we strongly believe that awareness brings change.</strong>
+            </p>
+        </div>
+        
+        <!-- Image Break -->
+        <div class="image-break">
+            <div class="image-break-large">
+                [Image: Six Parents Holding Photos of Their Babies]
+            </div>
+        </div>
+        
+        <!-- Statistics Section with Counters -->
+        <div class="statistics-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="2000">0</div>
+                    <div class="stat-description">babies are stillborn annually in Australia</div>
+                    <div class="stat-subtext">That's one family every 4 hours</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number" data-target="6">0</div>
+                    <div class="stat-description">babies every day</div>
+                    <div class="stat-subtext">No matter how you look at it—that's 6 babies too many</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Impact Statement -->
+        <div class="impact-statement">
+            <h3>The Impact of This Loss Lasts a Lifetime</h3>
+            <p>
+                Every number represents a family forever changed. A mother who will never forget. A father who carries silent grief. Siblings who lost a brother or sister. Grandparents mourning a future that will never be. Friends and community members touched by unimaginable loss.
+            </p>
+        </div>
+        
+        <!-- Detailed Facts -->
+        <div class="facts-section">
+            <h2 class="facts-header">What the Research Tells Us</h2>
+            <p class="facts-emphasis">
+                Understanding these facts is the first step toward prevention:
+            </p>
+            
+            <div class="facts-list">
+                <div class="fact-item">
+                    <span class="fact-number">1</span>
+                    <span class="fact-text">
+                        <strong>6 babies are born still in Australia daily</strong>—that's one family every 4 hours leaving a maternity ward with empty arms & an empty heart. The impact of this loss lasts a lifetime.
+                    </span>
+                </div>
+                
+                <div class="fact-item">
+                    <span class="fact-number">2</span>
+                    <span class="fact-text">
+                        <strong>60% of stillbirths occur in otherwise healthy pregnancies</strong>—many families had no warning signs or known risk factors.
+                    </span>
+                </div>
+                
+                <div class="fact-item">
+                    <span class="fact-number">3</span>
+                    <span class="fact-text">
+                        Often there is <strong>nothing wrong</strong>. In a third of all stillbirth cases at term (37+ weeks) the baby's death remains unexplained.
+                    </span>
+                </div>
+                
+                <div class="fact-item">
+                    <span class="fact-number">4</span>
+                    <span class="fact-text">
+                        <strong>95% of women</strong> who experienced a stillbirth <strong>perceived a change in fetal movement</strong> prior to the diagnosis. Monitoring your baby's movements is crucial.
+                    </span>
+                </div>
+                
+                <div class="fact-item">
+                    <span class="fact-number">5</span>
+                    <span class="fact-text">
+                        A number of research studies have reported an <strong>inappropriate response by clinicians to maternal perception of fetal movements</strong> as a common contributor to stillbirth. Your instincts matter—demand to be heard.
+                    </span>
+                </div>
+                
+                <div class="fact-item">
+                    <span class="fact-number">6</span>
+                    <span class="fact-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Awareness Section -->
+        <div class="awareness-section">
+            <h3>Awareness Can Save Lives</h3>
+            <p>
+                While these statistics are confronting, they exist not to frighten but to inform. Knowledge is power. Understanding the reality of stillbirth, its prevalence, and its warning signs empowers expectant parents to advocate for themselves and their babies.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+        </div>
+        
+        <!-- CTA Boxes -->
+        <div class="cta-boxes">
+            <div class="cta-box">
+                <h4>Want to Learn More?</h4>
+                <p>
+                    You can start by exploring our Resources For Expectant Families where you can learn more about monitoring your baby's movements, safe sleeping, trusting your intuition, and more.
+                </p>
+                <a href="#" class="cta-link">Explore Resources</a>
+            </div>
+            
+            <div class="cta-box">
+                <h4>Support Our Mission</h4>
+                <p>
+                    Still Aware is dedicated to reducing preventable stillbirth through education, awareness, and advocacy. Your support helps us reach more families.
+                </p>
+                <a href="#" class="cta-link">Support Still Aware</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Intersection Observer for stat counters
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+        
+        let hasAnimated = false;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    hasAnimated = true;
+                    animateCounters();
+                }
+            });
+        }, observerOptions);
+        
+        // Observe the statistics section
+        const statsSection = document.querySelector('.statistics-section');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+        
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target.toLocaleString();
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+    </script>
+</body>
+</html>

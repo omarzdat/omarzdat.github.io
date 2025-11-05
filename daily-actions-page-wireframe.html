@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Actions - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .page-intro {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 850px;
+            margin: 0 auto 20px;
+        }
+        
+        /* Important Note Banner */
+        .note-banner {
+            background-color: #fff8e1;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .note-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Mnemonic Section */
+        .mnemonic-section {
+            background: linear-gradient(135deg, #a64d79 0%, #c97fa0 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 8px;
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .mnemonic-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .mnemonic-phrase {
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .mnemonic-subtitle {
+            font-size: 20px;
+            opacity: 0.95;
+        }
+        
+        /* Daily Actions Grid */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin: 50px 0;
+        }
+        
+        .action-card {
+            background-color: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 35px;
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .action-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 8px;
+            background-color: #a64d79;
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+        
+        .action-card:hover {
+            border-color: #a64d79;
+            box-shadow: 0 10px 30px rgba(166, 77, 121, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .action-card:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .action-icon-container {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background-color: #f0e6ec;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .action-card:hover .action-icon-container {
+            background-color: #a64d79;
+            transform: scale(1.1);
+        }
+        
+        .action-icon {
+            font-size: 40px;
+        }
+        
+        .action-letter {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 30px;
+            height: 30px;
+            background-color: #a64d79;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .action-content {
+            flex: 1;
+        }
+        
+        .action-number {
+            display: inline-block;
+            background-color: #a64d79;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .action-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .action-description {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Quick Action Buttons */
+        .quick-actions-section {
+            margin: 60px 0;
+            padding: 50px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .quick-actions-title {
+            text-align: center;
+            font-size: 28px;
+            color: #a64d79;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+        
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .quick-action-button {
+            background-color: white;
+            border: 2px solid #a64d79;
+            color: #a64d79;
+            padding: 25px 20px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+        }
+        
+        .quick-action-button:hover {
+            background-color: #a64d79;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(166, 77, 121, 0.3);
+        }
+        
+        .quick-action-button.clicked {
+            background-color: #5eb59b;
+            border-color: #5eb59b;
+            color: white;
+        }
+        
+        .button-icon {
+            font-size: 32px;
+        }
+        
+        .button-text {
+            line-height: 1.3;
+        }
+        
+        /* Magnet CTA */
+        .magnet-cta {
+            background: linear-gradient(135deg, #f0e6ec 0%, #faf5f8 100%);
+            padding: 50px;
+            border-radius: 8px;
+            margin: 60px 0;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .magnet-image {
+            flex-shrink: 0;
+            width: 200px;
+            height: 250px;
+            background-color: #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .magnet-content {
+            flex: 1;
+        }
+        
+        .magnet-content h3 {
+            font-size: 28px;
+            color: #a64d79;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .magnet-content p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .magnet-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: #a64d79;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .magnet-button:hover {
+            background-color: #7d3a5c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(166, 77, 121, 0.4);
+        }
+        
+        /* Final CTA */
+        .cta-section {
+            background-color: #a64d79;
+            color: white;
+            padding: 60px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 60px 0 0 0;
+        }
+        
+        .cta-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .cta-text {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: white;
+            color: #a64d79;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #f9f9f9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .quick-actions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .magnet-cta {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-banner-placeholder">
+            [Hero Banner Image: Mother and Baby Bonding]
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Still Aware 'Daily Actions'</h1>
+            <p class="page-intro">
+                The Still Aware Daily Actions are a set of key steps that may help prevent stillbirth. These simple, daily practices empower you to monitor your baby's wellbeing throughout pregnancy.
+            </p>
+        </div>
+        
+        <!-- Important Note -->
+        <div class="note-banner">
+            <p class="note-text">
+                <strong>Important:</strong> This information is not intended to scare or alarm you, but simply to create awareness of the easy steps you can take for a safer pregnancy.
+            </p>
+        </div>
+        
+        <!-- Mnemonic Section -->
+        <div class="mnemonic-section">
+            <div class="mnemonic-title">Remember the Daily Actions with:</div>
+            <div class="mnemonic-phrase">K N O W S S</div>
+            <div class="mnemonic-subtitle">Know Your Baby. Notice Pattern. Own Your Instincts. Watch Strength. See Frequency. Sleep on Your Side.</div>
+        </div>
+        
+        <!-- Daily Actions -->
+        <div class="actions-grid">
+            <!-- Action 1: Know -->
+            <div class="action-card">
+                <div class="action-icon-container">
+                    <div class="action-letter">K</div>
+                    <div class="action-icon">[icon]</div>
+                </div>
+                <div class="action-content">
+                    <div class="action-number">Action 1</div>
+                    <h3 class="action-title">Know Your Baby's Normal</h3>
+                    <p class="action-description">
+                        Get to know your baby's normal. Avoid comparing your pregnancy to others. You and your baby are a team.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Action 2: Notice -->
+            <div class="action-card">
+                <div class="action-icon-container">
+                    <div class="action-letter">N</div>
+                    <div class="action-icon">[icon]</div>
+                </div>
+                <div class="action-content">
+                    <div class="action-number">Action 2</div>
+                    <h3 class="action-title">Notice Your Baby's Pattern</h3>
+                    <p class="action-description">
+                        Get to know your baby's pattern of movement. Is your baby a morning person or a night owl? Does your baby like to hear your voice or dance to music? Is your baby social or shy? Monitor this and if anything changes, contact your care provider straight away.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Action 3: Own -->
+            <div class="action-card">
+                <div class="action-icon-container">
+                    <div class="action-letter">O</div>
+                    <div class="action-icon">[icon]</div>
+                </div>
+                <div class="action-content">
+                    <div class="action-number">Action 3</div>
+                    <h3 class="action-title">Own Your Instincts</h3>
+                    <p class="action-description">
+                        Trust your instincts. Report any concerns or uneasy feelings to your care provider without delay. Do not wait.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Action 4: Watch -->
+            <div class="action-card">
+                <div class="action-icon-container">
+                    <div class="action-letter">W</div>
+                    <div class="action-icon">[icon]</div>
+                </div>
+                <div class="action-content">
+                    <div class="action-number">Action 4</div>
+                    <h3 class="action-title">Watch Movement Strength</h3>
+                    <p class="action-description">
+                        Monitor the strength of your baby's movement. If they start to weaken or feel unusual for your baby, contact your care provider straight away. What will your baby's movements feel like? Early in pregnancy baby's movements may feel like a tickle or flutter. As baby grows the movements will get stronger and feel more like kicks or punches. Closer to the due date movements may feel more like baby is rolling over and stronger sweeping movements.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Action 5: See -->
+            <div class="action-card">
+                <div class="action-icon-container">
+                    <div class="action-letter">S</div>
+                    <div class="action-icon">[icon]</div>
+                </div>
+                <div class="action-content">
+                    <div class="action-number">Action 5</div>
+                    <h3 class="action-title">See Movement Frequency</h3>
+                    <p class="action-description">
+                        Monitor frequency of your baby's movement. If anything feels irregular, do not wait to contact your care provider. Your baby should keep moving throughout pregnancy, even during labour. There is no set number of normal movements, by 28 weeks a routine will likely be developing.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Action 6: Sleep -->
+            <div class="action-card">
+                <div class="action-icon-container">
+                    <div class="action-letter">S</div>
+                    <div class="action-icon">[icon]</div>
+                </div>
+                <div class="action-content">
+                    <div class="action-number">Action 6</div>
+                    <h3 class="action-title">Sleep on Your Side from 28 Weeks</h3>
+                    <p class="action-description">
+                        Settle to sleep on your side from 28 weeks pregnant. If you wake up on your back, don't worry, just settle back to sleep on your side.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="quick-actions-section">
+            <h2 class="quick-actions-title">Save These Actions for Daily Reference</h2>
+            <div class="quick-actions-grid">
+                <button class="quick-action-button" onclick="copyActions(this)">
+                    <div class="button-icon">[icon]</div>
+                    <div class="button-text">Copy the Actions</div>
+                </button>
+                
+                <button class="quick-action-button" onclick="addToReminders(this)">
+                    <div class="button-icon">[icon]</div>
+                    <div class="button-text">Add to Apple Reminders</div>
+                </button>
+                
+                <button class="quick-action-button" onclick="downloadDiagram(this)">
+                    <div class="button-icon">[icon]</div>
+                    <div class="button-text">Download Diagram</div>
+                </button>
+                
+                <button class="quick-action-button" onclick="addToCalendar(this)">
+                    <div class="button-icon">[icon]</div>
+                    <div class="button-text">Add to Calendar</div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Magnet CTA -->
+        <div class="magnet-cta">
+            <div class="magnet-image">
+                [Fridge Magnet Product Image]
+            </div>
+            <div class="magnet-content">
+                <h3>Get Your FREE Daily Actions Fridge Magnet</h3>
+                <p>
+                    A copy of our 'Daily Actions' fridge magnet is sent out with every 'Your Pregnancy' brochure so you can remind yourself daily. Keep these vital actions visible in your home where you'll see them every day.
+                </p>
+                <a href="#" class="magnet-button">Order Your Free Brochure & Magnet</a>
+            </div>
+        </div>
+        
+        <!-- Final CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title">Found This Helpful?</h2>
+            <p class="cta-text">
+                Support our work to prevent stillbirth and help more families have safer pregnancies through education and awareness.
+            </p>
+            <a href="#" class="cta-button">Support Our Work</a>
+        </div>
+    </div>
+    
+    <script>
+        function copyActions(button) {
+            // Change button appearance
+            button.classList.add('clicked');
+            const originalText = button.querySelector('.button-text').textContent;
+            button.querySelector('.button-text').textContent = 'Copied!';
+            
+            // Reset after 2 seconds
+            setTimeout(() => {
+                button.classList.remove('clicked');
+                button.querySelector('.button-text').textContent = originalText;
+            }, 2000);
+        }
+        
+        function addToReminders(button) {
+            // Change button appearance
+            button.classList.add('clicked');
+            const originalText = button.querySelector('.button-text').textContent;
+            button.querySelector('.button-text').textContent = 'Added!';
+            
+            // Reset after 2 seconds
+            setTimeout(() => {
+                button.classList.remove('clicked');
+                button.querySelector('.button-text').textContent = originalText;
+            }, 2000);
+        }
+        
+        function downloadDiagram(button) {
+            // Change button appearance
+            button.classList.add('clicked');
+            const originalText = button.querySelector('.button-text').textContent;
+            button.querySelector('.button-text').textContent = 'Downloaded!';
+            
+            // Reset after 2 seconds
+            setTimeout(() => {
+                button.classList.remove('clicked');
+                button.querySelector('.button-text').textContent = originalText;
+            }, 2000);
+        }
+        
+        function addToCalendar(button) {
+            // Change button appearance
+            button.classList.add('clicked');
+            const originalText = button.querySelector('.button-text').textContent;
+            button.querySelector('.button-text').textContent = 'Added!';
+            
+            // Reset after 2 seconds
+            setTimeout(() => {
+                button.classList.remove('clicked');
+                button.querySelector('.button-text').textContent = originalText;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

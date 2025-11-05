@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Am Expecting - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .page-subtitle {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation Tabs */
+        .topic-navigation {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 60px 0;
+            flex-wrap: wrap;
+        }
+        
+        .topic-nav-button {
+            padding: 15px 30px;
+            background-color: white;
+            border: 2px solid #a64d79;
+            color: #a64d79;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .topic-nav-button:hover {
+            background-color: #a64d79;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(166, 77, 121, 0.3);
+        }
+        
+        .topic-nav-button.active {
+            background-color: #a64d79;
+            color: white;
+        }
+        
+        /* Topic Sections */
+        .topic-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .topic-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            color: #a64d79;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .section-intro {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Key Message Banner */
+        .key-message-banner {
+            background: linear-gradient(135deg, #a64d79 0%, #c97fa0 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .key-message-text {
+            font-size: 22px;
+            line-height: 1.7;
+            font-weight: bold;
+        }
+        
+        /* Facts Grid with Icons */
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .fact-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #a64d79;
+            padding: 30px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .fact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(166, 77, 121, 0.15);
+            background-color: white;
+        }
+        
+        .fact-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #a64d79;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .fact-text {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        /* Interactive Questions Section */
+        .questions-section {
+            background-color: #f0e6ec;
+            padding: 60px;
+            border-radius: 8px;
+            margin: 60px 0;
+        }
+        
+        .questions-intro {
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .question-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .question-card:hover {
+            border-color: #a64d79;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(166, 77, 121, 0.2);
+        }
+        
+        .question-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+        
+        /* Split Content Section */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin: 80px 0;
+        }
+        
+        .split-content h3 {
+            font-size: 32px;
+            color: #a64d79;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        
+        .split-content p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .split-content ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .split-content li {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .split-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #a64d79;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .split-image {
+            background-color: #ddd;
+            height: 500px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 16px;
+        }
+        
+        /* Video Section */
+        .video-section {
+            text-align: center;
+            margin: 80px 0;
+            padding: 60px 40px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .video-section h3 {
+            font-size: 32px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .video-intro {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .video-placeholder {
+            background-color: #ddd;
+            height: 450px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 18px;
+            margin: 0 auto;
+            max-width: 900px;
+        }
+        
+        /* FAQ Accordion */
+        .faq-section {
+            margin: 80px 0;
+        }
+        
+        .faq-item {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .faq-item.active {
+            border-color: #a64d79;
+        }
+        
+        .faq-question {
+            padding: 25px 30px;
+            background-color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .faq-item.active .faq-question {
+            background-color: #f0e6ec;
+        }
+        
+        .faq-question-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .faq-icon {
+            font-size: 24px;
+            color: #a64d79;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: white;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 400px;
+        }
+        
+        .faq-answer-content {
+            padding: 25px 30px;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* Warning Banner */
+        .warning-banner {
+            background-color: #fff8e1;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        
+        .warning-banner-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .warning-banner-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Action Steps */
+        .action-steps {
+            margin: 60px 0;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .step-card {
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #a64d79;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        .step-card:hover {
+            border-color: #a64d79;
+            box-shadow: 0 8px 25px rgba(166, 77, 121, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .step-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .step-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #a64d79;
+            margin-bottom: 15px;
+        }
+        
+        .step-description {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background-color: #a64d79;
+            color: white;
+            padding: 60px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 80px 0 0 0;
+        }
+        
+        .cta-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .cta-text {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: white;
+            color: #a64d79;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #f9f9f9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .facts-grid,
+            .questions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .split-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-banner-placeholder">
+            [Hero Banner Image: Expecting Mother]
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">I Am Expecting</h1>
+            <p class="page-subtitle">
+                Your comprehensive guide to monitoring your baby's wellbeing throughout pregnancy. Learn how to recognize your baby's unique patterns, trust your instincts, and ensure the safest possible journey for you and your baby.
+            </p>
+        </div>
+        
+        <!-- Topic Navigation -->
+        <div class="topic-navigation">
+            <button class="topic-nav-button active" onclick="showTopic('movements')">Why Movements Matter</button>
+            <button class="topic-nav-button" onclick="showTopic('know-baby')">Getting to Know Your Baby</button>
+            <button class="topic-nav-button" onclick="showTopic('intuition')">Trusting Your Intuition</button>
+            <button class="topic-nav-button" onclick="showTopic('safe-sleep')">Safe Sleep in Pregnancy</button>
+        </div>
+        
+        <!-- Topic 1: Why Movements Matter -->
+        <div id="movements-section" class="topic-section active">
+            <div class="section-header">
+                <h2 class="section-title">Why Do Baby's Movements Matter?</h2>
+            </div>
+            
+            <div class="key-message-banner">
+                <p class="key-message-text">
+                    Your baby's only direct link to the outside world is through you. Movement is their language—their way of telling you they're thriving.
+                </p>
+            </div>
+            
+            <div class="section-intro">
+                <p>Taking time each day to monitor your baby's movements and getting to know who your baby is can be one of the most meaningful parts of pregnancy. By setting aside quiet moments to feel your baby kick, roll, or poke, you're not just bonding with your bump—you're also checking on your baby's health and wellbeing.</p>
+            </div>
+            
+            <!-- Facts Grid -->
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <div class="fact-number">1</div>
+                    <div class="fact-text">
+                        <strong>Every baby is unique.</strong> Even if you've been pregnant before, each baby and pregnancy is different. Avoid comparing your experience to others—focus on getting to know this baby's individual personality and patterns.
+                    </div>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-number">2</div>
+                    <div class="fact-text">
+                        <strong>There's no magic number.</strong> Forget counting to 10 kicks. Your baby will develop their own pattern of movements. A movement can be anything—a kick, flutter, poke, or roll. You'll typically start feeling these between 16 and 24 weeks.
+                    </div>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-number">3</div>
+                    <div class="fact-text">
+                        <strong>Movements don't slow down.</strong> The type of movement may change as your baby grows, but once you've established a routine, the strength, pattern, and frequency should remain consistent right up until birth.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Questions Section -->
+            <div class="questions-section">
+                <h3 class="section-title" style="margin-bottom: 15px;">Get to Know Who Your Baby Is</h3>
+                <p class="questions-intro">
+                    Your baby is already developing their own personality. Pay attention to these patterns to understand your baby better:
+                </p>
+                <div class="questions-grid">
+                    <div class="question-card">
+                        <div class="question-icon">☀️</div>
+                        <div class="question-text">Is your baby a morning person or a night owl?</div>
+                    </div>
+                    
+                    <div class="question-card">
+                        <div class="question-icon">🎵</div>
+                        <div class="question-text">Does your baby respond to your voice or music?</div>
+                    </div>
+                    
+                    <div class="question-card">
+                        <div class="question-icon">👥</div>
+                        <div class="question-text">Is your baby social or more reserved?</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Warning Banner -->
+            <div class="warning-banner">
+                <div class="warning-banner-title">
+                    <span style="font-size: 24px;">⚠️</span>
+                    Important Warning Sign
+                </div>
+                <p class="warning-banner-text">
+                    A reduction or sudden increase in your baby's movements can be an important warning sign that your baby may be unwell. If you notice any change from your baby's normal pattern, contact your healthcare provider immediately—don't wait.
+                </p>
+            </div>
+            
+            <!-- CTA to other pages -->
+            <div style="text-align: center; margin: 60px 0;">
+                <p style="font-size: 16px; color: #555; margin-bottom: 20px;">
+                    Want to learn more about the research behind fetal movements?
+                </p>
+                <a href="#" class="topic-nav-button">Explore Research About Baby's Movements</a>
+                <a href="#" class="topic-nav-button" style="margin-left: 15px;">Read Daily Actions Guide</a>
+            </div>
+        </div>
+        
+        <!-- Topic 2: Getting to Know Your Baby -->
+        <div id="know-baby-section" class="topic-section">
+            <div class="section-header">
+                <h2 class="section-title">Getting to Know Your Baby</h2>
+                <p class="section-intro">
+                    Building a connection with your baby before birth is one of the most powerful tools for ensuring a safe pregnancy. Here's why getting to know your baby matters—and how to do it.
+                </p>
+            </div>
+            
+            <div class="key-message-banner">
+                <p class="key-message-text">
+                    You are your baby's link and voice to the outside world.
+                </p>
+            </div>
+            
+            <!-- Split Section -->
+            <div class="split-section">
+                <div class="split-content">
+                    <h3>Your Baby's Only Way to Communicate</h3>
+                    <p>
+                        Movement is the only way your baby can communicate with you before birth. Taking time each day to monitor these movements isn't just about staying healthy—it's about building an essential bond that helps you understand when something might be wrong.
+                    </p>
+                    <ul>
+                        <li>Set aside quiet time daily to focus on your baby's movements</li>
+                        <li>Notice patterns in when your baby is most active</li>
+                        <li>Pay attention to what activities seem to trigger movement</li>
+                        <li>Track any changes in intensity, frequency, or type of movement</li>
+                    </ul>
+                </div>
+                <div class="split-image">
+                    [Image: Mother Bonding with Bump]
+                </div>
+            </div>
+            
+            <div class="split-section" style="margin-top: 60px;">
+                <div class="split-image">
+                    [Image: Mother and Healthcare Provider]
+                </div>
+                <div class="split-content">
+                    <h3>You, Your Baby & Your Care Provider: A Team</h3>
+                    <p>
+                        Even if you've been pregnant before, remember that every pregnancy is unique. You and your baby share a special connection—trust your inner voice. If something doesn't feel right, it probably isn't.
+                    </p>
+                    <p>
+                        Ask your care provider to help you begin this important relationship. Together, you form a team working toward the same goal: a safe and healthy pregnancy. Don't hesitate to voice concerns, ask questions, or seek reassurance.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Video Section -->
+            <div class="video-section">
+                <h3>Rachel's Story: How Listening to Her Instincts Saved Baby Arlo</h3>
+                <p class="video-intro">
+                    Watch Rachel share her powerful story of trusting her intuition when something didn't feel right. Her awareness and quick action helped save her baby's life.
+                </p>
+                <div class="video-placeholder">
+                    [Video: Rachel's Story - Trusting Instincts]
+                </div>
+            </div>
+            
+            <div class="warning-banner">
+                <div class="warning-banner-title">
+                    <span style="font-size: 24px;">💡</span>
+                    Remember This
+                </div>
+                <p class="warning-banner-text">
+                    If you feel strange, uneasy, or worried in any way about yourself or your baby, contact your care provider immediately. Do not wait. Your instincts exist for a reason.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Topic 3: Trusting Your Intuition -->
+        <div id="intuition-section" class="topic-section">
+            <div class="section-header">
+                <h2 class="section-title">Trusting Your Intuition</h2>
+                <p class="section-intro">
+                    Still Aware believes that the key to reducing preventable stillbirth is trusting expectant mothers. When a mother says something "doesn't feel right" with their baby, we need to listen to that intuition.
+                </p>
+            </div>
+            
+            <div class="key-message-banner">
+                <p class="key-message-text">
+                    The moment you found out you were pregnant, you became a mother. Nobody knows your baby better than you.
+                </p>
+            </div>
+            
+            <!-- Split Section -->
+            <div class="split-section">
+                <div class="split-content">
+                    <h3>Why Your Instincts Matter</h3>
+                    <p>
+                        While your baby is in utero, they're constantly communicating with you through movement. After 28 weeks, you'll have established a regular pattern—a rhythm that's uniquely yours and your baby's. This makes you the expert on what's normal for your baby.
+                    </p>
+                    <p>
+                        If your baby's movements have changed, or you feel like something is out of the ordinary, listen to your baby, trust your intuition, and contact your care provider to voice your concerns immediately.
+                    </p>
+                    <p style="color: #a64d79; font-weight: bold; font-size: 18px; margin-top: 25px;">
+                        Remember: You are your baby's best advocate.
+                    </p>
+                </div>
+                <div class="split-image">
+                    [Image: Mother Looking Thoughtful]
+                </div>
+            </div>
+            
+            <!-- Action Steps -->
+            <div class="action-steps">
+                <h3 class="section-title">What Happens When You Call with Concerns?</h3>
+                <p class="section-intro">
+                    Reduced fetal movements—or a rapid increase—can be a sign that your baby is unwell and needs investigation. Here's what should happen when you contact your healthcare provider:
+                </p>
+                
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-title">1. Immediate Response</div>
+                        <div class="step-description">
+                            Your doctor, maternity ward, or midwife should ask you to come in right away. Don't accept "wait and see" advice when it comes to changed fetal movements.
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-title">2. Monitoring & Assessment</div>
+                        <div class="step-description">
+                            They will monitor your baby's heartbeat using electronic fetal monitoring (CTG) or conduct an ultrasound to check on your baby's wellbeing, movement, and fluid levels.
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-title">3. Your Right to Further Care</div>
+                        <div class="step-description">
+                            If you still have concerns even after being reassured that all is normal, you have the right to further investigation. Trust your instinct and insist on additional action.
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-title">4. Don't Leave Until Satisfied</div>
+                        <div class="step-description">
+                            It can simply be a feeling of unease or a sinking feeling that something isn't right. Do not leave the hospital until you're completely satisfied with the care you've received.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="warning-banner">
+                <div class="warning-banner-title">
+                    <span style="font-size: 24px;">🛡️</span>
+                    You Are the Expert
+                </div>
+                <p class="warning-banner-text">
+                    Healthcare providers have medical expertise, but you have intimate knowledge of your baby. If something feels wrong, speak up. Keep speaking up until you're heard. Your intuition is valid and valuable.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Topic 4: Safe Sleep in Pregnancy -->
+        <div id="safe-sleep-section" class="topic-section">
+            <div class="section-header">
+                <h2 class="section-title">Safe Sleep in Pregnancy</h2>
+                <p class="section-intro">
+                    Sleeping on your side during pregnancy has the potential to reduce late-term stillbirth. When you're pregnant, side sleeping helps maximize blood flow and oxygen to your growing baby.
+                </p>
+            </div>
+            
+            <div class="key-message-banner">
+                <p class="key-message-text">
+                    From 28 weeks onward, going to sleep on your side—either side—can help keep your baby safer.
+                </p>
+            </div>
+            
+            <!-- Split Section -->
+            <div class="split-section">
+                <div class="split-image">
+                    [Image: Pregnant Woman Sleeping on Side]
+                </div>
+                <div class="split-content">
+                    <h3>Why Does Sleep Position Matter?</h3>
+                    <p>
+                        Research shows that from about 28 weeks pregnant, you should start going to sleep on your side. Either side is fine—the key is avoiding sleeping flat on your back for prolonged periods.
+                    </p>
+                    <p>
+                        If you wake up on your back in the middle of the night, don't worry—just roll over onto your side again. Falling asleep on your side means you stay in that position during the deepest and often longest part of your sleep. That's why we emphasize "settling" to sleep on your side.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Video Section -->
+            <div class="video-section">
+                <h3>How to Practice Safe Sleep During Pregnancy</h3>
+                <p class="video-intro">
+                    Watch this short video to learn the best techniques for comfortable and safe side sleeping throughout your pregnancy.
+                </p>
+                <div class="video-placeholder">
+                    [Video: Safe Sleep Positions Tutorial]
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h3 class="section-title">Frequently Asked Questions</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="faq-question-text">Which side should I sleep on?</div>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Either side is perfectly fine! The most important thing is that you're not sleeping flat on your back for extended periods. Left or right side—whichever is more comfortable for you—will help maintain optimal blood flow to your baby. Some women find it helpful to alternate sides throughout the night.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="faq-question-text">When should I start sleeping on my side?</div>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            You should start practicing side sleeping from 28 weeks of pregnancy onward. If you naturally sleep on your side already, that's great! If you're typically a back or stomach sleeper, start transitioning to side sleeping around this time. Using pillows to support your bump and between your knees can make side sleeping much more comfortable.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="faq-question-text">What if I'm uncomfortable or have injuries?</div>
+                        <div class="faq-icon">▼</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            If you're experiencing discomfort or have existing injuries that make side sleeping difficult, speak with your healthcare provider. They can recommend pregnancy pillows, positioning aids, or physical therapy to help make side sleeping more manageable. Don't suffer in silence—there are solutions available to help you sleep safely and comfortably. Your provider may also suggest specific positioning modifications based on your individual circumstances.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="warning-banner">
+                <div class="warning-banner-title">
+                    <span style="font-size: 24px;">💤</span>
+                    Don't Panic If You Wake Up On Your Back
+                </div>
+                <p class="warning-banner-text">
+                    Waking up on your back occasionally is completely normal and not a cause for alarm. Simply roll onto your side and go back to sleep. The important thing is that you're falling asleep on your side, which means you're spending the longest, deepest part of your sleep in the safest position.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Final CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title">Continue Your Journey</h2>
+            <p class="cta-text">
+                Explore more resources to support you through a safe and healthy pregnancy
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button">Download Daily Actions Guide</a>
+                <a href="#" class="cta-button">Order a Free Brochure</a>
+                <a href="#" class="cta-button">Explore Research</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTopic(topicId) {
+            // Hide all sections
+            document.querySelectorAll('.topic-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active from all buttons
+            document.querySelectorAll('.topic-nav-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(topicId + '-section').classList.add('active');
+            
+            // Add active to clicked button
+            event.target.classList.add('active');
+            
+            // Scroll to top of container smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function toggleFAQ(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

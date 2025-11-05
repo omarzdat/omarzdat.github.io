@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research and Evidence - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .page-intro {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Split Image Section */
+        .split-image-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin: 60px 0;
+            min-height: 350px;
+        }
+        
+        .split-left {
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 16px;
+        }
+        
+        .split-right {
+            background-color: #fce4ec;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        
+        .split-text {
+            font-size: 36px;
+            font-weight: bold;
+            color: #a64d79;
+            text-align: center;
+            line-height: 1.4;
+        }
+        
+        /* Research Section */
+        .research-section {
+            margin: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            color: #a64d79;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        
+        .research-content p {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .research-content strong {
+            color: #333;
+            font-weight: bold;
+        }
+        
+        /* Quote Box */
+        .quote-box {
+            background-color: #f9f9f9;
+            border-left: 4px solid #a64d79;
+            padding: 30px;
+            margin: 40px 0;
+            font-style: italic;
+            font-size: 18px;
+            color: #333;
+            line-height: 1.8;
+        }
+        
+        /* Key Takeaway Banner */
+        .key-takeaway {
+            background-color: #fff8e1;
+            border: 3px solid #ffc107;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 50px 0;
+        }
+        
+        .key-takeaway-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .key-takeaway-text {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+        
+        /* Video Section */
+        .video-section {
+            text-align: center;
+            margin: 60px 0;
+            padding: 50px 40px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .video-placeholder {
+            background-color: #ddd;
+            height: 450px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 18px;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        
+        /* Divider Section */
+        .divider-section {
+            margin: 100px 0 80px;
+            text-align: center;
+        }
+        
+        .divider-title {
+            font-size: 42px;
+            color: #a64d79;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .divider-text {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Research Institutions Grid */
+        .institutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin: 60px 0;
+        }
+        
+        .institution-card {
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .institution-card:hover {
+            border-color: #a64d79;
+            box-shadow: 0 10px 30px rgba(166, 77, 121, 0.2);
+            transform: translateY(-8px);
+        }
+        
+        .institution-logo {
+            background-color: #f9f9f9;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+        
+        .institution-card:hover .institution-logo {
+            background-color: #f0e6ec;
+        }
+        
+        .logo-placeholder {
+            width: 250px;
+            height: 100px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+        
+        .institution-content {
+            padding: 30px;
+        }
+        
+        .institution-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #a64d79;
+            margin-bottom: 15px;
+        }
+        
+        .institution-description {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .visit-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            color: #a64d79;
+            font-weight: bold;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .visit-link::after {
+            content: '→';
+            transition: transform 0.3s;
+        }
+        
+        .institution-card:hover .visit-link::after {
+            transform: translateX(5px);
+        }
+        
+        /* Disclaimer */
+        .disclaimer-section {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 60px 0 0 0;
+        }
+        
+        .disclaimer-text {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .split-image-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .institutions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-banner-placeholder">
+            [Hero Banner Image: Research/Medical Professional]
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Research and Evidence</h1>
+        </div>
+        
+        <!-- Research Content -->
+        <div class="research-section">
+            <div class="research-content">
+                <p>
+                    Researcher Professor Vicki Flenady has said, <strong>"We do know that when a baby is unwell during pregnancy he or she will move less. Not a strong and not as often. We call this decreased fetal movements. It can be an early warning sign of a baby at risk….it is associated with adverse outcome and even stillbirth…."</strong>
+                </p>
+            </div>
+        </div>
+        
+        <!-- Key Takeaway -->
+        <div class="key-takeaway">
+            <div class="key-takeaway-title">
+                <span style="font-size: 28px;">⚡</span>
+                Key Research Finding
+            </div>
+            <div class="key-takeaway-text">
+                Research continues to show that monitoring baby's movements can also reduce anxiety among pregnant women by empowering them to listen to their babies, listen to themselves and seek professional help if they feel that they need it.
+            </div>
+        </div>
+        
+        <!-- Video Section -->
+        <div class="video-section">
+            <div class="video-placeholder">
+                [Video Embed: Frantic movements- a sign of a baby in distress in...]
+            </div>
+        </div>
+        
+        <!-- Additional Research Content -->
+        <div class="research-section">
+            <div class="research-content">
+                <p>
+                    Through her research, Associate Professor Jane Warland's has discovered that it's about <strong>"a pattern change in the babies movements"</strong> and encourages women who feel a change in their movements not to be discouraged if it's not a strong and not as often, but any change that happens more than one or two times within a 24 hr period.
+                </p>
+                
+                <div class="quote-box">
+                    Professor Flenady has also said "We believe that if we can provide information to women about what is normal fetal movements and when to report those movements, we'll have an opportunity to identify those babies at most risk and intervene to avoid that adverse outcome. And on the flip side, women who are unnecessarily concerned, because they have a healthy baby, will have their anxiety relieved."
+                </div>
+            </div>
+        </div>
+        
+        <!-- Divider to Research Institutions -->
+        <div class="divider-section">
+            <h2 class="divider-title">Research in Australia</h2>
+            <p class="divider-text">
+                There are a number of stillbirth organisations in Australia who we collaborate with in research programs in the aid of stillbirth reduction. These institutions are leading the charge in understanding, preventing, and ultimately reducing stillbirth rates.
+            </p>
+        </div>
+        
+        <!-- Research Institutions -->
+        <div class="institutions-grid">
+            <!-- Curtin University -->
+            <div class="institution-card" onclick="window.location.href='#'">
+                <div class="institution-logo">
+                    <div class="logo-placeholder">
+                        [Curtin University Logo]
+                    </div>
+                </div>
+                <div class="institution-content">
+                    <h3 class="institution-name">Curtin University</h3>
+                    <p class="institution-description">
+                        Leading research institution conducting groundbreaking studies in stillbirth prevention, maternal health, and fetal wellbeing. Their research programs focus on identifying risk factors and developing evidence-based interventions.
+                    </p>
+                    <a href="#" class="visit-link">Visit their research</a>
+                </div>
+            </div>
+            
+            <!-- Centre of Research Excellence -->
+            <div class="institution-card" onclick="window.location.href='#'">
+                <div class="institution-logo">
+                    <div class="logo-placeholder">
+                        [CRE Logo]
+                    </div>
+                </div>
+                <div class="institution-content">
+                    <h3 class="institution-name">The Centre of Research Excellence in Stillbirth</h3>
+                    <p class="institution-description">
+                        The Stillbirth CRE has been established to address the tragedy of stillbirth in Australia through a cohesive national program of research and implementation. Dedicated to reducing preventable stillbirths through comprehensive research initiatives.
+                    </p>
+                    <a href="#" class="visit-link">Visit their research</a>
+                </div>
+            </div>
+            
+            <!-- Stillbirth Foundation -->
+            <div class="institution-card" onclick="window.location.href='#'">
+                <div class="institution-logo">
+                    <div class="logo-placeholder">
+                        [Stillbirth Foundation Australia Logo]
+                    </div>
+                </div>
+                <div class="institution-content">
+                    <h3 class="institution-name">Stillbirth Foundation Australia</h3>
+                    <p class="institution-description">
+                        The Stillbirth Foundation Australia's mission is to significantly reduce the incidence of stillbirth through research, education and advocacy. Supporting families while driving critical research and awareness initiatives.
+                    </p>
+                    <a href="#" class="visit-link">Visit their research</a>
+                </div>
+            </div>
+            
+            <!-- PSANZ -->
+            <div class="institution-card" onclick="window.location.href='#'">
+                <div class="institution-logo">
+                    <div class="logo-placeholder">
+                        [PSANZ Logo]
+                    </div>
+                </div>
+                <div class="institution-content">
+                    <h3 class="institution-name">PSANZ Stillbirth and Neonatal Death Alliance</h3>
+                    <p class="institution-description">
+                        PSANZ-SANDA aims to reduce stillbirths and neonatal deaths in Australia and New Zealand and to ensure families receive the best possible care and support through the promotion of high-quality collaborative research and best clinical practice.
+                    </p>
+                    <a href="#" class="visit-link">Visit their research</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Disclaimer -->
+        <div class="disclaimer-section">
+            <p class="disclaimer-text">
+                The information within this site while backed by research, validated clinically and approved by consumers, is not intended to replace the advice of a trained medical professional. Still Aware provides this knowledge as a courtesy, not as a substitute for personalised medical advice and disclaims any liability for the decisions you make based on this information.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

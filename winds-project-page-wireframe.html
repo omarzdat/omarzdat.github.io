@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WINDS Project - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .page-subtitle {
+            font-size: 22px;
+            color: #333;
+            background-color: #f0e6ec;
+            padding: 20px 40px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 900px;
+            font-weight: 500;
+        }
+        
+        .page-intro {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 30px auto 0;
+        }
+        
+        /* Split Content Section */
+        .split-content-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin: 80px 0;
+        }
+        
+        .winds-graphic {
+            background-color: #ddd;
+            height: 500px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 16px;
+        }
+        
+        .winds-conclusion {
+            padding: 40px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #a64d79;
+        }
+        
+        .winds-conclusion h3 {
+            font-size: 28px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .winds-conclusion p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .winds-conclusion-link {
+            margin-top: 25px;
+        }
+        
+        .report-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: #a64d79;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .report-button:hover {
+            background-color: #7d3a5c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(166, 77, 121, 0.4);
+        }
+        
+        .safe-bubba-link {
+            font-size: 15px;
+            color: #555;
+            margin-top: 20px;
+        }
+        
+        .safe-bubba-link a {
+            color: #a64d79;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        
+        /* Brochure Section */
+        .brochure-section {
+            margin: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            color: #a64d79;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+        
+        .brochure-card {
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 40px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .brochure-card:hover {
+            border-color: #a64d79;
+            box-shadow: 0 8px 25px rgba(166, 77, 121, 0.15);
+        }
+        
+        .brochure-image {
+            flex-shrink: 0;
+            width: 250px;
+            height: 350px;
+            background-color: #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .brochure-content {
+            flex: 1;
+        }
+        
+        .brochure-content h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .brochure-content p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .brochure-price {
+            font-size: 22px;
+            color: #a64d79;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .add-brochure-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #a64d79;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .add-brochure-button:hover {
+            background-color: #7d3a5c;
+            transform: translateY(-2px);
+        }
+        
+        /* Feedback Section */
+        .feedback-section {
+            margin: 80px 0;
+        }
+        
+        .feedback-title {
+            font-size: 36px;
+            color: #a64d79;
+            margin-bottom: 50px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .feedback-card {
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .feedback-card:hover {
+            border-color: #a64d79;
+            box-shadow: 0 5px 20px rgba(166, 77, 121, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .feedback-icon {
+            position: absolute;
+            left: -20px;
+            top: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: #a64d79;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feedback-text {
+            font-size: 17px;
+            color: #333;
+            line-height: 1.7;
+            font-style: italic;
+            padding-left: 30px;
+        }
+        
+        /* Info Banner */
+        .info-banner {
+            background-color: #f0e6ec;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .info-banner p {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .info-banner a {
+            color: #a64d79;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background-color: #a64d79;
+            color: white;
+            padding: 60px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 80px 0 0 0;
+        }
+        
+        .cta-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .cta-text {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: white;
+            color: #a64d79;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #f9f9f9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .split-content-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .brochure-card {
+                flex-direction: column;
+            }
+            
+            .brochure-image {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-banner-placeholder">
+            [Hero Banner Image: Indigenous Art/Community Collaboration]
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Working with Indigenous Nations, WINDS Project</h1>
+            <p class="page-intro">
+                The Department of Health and Aged Care awarded a grant to Still Aware to work with Indigenous media across Australia. We travelled over 90,000kms to work with these communities.
+            </p>
+        </div>
+        
+        <!-- Split Content with WINDS Graphic -->
+        <div class="split-content-section">
+            <div class="winds-graphic">
+                [WINDS Project Graphic:<br>Indigenous Art Design]
+            </div>
+            
+            <div class="winds-conclusion">
+                <h3>WINDS Project Conclusion</h3>
+                <p>
+                    The WINDS project has now concluded, we're excited to present our final report. This comprehensive summary highlights the remarkable achievements of this two-year initiative and we hope for lasting impact on communities across Australia—an impact that will resonate for generations to come.
+                </p>
+                <div class="winds-conclusion-link">
+                    <a href="#" class="report-button">Final Report Here (PDF — 16.1mb)</a>
+                </div>
+                <p class="safe-bubba-link">
+                    To find out more about the Safe Bubba resources please visit <a href="#">here</a>.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Order Brochure Section -->
+        <div class="brochure-section">
+            <h2 class="section-title">Order a Brochure</h2>
+            
+            <div class="brochure-card">
+                <div class="brochure-image">
+                    [Image: Safe Bubba Brochure<br>& Fridge Magnet Insert]
+                </div>
+                
+                <div class="brochure-content">
+                    <h3>Safe Bubba Brochure & Fridge Magnet Insert</h3>
+                    <p>
+                        Safe Bubba Brochure & Fridge Magnet Insert.
+                    </p>
+                    <p>
+                        <strong>Note:</strong> Still Aware is unable to ship to PO Boxes.
+                    </p>
+                    <div class="brochure-price">$0</div>
+                    <button class="add-brochure-button">Add Brochure</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Feedback Section -->
+        <div class="feedback-section">
+            <h2 class="feedback-title">WINDS Co-Design Workshop Feedback</h2>
+            
+            <div class="feedback-grid">
+                <div class="feedback-card">
+                    <div class="feedback-icon">1</div>
+                    <p class="feedback-text">
+                        "Solid- Safe- Authentic"
+                    </p>
+                </div>
+                
+                <div class="feedback-card">
+                    <div class="feedback-icon">2</div>
+                    <p class="feedback-text">
+                        "Interactive and Inclusive workshop. Not spoken down to, made to feel included"
+                    </p>
+                </div>
+                
+                <div class="feedback-card">
+                    <div class="feedback-icon">3</div>
+                    <p class="feedback-text">
+                        "I really enjoyed the workshop as it was interactive and very encouraging of discussion"
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Info Banner -->
+        <div class="info-banner">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. For more information about community engagement and culturally safe resources, <a href="#">contact us</a>.
+            </p>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Support Culturally Safe Resources</h2>
+            <p class="cta-text">
+                Help us continue developing culturally appropriate stillbirth prevention resources for Indigenous communities across Australia.
+            </p>
+            <a href="#" class="cta-button">Support Our Work</a>
+        </div>
+    </div>
+</body>
+</html>

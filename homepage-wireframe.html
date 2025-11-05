@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Still Aware - Homepage Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        /* HEADER STYLES */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            background-color: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled .header-content {
+            padding: 15px 30px;
+            border-radius: 0;
+            background-color: transparent;
+            box-shadow: none;
+        }
+        
+        .logo {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+            flex: 1;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled .nav-menu {
+            display: none;
+        }
+        
+        .nav-item {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .nav-link {
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 10px 0;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #a64d79;
+        }
+        
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            min-width: 220px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            margin-top: 10px;
+            padding: 10px 0;
+        }
+        
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 15px;
+        }
+        
+        .dropdown-item {
+            padding: 12px 20px;
+            color: #555;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f9f9f9;
+            color: #a64d79;
+        }
+        
+        .dropdown-item.featured {
+            background-color: #f0e6ec;
+            color: #a64d79;
+            font-weight: bold;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 5px;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+        
+        .search-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0e6ec;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+        
+        .search-icon:hover {
+            background-color: #a64d79;
+            color: white;
+        }
+        
+        .search-expanded {
+            display: none;
+            width: 250px;
+        }
+        
+        .search-icon.active {
+            display: none;
+        }
+        
+        .search-icon.active + .search-expanded {
+            display: block;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #a64d79;
+            border-radius: 25px;
+            font-size: 14px;
+        }
+        
+        .btn-resources {
+            padding: 12px 25px;
+            background-color: #5eb59b;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .btn-resources:hover {
+            background-color: #4a9d85;
+            transform: translateY(-2px);
+        }
+        
+        .btn-donate {
+            padding: 12px 30px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            position: relative;
+        }
+        
+        .btn-donate:hover {
+            background-color: #7d3a5c;
+            transform: translateY(-2px);
+        }
+        
+        .donate-modal {
+            position: fixed;
+            top: 80px;
+            right: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            width: 320px;
+            display: none;
+            z-index: 100;
+        }
+        
+        .donate-modal.active {
+            display: block;
+        }
+        
+        .donate-modal h4 {
+            color: #a64d79;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .donate-modal input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .donate-modal button {
+            width: 100%;
+            padding: 12px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .donate-modal a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #a64d79;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        .donate-modal a:hover {
+            color: #7d3a5c;
+        }
+        
+        .hamburger-menu {
+            display: none;
+            width: 40px;
+            height: 40px;
+            background-color: #f0e6ec;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        .header.scrolled .hamburger-menu {
+            display: flex;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            background-color: #ddd;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+        
+        .hero-text {
+            flex: 1;
+            color: white;
+        }
+        
+        .hero-headline {
+            font-size: 56px;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .donation-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            width: 450px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .donation-box h3 {
+            color: #a64d79;
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+        
+        .donation-box input,
+        .donation-box select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        
+        .donation-box input:focus,
+        .donation-box select:focus {
+            outline: none;
+            border-color: #a64d79;
+        }
+        
+        .amount-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .amount-btn {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .amount-btn:hover,
+        .amount-btn.active {
+            border-color: #a64d79;
+            background-color: #f0e6ec;
+            color: #a64d79;
+        }
+        
+        .btn-donate-now {
+            width: 100%;
+            padding: 15px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-donate-now:hover {
+            background-color: #7d3a5c;
+            transform: translateY(-2px);
+        }
+        
+        /* INTRO SECTION */
+        .intro-section {
+            padding: 100px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .intro-text {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            padding: 15px 35px;
+            border: 2px solid #a64d79;
+            background: white;
+            color: #a64d79;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .action-btn:hover {
+            background-color: #a64d79;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(166, 77, 121, 0.3);
+        }
+        
+        /* SUPPORT SECTION */
+        .support-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 0;
+        }
+        
+        .support-image {
+            background-color: #ddd;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 16px;
+        }
+        
+        .support-content {
+            background-color: #faf5f8;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .support-content h2 {
+            font-size: 32px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+        
+        .support-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: #a64d79;
+            color: white;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            align-self: flex-start;
+        }
+        
+        .support-btn:hover {
+            background-color: #7d3a5c;
+            transform: translateY(-3px);
+        }
+        
+        /* CLINICIANS SECTION */
+        .clinicians-section {
+            background: linear-gradient(135deg, #f0e6ec 0%, #faf5f8 100%);
+            padding: 100px 40px;
+        }
+        
+        .clinicians-header {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+        
+        .clinicians-header h2 {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .clinicians-header p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .clinicians-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .clinician-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .clinician-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(166, 77, 121, 0.2);
+        }
+        
+        .clinician-card h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .clinician-card p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .clinician-link {
+            color: #a64d79;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .clinician-link::after {
+            content: '→';
+        }
+        
+        /* ORDER RESOURCES SECTION */
+        .order-section {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .order-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .order-header h2 {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+        }
+        
+        .order-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .resource-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .resource-card:hover {
+            border-color: #a64d79;
+            box-shadow: 0 8px 25px rgba(166, 77, 121, 0.15);
+        }
+        
+        .resource-image {
+            width: 100%;
+            height: 250px;
+            background-color: #f0e6ec;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .resource-card h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .resource-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .order-btn {
+            padding: 12px 30px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .order-btn:hover {
+            background-color: #7d3a5c;
+        }
+        
+        /* GET INVOLVED SECTION */
+        .involved-section {
+            background-color: #f9f9f9;
+            padding: 100px 40px;
+        }
+        
+        .involved-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .involved-header h2 {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+        }
+        
+        .involved-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .involved-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .involved-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(166, 77, 121, 0.15);
+        }
+        
+        .involved-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .involved-card h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .involved-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .involved-link {
+            color: #a64d79;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        /* FOOTER */
+        .footer {
+            background-color: #2c2c2c;
+            color: white;
+            padding: 50px 40px 30px;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #a64d79;
+        }
+        
+        .footer-column p,
+        .footer-column a {
+            font-size: 14px;
+            color: #bbb;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .footer-column a:hover {
+            color: #a64d79;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .social-link {
+            width: 35px;
+            height: 35px;
+            background-color: #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: #a64d79;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .newsletter-btn {
+            padding: 10px 20px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .donation-box {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .clinicians-cards,
+            .order-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .involved-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-content">
+            <div class="logo">🤰</div>
+            
+            <nav class="nav-menu">
+                <div class="nav-item">
+                    <a href="#" class="nav-link">About Stillbirth</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item featured">What is Stillbirth?</a>
+                        <a href="#" class="dropdown-item">Item 2</a>
+                        <a href="#" class="dropdown-item">Item 3</a>
+                    </div>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Pregnancy and Prevention</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item featured">I Am Expecting</a>
+                        <a href="#" class="dropdown-item">Item 2</a>
+                        <a href="#" class="dropdown-item">Item 3</a>
+                    </div>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Support After Loss</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item featured">Find Support</a>
+                        <a href="#" class="dropdown-item">Item 2</a>
+                        <a href="#" class="dropdown-item">Item 3</a>
+                    </div>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Clinicians and Midwives</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item featured">Training Programs</a>
+                        <a href="#" class="dropdown-item">Item 2</a>
+                        <a href="#" class="dropdown-item">Item 3</a>
+                    </div>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Get Involved</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item featured">Donate Now</a>
+                        <a href="#" class="dropdown-item">Item 2</a>
+                        <a href="#" class="dropdown-item">Item 3</a>
+                    </div>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="#" class="nav-link">About Us</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item featured">Our Story</a>
+                        <a href="#" class="dropdown-item">Item 2</a>
+                        <a href="#" class="dropdown-item">Item 3</a>
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="hamburger-menu">☰</div>
+                <div class="search-icon" onclick="toggleSearch()">🔍</div>
+                <div class="search-expanded">
+                    <input type="text" class="search-input" placeholder="Search...">
+                </div>
+                <button class="btn-resources">Order Resources</button>
+                <button class="btn-donate" onclick="toggleDonateModal()">Donate Now</button>
+                <div class="donate-modal" id="donateModal">
+                    <h4>Quick Donate</h4>
+                    <input type="text" placeholder="Full Name">
+                    <input type="email" placeholder="Email">
+                    <input type="text" placeholder="Amount ($)">
+                    <button>Donate Now</button>
+                    <a href="#">I want to give regularly</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-headline">
+                    Every baby<br>
+                    deserves a chance.<br>
+                    Every family<br>
+                    deserves support.
+                </h1>
+            </div>
+            
+            <div class="donation-box">
+                <h3>Make a Difference Today</h3>
+                <div class="amount-grid">
+                    <button class="amount-btn" onclick="selectAmount(50)">$50</button>
+                    <button class="amount-btn" onclick="selectAmount(100)">$100</button>
+                    <button class="amount-btn" onclick="selectAmount(250)">$250</button>
+                </div>
+                <input type="text" placeholder="Custom Amount ($)" id="customAmount">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+                <input type="tel" placeholder="Phone Number">
+                <select>
+                    <option>One-time donation</option>
+                    <option>Monthly donation</option>
+                </select>
+                <button class="btn-donate-now">Donate Now</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- INTRO SECTION -->
+    <section class="intro-section">
+        <p class="intro-text">
+            Stillbirth is the devastating loss of a baby beyond 20 weeks of pregnancy. In Australia, 6 babies are stillborn every day—affecting thousands of families annually. Whether you're expecting, supporting someone who is, or simply care about preventing preventable loss, understanding stillbirth and its warning signs can save lives. Education and awareness are the most powerful tools we have to protect babies and support families through safer pregnancies.
+        </p>
+        
+        <div class="action-buttons">
+            <a href="#" class="action-btn">What is Stillbirth?</a>
+            <a href="#" class="action-btn">I Am Expecting</a>
+            <a href="#" class="action-btn">Daily Prevention</a>
+        </div>
+    </section>
+    
+    <!-- SUPPORT SECTION -->
+    <section class="support-section">
+        <div class="support-image">
+            [Warm, Empathetic Image]
+        </div>
+        <div class="support-content">
+            <h2>Grieving the loss of a baby is one of life's most profound challenges. You don't have to face it alone.</h2>
+            <a href="#" class="support-btn">Find Support</a>
+        </div>
+    </section>
+    
+    <!-- CLINICIANS SECTION -->
+    <section class="clinicians-section">
+        <div class="clinicians-header">
+            <h2>Clinicians & Midwives</h2>
+            <p>Education and awareness is the key to preventing stillbirths and as a clinician or midwife you have an unique opportunity to provide both.</p>
+            <p>We're here to help you, help others:</p>
+        </div>
+        
+        <div class="clinicians-cards">
+            <div class="clinician-card">
+                <h3>Brochures</h3>
+                <p>We provide free Safe Pregnancy Brochures, Posters & Stickers.</p>
+                <a href="#" class="clinician-link">Learn More</a>
+            </div>
+            
+            <div class="clinician-card">
+                <h3>Training</h3>
+                <p>We provide free health care provider training sessions.</p>
+                <a href="#" class="clinician-link">Learn More</a>
+            </div>
+            
+            <div class="clinician-card">
+                <h3>Research</h3>
+                <p>The best and latest research, practices and evidence available.</p>
+                <a href="#" class="clinician-link">Learn More</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ORDER RESOURCES SECTION -->
+    <section class="order-section">
+        <div class="order-header">
+            <h2>Order Resources</h2>
+        </div>
+        
+        <div class="order-grid">
+            <div class="resource-card">
+                <div class="resource-image">[Brochure Image]</div>
+                <h3>Safe Pregnancy Brochure</h3>
+                <p>Comprehensive guide covering fetal movement monitoring, safe sleep, and warning signs.</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-image">[Poster Image]</div>
+                <h3>Clinic Posters</h3>
+                <p>Educational posters for waiting rooms and consultation spaces.</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-image">[Magnet Image]</div>
+                <h3>Daily Actions Magnet</h3>
+                <p>Fridge magnet with key daily prevention actions for expectant families.</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- GET INVOLVED SECTION -->
+    <section class="involved-section">
+        <div class="involved-header">
+            <h2>Get Involved</h2>
+        </div>
+        
+        <div class="involved-grid">
+            <div class="involved-card">
+                <div class="involved-icon">💝</div>
+                <h3>Donate</h3>
+                <p>Support our mission to prevent stillbirth through education and awareness.</p>
+                <a href="#" class="involved-link">Learn More →</a>
+            </div>
+            
+            <div class="involved-card">
+                <div class="involved-icon">🎓</div>
+                <h3>Training</h3>
+                <p>Attend or host a Still Aware training session for healthcare providers.</p>
+                <a href="#" class="involved-link">Learn More →</a>
+            </div>
+            
+            <div class="involved-card">
+                <div class="involved-icon">🗣️</div>
+                <h3>Advocate</h3>
+                <p>Join our advocacy efforts to improve stillbirth prevention policies.</p>
+                <a href="#" class="involved-link">Learn More →</a>
+            </div>
+            
+            <div class="involved-card">
+                <div class="involved-icon">📧</div>
+                <h3>Newsletter</h3>
+                <p>Stay informed with the latest research, events and news from Still Aware.</p>
+                <a href="#" class="involved-link">Subscribe →</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">🤰 Still Aware</div>
+                <p>Australia's first and only charity dedicated to stillbirth prevention. We support safer pregnancies through education, awareness and advocacy.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">tw</a>
+                    <a href="#" class="social-link">yt</a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Donate Now</a>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <a href="#">Your Pregnancy</a>
+                <a href="#">Clinician Workshops</a>
+                <a href="#">Research</a>
+                <a href="#">Support Organizations</a>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <p>contact@stillaware.org</p>
+                <p>08 8300 0980</p>
+                <p>Level 5, 18-20 Grenfell St<br>Adelaide SA 5000 Australia</p>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Newsletter</h4>
+                <p>Stay informed with latest research and news</p>
+                <div class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Email">
+                    <button class="newsletter-btn">Join</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Always was, always will be. Still Aware acknowledge that the land on which we work and live always was and always will be Aboriginal land.</p>
+            <p style="margin-top: 10px;">Copyright © 2025 Still Aware. The information within this site while backed by research, validated clinically and approved by consumers, is not intended to replace the advice of a trained medical professional.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Header scroll behavior
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Toggle search
+        function toggleSearch() {
+            const searchIcon = document.querySelector('.search-icon');
+            searchIcon.classList.toggle('active');
+        }
+        
+        // Toggle donate modal
+        function toggleDonateModal() {
+            const modal = document.getElementById('donateModal');
+            modal.classList.toggle('active');
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('donateModal');
+            const btn = document.querySelector('.btn-donate');
+            const searchIcon = document.querySelector('.search-icon');
+            const searchExpanded = document.querySelector('.search-expanded');
+            
+            // Close donate modal
+            if (!modal.contains(event.target) && !btn.contains(event.target)) {
+                modal.classList.remove('active');
+            }
+            
+            // Close search if clicking outside
+            if (searchIcon.classList.contains('active') && 
+                !searchIcon.contains(event.target) && 
+                !searchExpanded.contains(event.target)) {
+                searchIcon.classList.remove('active');
+            }
+        });
+        
+        // Amount selection
+        function selectAmount(amount) {
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            document.getElementById('customAmount').value = amount;
+        }
+    </script>
+</body>
+</html>

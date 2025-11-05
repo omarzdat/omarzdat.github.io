@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advocacy - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .page-intro {
+            font-size: 20px;
+            color: #333;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 15px;
+            font-weight: 500;
+        }
+        
+        .page-subintro {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Mission Statement */
+        .mission-section {
+            margin: 80px 0;
+        }
+        
+        .mission-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .mission-content p {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .mission-content strong {
+            color: #333;
+            font-weight: bold;
+        }
+        
+        /* Key Message Banner */
+        .key-message-banner {
+            background: linear-gradient(135deg, #a64d79 0%, #c97fa0 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        .key-message-text {
+            font-size: 24px;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+        
+        /* Video Section */
+        .video-section {
+            text-align: center;
+            margin: 80px 0;
+        }
+        
+        .video-title {
+            font-size: 28px;
+            color: #a64d79;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        
+        .video-placeholder {
+            background-color: #ddd;
+            height: 500px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 18px;
+            margin: 0 auto;
+            max-width: 900px;
+        }
+        
+        /* Inquiry Section */
+        .inquiry-section {
+            margin: 80px 0;
+        }
+        
+        .inquiry-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .inquiry-title {
+            font-size: 36px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .inquiry-intro {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Focus Areas */
+        .focus-areas {
+            background-color: #f9f9f9;
+            padding: 50px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        
+        .focus-title {
+            font-size: 24px;
+            color: #a64d79;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .focus-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 6px;
+            border-left: 4px solid #a64d79;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .focus-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(166, 77, 121, 0.15);
+        }
+        
+        .focus-item-text {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        .focus-bullet {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #a64d79;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+        
+        .action-button {
+            padding: 15px 35px;
+            background-color: #a64d79;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .action-button:hover {
+            background-color: #7d3a5c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(166, 77, 121, 0.4);
+        }
+        
+        .action-button.secondary {
+            background-color: white;
+            color: #a64d79;
+            border: 2px solid #a64d79;
+        }
+        
+        .action-button.secondary:hover {
+            background-color: #f9f9f9;
+        }
+        
+        /* Impact Statement */
+        .impact-statement {
+            background-color: #f0e6ec;
+            padding: 50px;
+            border-radius: 8px;
+            margin: 60px 0;
+            border-left: 6px solid #a64d79;
+        }
+        
+        .impact-statement p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .impact-statement p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background-color: #a64d79;
+            color: white;
+            padding: 60px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 80px 0 0 0;
+        }
+        
+        .cta-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .cta-text {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: white;
+            color: #a64d79;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #f9f9f9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-banner-placeholder">
+            [Hero Banner Image: Parliamentary/Government Building or Advocacy Scene]
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Select Committee into Stillbirth in South Australia</h1>
+            <p class="page-intro">
+                The extent and impact of stillbirth in South Australia is the focus of a significant new inquiry aimed at reducing loss and better supporting women and families.
+            </p>
+            <p class="page-subintro">
+                <strong>And you can now have your say!</strong>
+            </p>
+        </div>
+        
+        <!-- Mission Content -->
+        <div class="mission-section">
+            <div class="mission-content">
+                <p>
+                    Still Aware plays a crucial role in raising awareness and providing education about stillbirth prevention—a vital yet often overlooked issue in public health. Through our dedicated efforts, we empower expectant parents with life-saving information about safe pregnancy practices, while advocating for improved healthcare policies and services.
+                </p>
+                <p>
+                    By focusing on both prevention and support, Still Aware not only helps reduce the incidence of stillbirth but also provides critical emotional and practical support for families navigating this incredibly difficult experience.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Key Message -->
+        <div class="key-message-banner">
+            <p class="key-message-text">
+                Our work has contributed significantly to increasing awareness, improving clinical practices, and creating a more informed, compassionate response to stillbirth—ultimately saving lives and fostering a supportive community for families.
+            </p>
+        </div>
+        
+        <!-- Video Section -->
+        <div class="video-section">
+            <h3 class="video-title">Still Aware's Advocacy in Action</h3>
+            <div class="video-placeholder">
+                [Video Embed: Still Aware Advocacy & Committee Appearance]
+            </div>
+        </div>
+        
+        <!-- Inquiry Section -->
+        <div class="inquiry-section">
+            <div class="inquiry-header">
+                <h2 class="inquiry-title">The SA Select Committee Inquiry</h2>
+                <p class="inquiry-intro">
+                    Ms Savvas has already met with medical experts in this field from the Women's and Children's Hospital, as well as community support groups, to hear about the work that is already underway in this space, and how we could assist further.
+                </p>
+            </div>
+            
+            <!-- Focus Areas -->
+            <div class="focus-areas">
+                <h3 class="focus-title">The Committee Will Investigate and Report On:</h3>
+                <div class="focus-grid">
+                    <div class="focus-item">
+                        <span class="focus-bullet"></span>
+                        <span class="focus-item-text">Best practice stillbirth prevention measures for expectant parents</span>
+                    </div>
+                    
+                    <div class="focus-item">
+                        <span class="focus-bullet"></span>
+                        <span class="focus-item-text">Public education programs to increase community awareness of stillbirth and where people can access support</span>
+                    </div>
+                    
+                    <div class="focus-item">
+                        <span class="focus-bullet"></span>
+                        <span class="focus-item-text">Models of care in pregnancy and after stillbirth, including for priority populations</span>
+                    </div>
+                    
+                    <div class="focus-item">
+                        <span class="focus-bullet"></span>
+                        <span class="focus-item-text">Follow-up care including mental health support or care in subsequent pregnancies for parents after stillbirth</span>
+                    </div>
+                    
+                    <div class="focus-item">
+                        <span class="focus-bullet"></span>
+                        <span class="focus-item-text">Support and training for healthcare professionals</span>
+                    </div>
+                    
+                    <div class="focus-item">
+                        <span class="focus-bullet"></span>
+                        <span class="focus-item-text">Data collection, reporting and monitoring</span>
+                    </div>
+                    
+                    <div class="focus-item">
+                        <span class="focus-bullet"></span>
+                        <span class="focus-item-text">Allocation of research efforts</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="#" class="action-button">Click here to read our HANSARD</a>
+                <a href="#" class="action-button secondary">Download PDF</a>
+            </div>
+        </div>
+        
+        <!-- Impact Statement -->
+        <div class="impact-statement">
+            <p>
+                <strong>This inquiry represents a critical opportunity to drive systemic change in how stillbirth is understood, prevented, and responded to in South Australia.</strong>
+            </p>
+            <p>
+                The outcomes of this committee have the potential to save lives, improve care for families experiencing loss, and ensure that healthcare professionals have the training and resources they need to provide the best possible support.
+            </p>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Join Us in Making Change</h2>
+            <p class="cta-text">
+                Your voice matters. Support our advocacy efforts to improve stillbirth prevention and care across Australia.
+            </p>
+            <a href="#" class="cta-button">Get Involved in Advocacy</a>
+        </div>
+    </div>
+</body>
+</html>

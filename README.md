@@ -22,7 +22,7 @@ The pages in this section cover the core information about stillbirth.
 
 ## 2. Pregnancy and Prevention
 
-This section focuses on prevention, education, and managing a subsequent pregnancy. *The six actions previously detailed.*
+This section focuses on prevention, education, and managing a subsequent pregnancy.
 
 * [Daily Prevention](https://omarzdat.github.io/daily-actions-page-wireframe.html)
 * [I Am Expecting](https://omarzdat.github.io/i-am-expecting-page-wireframe.html) - *Trimesters page with dynamic content that responds to the user, a step by step guide included as a consolidated checklist*
@@ -35,7 +35,7 @@ This section focuses on prevention, education, and managing a subsequent pregnan
 
 Pages dedicated to providing resources and support for those who have experienced a loss and their loved ones. *A different emotional and informative approach to breaking down stillbirth, resource for families after loss.*
 
-* For Bereaved Parents
+* For Bereaved Parents - 
 * [Supporting a Loved One](https://omarzdat.github.io/supporting-loved-one-page-wireframe.html) - *Guidance for friends/family supporting bereaved parents*
 * [Stories of Remembrance](https://omarzdat.github.io/stories-page-wireframe.html) - *Consolidated stories*
 * Stories of Remembrance (matches the format of the stories of rememberance page, or merges with it depending on your goals)
@@ -45,7 +45,7 @@ Pages dedicated to providing resources and support for those who have experience
 Resources and information aimed at clinical professionals.
 
 * [Risk Factors](https://omarzdat.github.io/risk-factors-page-wireframe.html) - *Clinical eval content*
-* Resources and Articles - *Any resources being ordered for patients can be ordered here*
+* Resources and Articles - *Any resources being ordered for patients can be ordered here. for now, this can redirect to the shop site*
 * [Workshops](https://omarzdat.github.io/clinician-workshops-page-wireframe.html) - *This page consolidates workshop and any related information - upcoming session, evaluation, etc*
 
 ## 5. About Us
@@ -66,9 +66,3 @@ Opportunities for the public to support the organisation.
 * Become an Ambassador - *This page carried over from one of the sitemaps but I do not seem to see it on the website*
 * [Volunteer with Us](https://omarzdat.github.io/volunteer-page-wireframe.html) - *Motivational content, full volunteer signup workflow and testimonials*
 * [Our Events](https://omarzdat.github.io/events-page-wireframe.html) - *Event repository, displays upcoming, and past events. Each event has a page of its own to manage signups, or communicate important details*
-
-## Pages with Incomplete Status
-
-The following pages are noted as having "initial pages" status and may need further development:
-
-* Pregnancy Myths - current status: initial pages

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Still Aware Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: normal;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+        }
+        
+        .page-intro {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+        
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        /* Product Card */
+        .product-card {
+            border: 2px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 16px;
+            border-bottom: 2px solid #333;
+        }
+        
+        .product-info {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .product-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+        
+        .product-price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #a64d79;
+            margin-bottom: 20px;
+        }
+        
+        .product-note {
+            font-size: 13px;
+            color: #999;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        /* Button Container */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        /* Primary CTA - Instant Checkout */
+        .btn-checkout {
+            padding: 18px 30px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn-checkout:hover {
+            background-color: #8b3d63;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(166, 77, 121, 0.3);
+        }
+        
+        /* Secondary CTA - Add to Cart */
+        .btn-add-cart {
+            padding: 15px 30px;
+            background-color: white;
+            color: #a64d79;
+            border: 2px solid #a64d79;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn-add-cart:hover {
+            background-color: #f0e6ec;
+        }
+        
+        /* Cart Badge */
+        .cart-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #a64d79;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .cart-indicator:hover {
+            transform: scale(1.05);
+        }
+        
+        .cart-count {
+            background-color: white;
+            color: #a64d79;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        /* Checkout Modal */
+        .checkout-modal {
+            background-color: white;
+            border: 3px solid #333;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #999;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+        
+        .modal-close:hover {
+            color: #333;
+        }
+        
+        .modal-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .checkout-step {
+            margin-bottom: 30px;
+        }
+        
+        .step-label {
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #a64d79;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #a64d79;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .order-summary {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: bold;
+            padding-top: 15px;
+            border-top: 2px solid #ddd;
+            margin-top: 15px;
+        }
+        
+        .btn-complete-order {
+            width: 100%;
+            padding: 18px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-complete-order:hover {
+            background-color: #8b3d63;
+        }
+        
+        /* Thank You Screen */
+        .thankyou-screen {
+            text-align: center;
+        }
+        
+        .thankyou-icon {
+            font-size: 64px;
+            color: #a64d79;
+            margin-bottom: 20px;
+        }
+        
+        .thankyou-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .thankyou-message {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        
+        .upsell-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid #ddd;
+        }
+        
+        .upsell-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        
+        .upsell-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .upsell-card {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .upsell-card:hover {
+            border-color: #a64d79;
+            transform: scale(1.02);
+        }
+        
+        .upsell-image {
+            width: 100%;
+            height: 150px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .upsell-info {
+            padding: 15px;
+        }
+        
+        .upsell-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .upsell-price {
+            font-size: 18px;
+            color: #a64d79;
+            font-weight: bold;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .upsell-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .checkout-modal {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-overlay.active .checkout-modal {
+            animation: fadeIn 0.4s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cart Indicator -->
+    <div class="cart-indicator" onclick="openCart()">
+        🛒 Cart <span class="cart-count">0</span>
+    </div>
+    
+    <div class="container">
+        <h1>Shop Still Aware</h1>
+        <p class="page-intro">
+            Support our mission while getting valuable resources for your pregnancy journey. All proceeds help us continue our work in preventing stillbirth.
+        </p>
+        
+        <!-- Products Grid -->
+        <div class="products-grid">
+            <!-- Product 1: Your Pregnancy Brochure -->
+            <div class="product-card">
+                <div class="product-image">[Brochure Image]</div>
+                <div class="product-info">
+                    <div class="product-title">'Your Pregnancy' Brochure</div>
+                    <div class="product-description">
+                        Comprehensive guide with evidence-based information, advice, and guidance for clinicians and families.
+                    </div>
+                    <div class="product-price">$0</div>
+                    <div class="product-note">Note: Still Aware is unable to ship to PO Boxes.</div>
+                    <div class="button-container">
+                        <button class="btn-checkout" onclick="openCheckout('Your Pregnancy Brochure', 0)">
+                            Get Brochure Now →
+                        </button>
+                        <button class="btn-add-cart" onclick="addToCart('Your Pregnancy Brochure', 0)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2: Safe Bubba Brochure -->
+            <div class="product-card">
+                <div class="product-image">[Safe Bubba Image]</div>
+                <div class="product-info">
+                    <div class="product-title">Safe Bubba Brochure</div>
+                    <div class="product-description">
+                        Mob came together to help you be aware of ways to Keep Bubba Safe and Strong.
+                    </div>
+                    <div class="product-price">$0</div>
+                    <div class="product-note">Note: Still Aware is unable to ship to PO Boxes.</div>
+                    <div class="button-container">
+                        <button class="btn-checkout" onclick="openCheckout('Safe Bubba Brochure', 0)">
+                            Get Brochure Now →
+                        </button>
+                        <button class="btn-add-cart" onclick="addToCart('Safe Bubba Brochure', 0)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3: Daily Actions Sticker -->
+            <div class="product-card">
+                <div class="product-image">[Sticker Image]</div>
+                <div class="product-info">
+                    <div class="product-title">'Daily Actions' Sticker</div>
+                    <div class="product-description">
+                        Quick reference guide with daily actions for a safer pregnancy. Perfect for your fridge or mirror.
+                    </div>
+                    <div class="product-price">$0</div>
+                    <div class="product-note">Note: Still Aware is unable to ship to PO Boxes.</div>
+                    <div class="button-container">
+                        <button class="btn-checkout" onclick="openCheckout('Daily Actions Sticker', 0)">
+                            Get Sticker Now →
+                        </button>
+                        <button class="btn-add-cart" onclick="addToCart('Daily Actions Sticker', 0)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4: Clinic Poster -->
+            <div class="product-card">
+                <div class="product-image">[Poster Image]</div>
+                <div class="product-info">
+                    <div class="product-title">Clinic Poster</div>
+                    <div class="product-description">
+                        Professional poster for healthcare settings with key pregnancy safety information.
+                    </div>
+                    <div class="product-price">$0</div>
+                    <div class="product-note">Note: Still Aware is unable to ship to PO Boxes.</div>
+                    <div class="button-container">
+                        <button class="btn-checkout" onclick="openCheckout('Clinic Poster', 0)">
+                            Get Poster Now →
+                        </button>
+                        <button class="btn-add-cart" onclick="addToCart('Clinic Poster', 0)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 5: Hand Heart -->
+            <div class="product-card">
+                <div class="product-image">[Hand Heart Image]</div>
+                <div class="product-info">
+                    <div class="product-title">Hand Heart</div>
+                    <div class="product-description">
+                        A little life, never a little loss. This "hand heart" has been crafted by artisans from olive trees in Bethlehem. Each heart is unique and individual, just like the little life it is provided in memory of.
+                    </div>
+                    <div class="product-price">$30</div>
+                    <div class="product-note">6L x 2.5D x 5W</div>
+                    <div class="button-container">
+                        <button class="btn-checkout" onclick="openCheckout('Hand Heart', 30)">
+                            Buy Now →
+                        </button>
+                        <button class="btn-add-cart" onclick="addToCart('Hand Heart', 30)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 6: Still Aware Merch -->
+            <div class="product-card">
+                <div class="product-image">[Merch Image]</div>
+                <div class="product-info">
+                    <div class="product-title">Still Aware Merch</div>
+                    <div class="product-description">
+                        Show your support with official Still Aware merchandise. Various items available.
+                    </div>
+                    <div class="product-price">$25</div>
+                    <div class="product-note">Support our mission</div>
+                    <div class="button-container">
+                        <button class="btn-checkout" onclick="openCheckout('Still Aware Merch', 25)">
+                            Buy Now →
+                        </button>
+                        <button class="btn-add-cart" onclick="addToCart('Still Aware Merch', 25)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 7: Awareness Shirt -->
+            <div class="product-card">
+                <div class="product-image">[Shirt Image]</div>
+                <div class="product-info">
+                    <div class="product-title">Awareness Shirt</div>
+                    <div class="product-description">
+                        Comfortable awareness shirt featuring Still Aware branding. Available in multiple sizes.
+                    </div>
+                    <div class="product-price">$35</div>
+                    <div class="product-note">100% organic cotton</div>
+                    <div class="button-container">
+                        <button class="btn-checkout" onclick="openCheckout('Awareness Shirt', 35)">
+                            Buy Now →
+                        </button>
+                        <button class="btn-add-cart" onclick="addToCart('Awareness Shirt', 35)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 8: Pregnancy Safety Book -->
+            <div class="product-card">
+                <div class="product-image">[Book Image]</div>
+                <div class="product-info">
+                    <div class="product-title">Pregnancy Safety Book</div>
+                    <div class="product-description">
+                        Comprehensive guide to pregnancy safety backed by research and real stories from families.
+                    </div>
+                    <div class="product-price">$45</div>
+                    <div class="product-note">200+ pages of essential information</div>
+                    <div class="button-container">
+                        <button class="btn-checkout" onclick="openCheckout('Pregnancy Safety Book', 45)">
+                            Buy Now →
+                        </button>
+                        <button class="btn-add-cart" onclick="addToCart('Pregnancy Safety Book', 45)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="checkout-modal">
+            <div class="modal-close" onclick="closeCheckout()">×</div>
+            
+            <div id="checkoutForm">
+                <div class="modal-title">Checkout</div>
+                
+                <div class="checkout-step">
+                    <div class="step-label">Order Summary</div>
+                    <div class="order-summary">
+                        <div class="order-item">
+                            <span id="orderItemName">Item Name</span>
+                            <span id="orderItemPrice">$0.00</span>
+                        </div>
+                        <div class="order-total">
+                            <span>Total</span>
+                            <span id="orderTotal">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="checkout-step">
+                    <div class="step-label">Contact Information</div>
+                    <div class="form-group">
+                        <label>Email*</label>
+                        <input type="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+                
+                <div class="checkout-step">
+                    <div class="step-label">Shipping Address</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name*</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name*</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Street Address*</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>City*</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>State*</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Postcode*</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Country*</label>
+                            <select required>
+                                <option>Australia</option>
+                                <option>New Zealand</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel">
+                    </div>
+                </div>
+                
+                <div class="checkout-step" id="paymentSection">
+                    <div class="step-label">Payment Information</div>
+                    <div class="form-group">
+                        <label>Card Number*</label>
+                        <input type="text" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry Date*</label>
+                            <input type="text" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CVV*</label>
+                            <input type="text" placeholder="123" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-complete-order" onclick="completeOrder()">
+                    Complete Order →
+                </button>
+            </div>
+            
+            <!-- Thank You Screen (Hidden by default) -->
+            <div id="thankYouScreen" style="display: none;">
+                <div class="thankyou-screen">
+                    <div class="thankyou-icon">✓</div>
+                    <div class="thankyou-title">Thank You!</div>
+                    <div class="thankyou-message">
+                        Your order has been confirmed. You'll receive a confirmation email shortly with tracking information.
+                    </div>
+                    
+                    <div class="upsell-section">
+                        <div class="upsell-title">You Might Also Like</div>
+                        <div class="upsell-grid">
+                            <div class="upsell-card" onclick="openCheckout('Hand Heart', 30)">
+                                <div class="upsell-image">[Hand Heart]</div>
+                                <div class="upsell-info">
+                                    <div class="upsell-name">Hand Heart</div>
+                                    <div class="upsell-price">$30</div>
+                                </div>
+                            </div>
+                            <div class="upsell-card" onclick="openCheckout('Pregnancy Safety Book', 45)">
+                                <div class="upsell-image">[Book]</div>
+                                <div class="upsell-info">
+                                    <div class="upsell-name">Pregnancy Safety Book</div>
+                                    <div class="upsell-price">$45</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let cartCount = 0;
+        let currentItem = { name: '', price: 0 };
+        
+        function updateCartBadge() {
+            document.querySelector('.cart-count').textContent = cartCount;
+        }
+        
+        function addToCart(itemName, price) {
+            cartCount++;
+            updateCartBadge();
+            
+            // Visual feedback
+            const badge = document.querySelector('.cart-indicator');
+            badge.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                badge.style.transform = 'scale(1)';
+            }, 200);
+        }
+        
+        function openCart() {
+            // This would show cart contents in a real implementation
+            alert('Cart functionality would show all items here');
+        }
+        
+        function openCheckout(itemName, price) {
+            currentItem = { name: itemName, price: price };
+            
+            document.getElementById('orderItemName').textContent = itemName;
+            document.getElementById('orderItemPrice').textContent = price === 0 ? 'FREE' : '$' + price;
+            document.getElementById('orderTotal').textContent = price === 0 ? 'FREE' : '$' + price;
+            
+            // Hide/show payment section based on price
+            const paymentSection = document.getElementById('paymentSection');
+            if (price === 0) {
+                paymentSection.style.display = 'none';
+            } else {
+                paymentSection.style.display = 'block';
+            }
+            
+            // Show modal
+            document.getElementById('checkoutModal').classList.add('active');
+            document.getElementById('checkoutForm').style.display = 'block';
+            document.getElementById('thankYouScreen').style.display = 'none';
+        }
+        
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.remove('active');
+        }
+        
+        function completeOrder() {
+            // Hide form, show thank you
+            document.getElementById('checkoutForm').style.display = 'none';
+            document.getElementById('thankYouScreen').style.display = 'block';
+            
+            // Reset cart
+            cartCount = 0;
+            updateCartBadge();
+        }
+        
+        // Close modal on outside click
+        document.getElementById('checkoutModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCheckout();
+            }
+        });
+    </script>
+</body>
+</html>

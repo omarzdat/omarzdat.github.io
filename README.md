@@ -29,6 +29,7 @@ This section focuses on prevention, education, and managing a subsequent pregnan
 * [Tracking Your Pregnancy](https://omarzdat.github.io/track-pregnancy-page-wireframe.html) - *Fetal movement tracking, engagement tools, any research re this*
 * [For Partners and Family](https://omarzdat.github.io/partners-family-page-wireframe.html) - *What you need to know (as partner/family), how to help monitor, providing support throughout*
 * [Common Myths](https://omarzdat.github.io/pregnancy-myths-page-wireframe.html) - *Existing myths across the site*
+* [Shop](https://omarzdat.github.io/shop-page-wireframe.html) - *High-converting product listing with dual CTA strategy (instant checkout + add to cart), guest checkout flow, and post-purchase upsells*
 * Get Resources - *Anything that is downloadable as a resource and does not cost anything should live here - the section can be made salient in the dropdown menu. For the time being, this can redirect to stillaware.shop*
 
 ## 3. Support After Loss

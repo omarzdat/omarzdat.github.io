@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Events - Wireframe</title>
+    <title>Our Events - Still Aware</title>
     <style>
         * {
             margin: 0;
@@ -15,206 +15,279 @@
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
             margin: 0;
-            padding: 0;
+            overflow-x: hidden;
         }
         
+        /* Hero Section - Matching Work With Us Style */
         .hero-section {
-            height: 100vh;
+            height: 50vh;
             background-color: #ddd;
-            background-image: url('placeholder');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            border-bottom: 3px solid #333;
         }
         
-        .hero-overlay {
+        .hero-placeholder {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .hero-content {
-            text-align: center;
-            color: white;
-            z-index: 1;
-        }
-        
-        .hero-title {
-            font-size: 56px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero-link {
-            display: inline-block;
-            padding: 15px 40px;
-            background-color: white;
-            color: #333;
-            text-decoration: none;
             font-size: 18px;
-            font-weight: bold;
-            border: 2px solid #333;
-            border-radius: 5px;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .hero-link:hover {
-            background-color: #333;
-            color: white;
-        }
-        
-        .hero-placeholder-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
             color: #999;
-            text-align: center;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Header Section - Matching Work With Us Style */
+        .header-section {
             background-color: white;
             padding: 60px 40px;
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
         }
         
-        h1 {
-            font-size: 36px;
-            margin-bottom: 40px;
-            font-weight: normal;
-            border-bottom: 2px solid #333;
-            padding-bottom: 20px;
-        }
-        
-        .section {
-            margin-bottom: 50px;
-        }
-        
-        .section:last-child {
-            margin-bottom: 0;
-        }
-        
-        .section-title {
-            font-size: 24px;
-            margin-bottom: 20px;
+        .main-title {
+            font-size: 48px;
             font-weight: bold;
+            margin-bottom: 20px;
             color: #333;
         }
         
+        .flavor-text {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            padding: 80px 40px;
+        }
+        
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .section-white {
+            background-color: white;
+        }
+        
+        .section-gray {
+            background-color: #f9f9f9;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        
+        /* Events List */
         .events-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 25px;
         }
         
+        /* Event Card - Matching Work With Us Card Style */
         .event-card {
+            background-color: white;
             border: 2px solid #333;
             border-radius: 8px;
-            padding: 25px 30px;
-            background-color: #ddd;
-            background-size: cover;
-            background-position: center;
+            padding: 30px 35px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
             overflow: hidden;
-            min-height: 120px;
         }
         
-        .event-card::before {
-            content: '';
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-card-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #999;
+            border-left: 2px solid #333;
+        }
+        
+        .event-info {
+            flex: 1;
+            padding-right: 220px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .event-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: #f0e6ec;
+            color: #a64d79;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .event-badge.past {
+            background-color: #f0f0f0;
+            color: #999;
+        }
+        
+        .event-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        
+        .event-description {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .event-meta {
+            display: flex;
+            gap: 25px;
+            font-size: 14px;
+            color: #666;
+            flex-wrap: wrap;
+        }
+        
+        .event-date,
+        .event-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .event-arrow {
+            font-size: 28px;
+            color: #a64d79;
+            position: absolute;
+            right: 230px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+        }
+        
+        .event-card:hover .event-arrow {
+            transform: translateY(-50%) translateX(5px);
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #a64d79;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #a64d79;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #8a3d63;
+            border-color: #8a3d63;
+        }
+        
+        .cta-button-outline {
+            background-color: white;
+            color: #a64d79;
+        }
+        
+        .cta-button-outline:hover {
+            background-color: #a64d79;
+            color: white;
+        }
+        
+        /* Final CTA Section */
+        .final-cta-section {
+            min-height: 40vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            padding: 80px 40px;
+        }
+        
+        .cta-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(255, 255, 255, 0.85);
-            z-index: 0;
-            transition: all 0.2s ease;
+            background-color: rgba(0, 0, 0, 0.5);
         }
         
-        .event-card:hover::before {
-            background-color: rgba(255, 255, 255, 0.75);
-        }
-        
-        .event-card:hover {
-            transform: translateX(5px);
-        }
-        
-        .event-card::after {
-            content: '[Event Image]';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 14px;
-            color: #ccc;
-            z-index: 0;
-        }
-        
-        .event-info {
-            flex: 1;
+        .cta-content {
             position: relative;
             z-index: 1;
+            color: white;
         }
         
-        .event-title {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #333;
+        .cta-content h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
-        .event-meta {
-            display: flex;
-            gap: 20px;
-            font-size: 14px;
-            color: #666;
+        .cta-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
         
-        .event-date,
-        .event-location,
-        .event-status {
-            display: flex;
-            align-items: center;
+        .cta-button-white {
+            background-color: white;
+            color: #a64d79;
+            border-color: white;
         }
         
-        .event-status {
-            font-weight: bold;
+        .cta-button-white:hover {
+            background-color: #a64d79;
+            color: white;
+            border-color: #a64d79;
         }
         
-        .status-upcoming {
-            color: #0066cc;
-        }
-        
-        .status-past {
-            color: #999;
-        }
-        
-        .event-arrow {
-            font-size: 24px;
-            color: #333;
-            position: relative;
-            z-index: 1;
-        }
-        
+        /* Empty State */
         .empty-state {
             text-align: center;
             padding: 60px 20px;
@@ -224,106 +297,184 @@
             border-radius: 8px;
         }
         
+        /* Responsive */
+        @media (max-width: 900px) {
+            .event-card-image {
+                display: none;
+            }
+            
+            .event-info {
+                padding-right: 50px;
+            }
+            
+            .event-arrow {
+                right: 20px;
+            }
+        }
+        
         @media (max-width: 768px) {
+            .header-section {
+                padding: 40px 20px;
+            }
+            
+            .main-title {
+                font-size: 36px;
+            }
+            
+            .content-section {
+                padding: 60px 20px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
             .event-card {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 15px;
+                padding: 25px;
+            }
+            
+            .event-info {
+                padding-right: 0;
             }
             
             .event-meta {
                 flex-direction: column;
-                gap: 8px;
+                gap: 10px;
             }
             
             .event-arrow {
+                position: static;
+                transform: none;
                 align-self: flex-end;
+                margin-top: 15px;
+            }
+            
+            .event-card:hover .event-arrow {
+                transform: translateX(5px);
+            }
+            
+            .final-cta-section {
+                padding: 60px 20px;
+            }
+            
+            .cta-content h2 {
+                font-size: 32px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Hero Banner -->
     <div class="hero-section">
-        <div class="hero-placeholder-text">[Hero Image Background]</div>
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1 class="hero-title">Our Events</h1>
-                <a href="#events-content" class="hero-link">Explore Events</a>
+        <div class="hero-placeholder">[Events Hero Image]</div>
+    </div>
+    
+    <!-- Header -->
+    <div class="header-section">
+        <h1 class="main-title">Our Events</h1>
+        <p class="flavor-text">Join us at our upcoming events and be part of our community. From galas to fundraisers, every gathering is an opportunity to connect, celebrate, and make a difference together.</p>
+    </div>
+    
+    <!-- Upcoming Events Section -->
+    <div class="content-section section-white">
+        <div class="content-wrapper">
+            <h2 class="section-title">Upcoming Events</h2>
+            <p class="section-subtitle">Mark your calendar and join us at these upcoming gatherings. Each event is a chance to connect with our community and support our mission.</p>
+            
+            <div class="events-list">
+                <div class="event-card">
+                    <div class="event-info">
+                        <span class="event-badge">Upcoming</span>
+                        <div class="event-title">Gala Dinner</div>
+                        <div class="event-description">An elegant evening of fine dining, entertainment, and community connection. Join us for an unforgettable night supporting our cause.</div>
+                        <div class="event-meta">
+                            <span class="event-date">📅 December 15, 2025</span>
+                            <span class="event-location">📍 Grand Ballroom</span>
+                        </div>
+                    </div>
+                    <div class="event-arrow">→</div>
+                    <div class="event-card-image">[Event Image]</div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-info">
+                        <span class="event-badge">Upcoming</span>
+                        <div class="event-title">Birthday for Babies</div>
+                        <div class="event-description">A heartwarming celebration dedicated to honoring precious lives. Come together with families and supporters for this meaningful occasion.</div>
+                        <div class="event-meta">
+                            <span class="event-date">📅 January 20, 2026</span>
+                            <span class="event-location">📍 Community Center</span>
+                        </div>
+                    </div>
+                    <div class="event-arrow">→</div>
+                    <div class="event-card-image">[Event Image]</div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-info">
+                        <span class="event-badge">Upcoming</span>
+                        <div class="event-title">Gala Dinner 2026</div>
+                        <div class="event-description">Our annual flagship event returns with an evening of celebration, inspiration, and community. Save the date for this spectacular gathering.</div>
+                        <div class="event-meta">
+                            <span class="event-date">📅 March 10, 2026</span>
+                            <span class="event-location">📍 Convention Center</span>
+                        </div>
+                    </div>
+                    <div class="event-arrow">→</div>
+                    <div class="event-card-image">[Event Image]</div>
+                </div>
             </div>
         </div>
     </div>
     
-    <div class="container" id="events-content">
-        <h1>Our Events</h1>
-        
-        <div class="section">
-            <div class="section-title">Upcoming Events</div>
+    <!-- Past Events Section -->
+    <div class="content-section section-gray">
+        <div class="content-wrapper">
+            <h2 class="section-title">Past Events</h2>
+            <p class="section-subtitle">Take a look back at our previous gatherings and the memories we've created together as a community.</p>
+            
             <div class="events-list">
                 <div class="event-card">
                     <div class="event-info">
-                        <div class="event-title">Gala Dinner</div>
-                        <div class="event-meta">
-                            <span class="event-date">📅 December 15, 2025</span>
-                            <span class="event-location">📍 Grand Ballroom</span>
-                            <span class="event-status status-upcoming">Upcoming</span>
-                        </div>
-                    </div>
-                    <div class="event-arrow">→</div>
-                </div>
-                
-                <div class="event-card">
-                    <div class="event-info">
-                        <div class="event-title">Birthday for Babies</div>
-                        <div class="event-meta">
-                            <span class="event-date">📅 January 20, 2026</span>
-                            <span class="event-location">📍 Community Center</span>
-                            <span class="event-status status-upcoming">Upcoming</span>
-                        </div>
-                    </div>
-                    <div class="event-arrow">→</div>
-                </div>
-                
-                <div class="event-card">
-                    <div class="event-info">
-                        <div class="event-title">Gala Dinner 2026</div>
-                        <div class="event-meta">
-                            <span class="event-date">📅 March 10, 2026</span>
-                            <span class="event-location">📍 Convention Center</span>
-                            <span class="event-status status-upcoming">Upcoming</span>
-                        </div>
-                    </div>
-                    <div class="event-arrow">→</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <div class="section-title">Past Events</div>
-            <div class="events-list">
-                <div class="event-card">
-                    <div class="event-info">
+                        <span class="event-badge past">Past</span>
                         <div class="event-title">Annual Fundraiser 2024</div>
+                        <div class="event-description">A successful evening of fundraising and community spirit that brought together supporters from across the region.</div>
                         <div class="event-meta">
                             <span class="event-date">📅 October 5, 2024</span>
                             <span class="event-location">📍 City Hall</span>
-                            <span class="event-status status-past">Past</span>
                         </div>
                     </div>
                     <div class="event-arrow">→</div>
+                    <div class="event-card-image">[Event Image]</div>
                 </div>
                 
                 <div class="event-card">
                     <div class="event-info">
+                        <span class="event-badge past">Past</span>
                         <div class="event-title">Summer Gala 2024</div>
+                        <div class="event-description">A beautiful summer evening celebrating our community and the progress we've made together throughout the year.</div>
                         <div class="event-meta">
                             <span class="event-date">📅 July 15, 2024</span>
                             <span class="event-location">📍 Waterfront Venue</span>
-                            <span class="event-status status-past">Past</span>
                         </div>
                     </div>
                     <div class="event-arrow">→</div>
+                    <div class="event-card-image">[Event Image]</div>
                 </div>
             </div>
+        </div>
+    </div>
+    
+    <!-- Final CTA Section -->
+    <div class="final-cta-section">
+        <div class="hero-placeholder" style="z-index: 0;">[Inspiring CTA Background Image]</div>
+        <div class="cta-overlay"></div>
+        <div class="cta-content">
+            <h2>Don't Miss Out</h2>
+            <p>Stay connected and be the first to know about upcoming events.</p>
+            <a href="#" class="cta-button cta-button-white">Subscribe to Updates</a>
         </div>
     </div>
 </body>

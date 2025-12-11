@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Resources - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        /* Intro Section */
+        .intro-section {
+            margin-bottom: 50px;
+        }
+        
+        .intro-text {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* PDF Download Section */
+        .pdf-download-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #a64d79 0%, #8a3d63 100%);
+            border-radius: 8px;
+            margin-bottom: 60px;
+            color: white;
+        }
+        
+        .pdf-download-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .pdf-download-text {
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .download-button {
+            padding: 18px 50px;
+            background-color: white;
+            color: #a64d79;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .download-button:hover {
+            background-color: #f0e6ec;
+            transform: translateY(-2px);
+        }
+        
+        /* Section Title */
+        .section-title {
+            font-size: 32px;
+            color: #a64d79;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        /* Video Section */
+        .video-section {
+            margin: 60px 0;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        
+        .video-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+        
+        .video-card:hover {
+            border-color: #a64d79;
+            box-shadow: 0 5px 20px rgba(166, 77, 121, 0.15);
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 180px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            position: relative;
+        }
+        
+        .play-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(166, 77, 121, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-title {
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .video-duration {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin: 60px 0;
+        }
+        
+        .faq-item {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            transition: all 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: #f0e6ec;
+            color: #a64d79;
+        }
+        
+        .faq-icon {
+            font-size: 20px;
+            color: #a64d79;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px 25px;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* How This Resource Was Made Section */
+        .resource-info-section {
+            margin: 60px 0;
+        }
+        
+        .collapsible-section {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .collapsible-header {
+            padding: 25px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .collapsible-header:hover {
+            background-color: #f0e6ec;
+        }
+        
+        .collapsible-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .collapsible-icon {
+            font-size: 24px;
+            color: #a64d79;
+            transition: transform 0.3s;
+        }
+        
+        .collapsible-section.active .collapsible-icon {
+            transform: rotate(180deg);
+        }
+        
+        .collapsible-content {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .collapsible-section.active .collapsible-content {
+            padding: 25px;
+            max-height: 1000px;
+        }
+        
+        .collapsible-content p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .collapsible-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Donation CTA Section */
+        .donation-section {
+            margin: 60px 0;
+            padding: 50px;
+            background: linear-gradient(135deg, #f0e6ec 0%, #faf5f8 100%);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .donation-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .donation-text {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .donate-button {
+            padding: 18px 50px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .donate-button:hover {
+            background-color: #8a3d63;
+            transform: translateY(-2px);
+        }
+        
+        .donation-note {
+            font-size: 13px;
+            color: #888;
+            margin-top: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pdf-download-section,
+            .donation-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <span class="hero-banner-placeholder">[Warm, Culturally Relevant Banner Image]</span>
+    </div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">English Resources</h1>
+        </div>
+        
+        <!-- Intro Section -->
+        <div class="intro-section">
+            <p class="intro-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+            </p>
+        </div>
+        
+        <!-- PDF Download Section -->
+        <div class="pdf-download-section">
+            <h2 class="pdf-download-title">Download Our Safe Pregnancy Guide</h2>
+            <p class="pdf-download-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <a href="#" class="download-button">Download PDF Brochure</a>
+        </div>
+        
+        <!-- Video Section -->
+        <div class="video-section">
+            <h2 class="section-title">Video Presentations</h2>
+            
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Video 1</h3>
+                        <p class="video-duration">Duration: 0:00</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Video 2</h3>
+                        <p class="video-duration">Duration: 0:00</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Video 3</h3>
+                        <p class="video-duration">Duration: 0:00</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Video 4</h3>
+                        <p class="video-duration">Duration: 0:00</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Video 5</h3>
+                        <p class="video-duration">Duration: 0:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Question 1</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Question 2</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Question 3</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Question 4</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Question 5</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- How This Resource Was Made Section -->
+        <div class="resource-info-section">
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <span class="collapsible-title">How This Resource Was Made</span>
+                    <span class="collapsible-icon">▼</span>
+                </div>
+                <div class="collapsible-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</p>
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Donation CTA Section -->
+        <div class="donation-section">
+            <h2 class="donation-title">Support Our Mission</h2>
+            <p class="donation-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <a href="#" class="donate-button">Donate Now</a>
+            <p class="donation-note">This donation will be tagged to support [Language] community resources</p>
+        </div>
+    </div>
+    
+    <script>
+        // Toggle FAQ items
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
+        
+        // Toggle collapsible sections
+        function toggleCollapsible(element) {
+            const section = element.parentElement;
+            section.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

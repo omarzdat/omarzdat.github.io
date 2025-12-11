@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift a Hand Heart - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            height: 50vh;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-banner-placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px 40px;
+        }
+        
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #a64d79;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        /* Intro Section */
+        .intro-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+        
+        .intro-text h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .intro-text p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .intro-image {
+            width: 100%;
+            height: 350px;
+            background-color: #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Product Section */
+        .product-section {
+            margin: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+        
+        .product-card {
+            max-width: 350px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-name {
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .product-tagline {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .product-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .product-dimensions {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+        
+        .product-price {
+            font-size: 24px;
+            color: #5eb59b;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #5eb59b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .add-to-cart-btn:hover {
+            background-color: #4a9d85;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .intro-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro-image {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <span class="hero-banner-placeholder">[Hand Hearts Banner Image]</span>
+    </div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">Gift a Hand Heart</h1>
+        </div>
+        
+        <!-- Intro Section -->
+        <div class="intro-section">
+            <div class="intro-text">
+                <h2>Subheading Here</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="intro-image">
+                [Product Image]
+            </div>
+        </div>
+        
+        <!-- Product Section -->
+        <div class="product-section">
+            <h2 class="section-title">Gift a Hand Heart to a loved one or bereaved parent below:</h2>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Hand Heart</h3>
+                    <p class="product-tagline">Lorem ipsum dolor sit amet</p>
+                    <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                    <p class="product-dimensions">6L x 2.5D x 5W</p>
+                    <p class="product-price">$30</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

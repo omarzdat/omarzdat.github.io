@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volunteer With Us - Wireframe</title>
+    <title>Work With Us - Wireframe</title>
     <style>
         * {
             margin: 0;
@@ -81,8 +81,8 @@
             background-color: #f9f9f9;
         }
         
-        /* Why Volunteer Section */
-        .why-section {
+        /* Intro Section */
+        .intro-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
@@ -102,15 +102,115 @@
             margin-bottom: 20px;
         }
         
+        .image-placeholder {
+            aspect-ratio: 4/3;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #333;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #999;
+        }
+        
+        /* Pathways Section */
+        .pathways-section {
+            text-align: center;
+        }
+        
+        .pathways-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .pathways-section > p {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+        }
+        
+        .pathways-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .pathway-card {
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .pathway-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pathway-card h3 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .pathway-card .tagline {
+            font-size: 16px;
+            color: #a64d79;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .pathway-card p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .pathway-card h4 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+        
+        .pathway-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+        
+        .pathway-card ul li {
+            font-size: 15px;
+            color: #555;
+            padding: 8px 0 8px 25px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .pathway-card ul li::before {
+            content: "✓";
+            color: #a64d79;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
         .cta-button {
             display: inline-block;
             padding: 15px 40px;
-            background-color: #333;
+            background-color: #a64d79;
             color: white;
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
-            border: 2px solid #333;
+            border: 2px solid #a64d79;
             border-radius: 5px;
             margin-top: 20px;
             cursor: pointer;
@@ -118,8 +218,18 @@
         }
         
         .cta-button:hover {
+            background-color: #8a3d63;
+            border-color: #8a3d63;
+        }
+        
+        .cta-button-outline {
             background-color: white;
-            color: #333;
+            color: #a64d79;
+        }
+        
+        .cta-button-outline:hover {
+            background-color: #a64d79;
+            color: white;
         }
         
         .image-placeholder {
@@ -210,6 +320,17 @@
             border-radius: 8px;
             padding: 30px;
             position: relative;
+        }
+        
+        .testimonial-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: #f0e6ec;
+            color: #a64d79;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 20px;
+            margin-bottom: 15px;
         }
         
         .quote-mark {
@@ -304,12 +425,14 @@
         
         .cta-button-white {
             background-color: white;
-            color: #333;
+            color: #a64d79;
+            border-color: white;
         }
         
         .cta-button-white:hover {
-            background-color: #333;
+            background-color: #a64d79;
             color: white;
+            border-color: #a64d79;
         }
         
         /* Modal */
@@ -331,12 +454,12 @@
         
         .modal-content {
             background-color: white;
-            margin: 5% auto;
+            margin: 3% auto;
             padding: 50px;
             border: 3px solid #333;
             border-radius: 8px;
             width: 90%;
-            max-width: 600px;
+            max-width: 650px;
             position: relative;
         }
         
@@ -388,7 +511,7 @@
         .form-select:focus,
         .form-textarea:focus {
             outline: none;
-            border-color: #333;
+            border-color: #a64d79;
         }
         
         .form-textarea {
@@ -396,12 +519,220 @@
             min-height: 100px;
         }
         
+        /* Pathway Selection */
+        .pathway-selection {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .pathway-selection-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .modal-pathway-card {
+            padding: 25px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-pathway-card:hover {
+            border-color: #a64d79;
+            background-color: #faf5f8;
+        }
+        
+        .modal-pathway-card h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .modal-pathway-card .tagline {
+            font-size: 14px;
+            color: #a64d79;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .modal-pathway-card > p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .modal-pathway-card h4 {
+            font-size: 15px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .modal-pathway-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        
+        .modal-pathway-card ul li {
+            font-size: 13px;
+            color: #555;
+            padding: 4px 0 4px 20px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .modal-pathway-card ul li::before {
+            content: "✓";
+            color: #a64d79;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 12px;
+        }
+        
+        .select-pathway-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #a64d79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .select-pathway-btn:hover {
+            background-color: #8a3d63;
+        }
+        
+        .back-btn {
+            background: none;
+            border: none;
+            color: #a64d79;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 25px;
+            padding: 0;
+        }
+        
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        
+        .pathway-option {
+            flex: 1;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .pathway-option:hover {
+            border-color: #a64d79;
+        }
+        
+        .pathway-option.selected {
+            border-color: #a64d79;
+            background-color: #f0e6ec;
+        }
+        
+        .pathway-option input {
+            display: none;
+        }
+        
+        .pathway-option h4 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .pathway-option p {
+            font-size: 13px;
+            color: #666;
+            margin: 0;
+        }
+        
+        /* Conditional Fields */
+        .conditional-fields {
+            display: none;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .conditional-fields.active {
+            display: block;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+        
+        .checkbox-group label {
+            font-size: 15px;
+            color: #333;
+            cursor: pointer;
+        }
+        
+        /* WIL Notice */
+        .wil-notice {
+            display: none;
+            padding: 20px;
+            background-color: #fff8e1;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .wil-notice.active {
+            display: block;
+        }
+        
+        .wil-notice h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .wil-notice p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .wil-notice ol {
+            margin-left: 20px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
         .submit-button {
             width: 100%;
             padding: 15px;
-            background-color: #333;
+            background-color: #a64d79;
             color: white;
-            border: 2px solid #333;
+            border: 2px solid #a64d79;
             border-radius: 5px;
             font-size: 18px;
             font-weight: bold;
@@ -410,13 +741,13 @@
         }
         
         .submit-button:hover {
-            background-color: white;
-            color: #333;
+            background-color: #8a3d63;
+            border-color: #8a3d63;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .why-section {
+            .intro-section {
                 grid-template-columns: 1fr;
             }
             
@@ -437,33 +768,37 @@
             .testimonials-section h2 {
                 font-size: 28px;
             }
+            
+            .pathway-selection-cards {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Hero Banner -->
     <div class="hero-section">
-        <div class="hero-placeholder">[Volunteers in Action Image]</div>
+        <div class="hero-placeholder">[Volunteers/Interns in Action Image]</div>
     </div>
     
     <!-- Header -->
     <div class="header-section">
-        <h1 class="main-title">Volunteer With Us</h1>
-        <p class="flavor-text">Join our community of passionate individuals making a real difference. Every hour you give creates ripples of positive change.</p>
+        <h1 class="main-title">Work With Us</h1>
+        <p class="flavor-text">Join our community of passionate individuals making a real difference. Whether you're looking to volunteer flexibly or complete a structured internship, we have a pathway for you.</p>
     </div>
     
-    <!-- Why Volunteer Section -->
+    <!-- Intro Section -->
     <div class="content-section section-white">
         <div class="content-wrapper">
-            <div class="why-section">
+            <div class="intro-section">
                 <div class="text-content">
-                    <h2>Why Volunteer?</h2>
-                    <p>Volunteering isn't just about giving back—it's about growing, connecting, and discovering your capacity to create change.</p>
-                    <p>You'll develop new skills, meet incredible people, and be part of something bigger than yourself. Whether you have a few hours a month or can commit to regular involvement, your contribution matters.</p>
-                    <p>Our volunteers consistently tell us that the experience has enriched their lives in unexpected ways, building confidence, expanding perspectives, and creating lasting friendships.</p>
-                    <button class="cta-button" onclick="openModal()">Sign Up to Volunteer</button>
+                    <h2>Why Work With Us?</h2>
+                    <p>Working with Still Aware isn't just about giving back—it's about growing, connecting, and discovering your capacity to create change.</p>
+                    <p>You'll develop new skills, meet incredible people, and be part of something bigger than yourself. Whether you have a few hours a month or can commit to a structured placement, your contribution matters.</p>
+                    <p>Our team members consistently tell us that the experience has enriched their lives in unexpected ways, building confidence, expanding perspectives, and creating lasting friendships.</p>
+                    <button class="cta-button" onclick="openModal()">Get Involved</button>
                 </div>
-                <div class="image-placeholder">[Inspiring Volunteer Photo]</div>
+                <div class="image-placeholder">[Inspiring Photo]</div>
             </div>
         </div>
     </div>
@@ -472,7 +807,7 @@
     <div class="content-section section-gray">
         <div class="content-wrapper what-section">
             <h2>What You'll Do</h2>
-            <p style="font-size: 18px; color: #666; max-width: 800px; margin: 0 auto 40px;">Our volunteers engage in diverse activities that match their interests and skills. Here's what you could be involved in:</p>
+            <p style="font-size: 18px; color: #666; max-width: 800px; margin: 0 auto 40px;">Our volunteers and interns engage in diverse activities that match their interests and skills. Here's what you could be involved in:</p>
             
             <div class="activities-grid">
                 <div class="activity-card">
@@ -507,25 +842,24 @@
                 
                 <div class="activity-card">
                     <div class="activity-icon">[Icon]</div>
-                    <div class="activity-title">Mentorship</div>
-                    <div class="activity-description">Share your experience and guide others in their personal and professional development.</div>
+                    <div class="activity-title">Research & Content</div>
+                    <div class="activity-description">Help with research projects, content creation, and educational resource development.</div>
                 </div>
             </div>
-            
-            <button class="cta-button" onclick="openModal()" style="margin-top: 50px;">Get Started Today</button>
         </div>
     </div>
     
     <!-- Testimonials Section -->
     <div class="content-section section-white">
         <div class="content-wrapper testimonials-section">
-            <h2>Hear From Our Volunteers</h2>
+            <h2>Hear From Our Team</h2>
             
             <div class="testimonials-grid">
                 <div class="testimonial-card">
+                    <span class="testimonial-badge">Volunteer</span>
                     <div class="quote-mark">"</div>
                     <div class="testimonial-text">
-                        Volunteering here has been one of the most rewarding experiences of my life. I've met amazing people and learned so much about myself and my community. It's given me a sense of purpose I didn't know I was missing.
+                        Volunteering here has been one of the most rewarding experiences of my life. I've met amazing people and learned so much about myself and my community. The flexibility means I can contribute even with my busy schedule.
                     </div>
                     <div class="testimonial-author">
                         <div class="author-photo">[Photo]</div>
@@ -537,20 +871,22 @@
                 </div>
                 
                 <div class="testimonial-card">
+                    <span class="testimonial-badge">Intern</span>
                     <div class="quote-mark">"</div>
                     <div class="testimonial-text">
-                        I started volunteering to give back, but I've received so much more than I've given. The friendships I've made and the skills I've developed have been incredible. It's become an essential part of my life.
+                        My internship at Still Aware was invaluable for my university WIL placement. I gained real-world experience, developed professional skills, and made a genuine impact. The mentorship I received was exceptional.
                     </div>
                     <div class="testimonial-author">
                         <div class="author-photo">[Photo]</div>
                         <div class="author-info">
                             <div class="author-name">James Chen</div>
-                            <div class="author-role">Volunteer since 2022</div>
+                            <div class="author-role">Intern, 2024</div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="testimonial-card">
+                    <span class="testimonial-badge">Volunteer</span>
                     <div class="quote-mark">"</div>
                     <div class="testimonial-text">
                         The flexibility and variety of opportunities make it easy to fit volunteering into my busy schedule. Whether I have an afternoon or a full day, there's always something meaningful I can contribute to.
@@ -565,15 +901,16 @@
                 </div>
                 
                 <div class="testimonial-card">
+                    <span class="testimonial-badge">Intern</span>
                     <div class="quote-mark">"</div>
                     <div class="testimonial-text">
-                        Being part of this volunteer community has opened doors I never expected. I've grown professionally and personally, and I'm proud to be making a real difference in people's lives.
+                        The structured internship program gave me clear goals and meaningful projects to work on. It fulfilled my university requirements while allowing me to contribute to a cause I care deeply about.
                     </div>
                     <div class="testimonial-author">
                         <div class="author-photo">[Photo]</div>
                         <div class="author-info">
-                            <div class="author-name">David Thompson</div>
-                            <div class="author-role">Volunteer since 2021</div>
+                            <div class="author-name">Emily Thompson</div>
+                            <div class="author-role">Intern, 2023</div>
                         </div>
                     </div>
                 </div>
@@ -587,18 +924,91 @@
         <div class="cta-overlay"></div>
         <div class="cta-content">
             <h2>Ready to Make a Difference?</h2>
-            <p>Join our volunteer community today and start your journey of impact.</p>
-            <button class="cta-button cta-button-white" onclick="openModal()">Sign Up Now</button>
+            <p>Join our team today and start your journey of impact.</p>
+            <button class="cta-button cta-button-white" onclick="openModal()">Apply Now</button>
         </div>
     </div>
     
     <!-- Modal Form -->
-    <div id="volunteerModal" class="modal">
+    <div id="applicationModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h2 class="modal-title">Volunteer Application</h2>
+            <h2 class="modal-title" id="modalTitle">Choose Your Pathway</h2>
             
-            <form id="volunteerForm">
+            <!-- Step 1: Pathway Selection -->
+            <div id="pathwayStep">
+                <p style="font-size: 16px; color: #555; margin-bottom: 30px; line-height: 1.6;">We offer two ways to get involved with Still Aware. Choose the option that best fits your situation.</p>
+                
+                <div class="pathway-selection-cards">
+                    <div class="modal-pathway-card" id="volunteerCard" onclick="selectPathway('volunteer')">
+                        <h3>Volunteer</h3>
+                        <p class="tagline">Flexible Involvement</p>
+                        <p>Perfect for those who want to contribute on their own schedule. No fixed commitments—give your time when it works for you.</p>
+                        <h4>What to Expect</h4>
+                        <ul>
+                            <li>Flexible hours based on your availability</li>
+                            <li>Choose from a variety of tasks and projects</li>
+                            <li>No minimum time commitment required</li>
+                            <li>Support and guidance from our team</li>
+                            <li>Be part of a welcoming community</li>
+                        </ul>
+                        <button type="button" class="select-pathway-btn">Select Volunteer</button>
+                    </div>
+                    
+                    <div class="modal-pathway-card" id="internCard" onclick="selectPathway('intern')">
+                        <h3>Intern</h3>
+                        <p class="tagline">Structured Placement</p>
+                        <p>Ideal for students seeking Work Integrated Learning (WIL) placements or those wanting a more structured experience with defined learning outcomes.</p>
+                        <h4>What to Expect</h4>
+                        <ul>
+                            <li>Structured placement with clear objectives</li>
+                            <li>Mentorship and professional development</li>
+                            <li>Suitable for university WIL requirements</li>
+                            <li>Defined project work and responsibilities</li>
+                            <li>Reference letter upon completion</li>
+                        </ul>
+                        <button type="button" class="select-pathway-btn">Select Intern</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 2: Application Form -->
+            <div id="formStep" style="display: none;">
+                <button type="button" class="back-btn" onclick="goBackToPathways()">← Back to pathways</button>
+                
+                <form id="applicationForm">
+                    <input type="hidden" id="selectedPathway" name="pathway" value="">
+                    
+                    <!-- Intern-specific fields -->
+                    <div class="conditional-fields" id="internFields">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="wilCheckbox" onchange="updateWilNotice()">
+                        <label for="wilCheckbox">I am completing this internship as part of a university Work Integrated Learning (WIL) requirement</label>
+                    </div>
+                    
+                    <div class="wil-notice" id="wilNotice">
+                        <h4>WIL Placement Process</h4>
+                        <p>For Work Integrated Learning placements, your university needs to initiate contact with Still Aware to establish the placement agreement.</p>
+                        <ol>
+                            <li>Contact your university's WIL coordinator</li>
+                            <li>Ask them to reach out to Still Aware to establish a placement</li>
+                            <li>Once the university agreement is in place, return here to complete your application</li>
+                        </ol>
+                        <p><strong>You can still submit this form to register your interest, and we'll follow up once we hear from your university.</strong></p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">University/Institution</label>
+                        <input type="text" class="form-input" id="university">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Course/Program</label>
+                        <input type="text" class="form-input" id="course">
+                    </div>
+                </div>
+                
+                <!-- Common fields -->
                 <div class="form-group">
                     <label class="form-label">First Name *</label>
                     <input type="text" class="form-input" required>
@@ -617,11 +1027,6 @@
                 <div class="form-group">
                     <label class="form-label">Phone Number *</label>
                     <input type="tel" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Address</label>
-                    <input type="text" class="form-input">
                 </div>
                 
                 <div class="form-group">
@@ -644,12 +1049,12 @@
                         <option value="admin">Administrative Support</option>
                         <option value="fundraising">Fundraising</option>
                         <option value="skills">Skills-Based Projects</option>
-                        <option value="mentorship">Mentorship</option>
+                        <option value="research">Research & Content</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">Tell us about yourself and why you want to volunteer *</label>
+                    <label class="form-label">Tell us about yourself and why you want to join us *</label>
                     <textarea class="form-textarea" required></textarea>
                 </div>
                 
@@ -659,35 +1064,91 @@
                 </div>
                 
                 <button type="submit" class="submit-button">Submit Application</button>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
     
     <script>
         function openModal() {
-            document.getElementById('volunteerModal').classList.add('active');
+            document.getElementById('applicationModal').classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            // Reset to pathway selection step
+            document.getElementById('pathwayStep').style.display = 'block';
+            document.getElementById('formStep').style.display = 'none';
+            document.getElementById('modalTitle').textContent = 'Choose Your Pathway';
+            document.getElementById('selectedPathway').value = '';
+            document.getElementById('internFields').classList.remove('active');
+            document.getElementById('wilNotice').classList.remove('active');
+            document.getElementById('wilCheckbox').checked = false;
+        }
+        
+        function selectPathway(pathway) {
+            document.getElementById('selectedPathway').value = pathway;
+            document.getElementById('pathwayStep').style.display = 'none';
+            document.getElementById('formStep').style.display = 'block';
+            
+            if (pathway === 'volunteer') {
+                document.getElementById('modalTitle').textContent = 'Volunteer Application';
+                document.getElementById('internFields').classList.remove('active');
+            } else {
+                document.getElementById('modalTitle').textContent = 'Intern Application';
+                document.getElementById('internFields').classList.add('active');
+            }
+        }
+        
+        function goBackToPathways() {
+            document.getElementById('pathwayStep').style.display = 'block';
+            document.getElementById('formStep').style.display = 'none';
+            document.getElementById('modalTitle').textContent = 'Choose Your Pathway';
         }
         
         function closeModal() {
-            document.getElementById('volunteerModal').classList.remove('active');
+            document.getElementById('applicationModal').classList.remove('active');
             document.body.style.overflow = 'auto';
+        }
+        
+        function updateWilNotice() {
+            const wilCheckbox = document.getElementById('wilCheckbox');
+            const wilNotice = document.getElementById('wilNotice');
+            
+            if (wilCheckbox.checked) {
+                wilNotice.classList.add('active');
+            } else {
+                wilNotice.classList.remove('active');
+            }
         }
         
         // Close modal when clicking outside
         window.onclick = function(event) {
-            const modal = document.getElementById('volunteerModal');
+            const modal = document.getElementById('applicationModal');
             if (event.target === modal) {
                 closeModal();
             }
         }
         
         // Handle form submission
-        document.getElementById('volunteerForm').addEventListener('submit', function(e) {
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your interest in volunteering! We will be in touch soon.');
+            const selectedPathway = document.getElementById('selectedPathway').value;
+            const wilCheckbox = document.getElementById('wilCheckbox');
+            
+            let message = 'Thank you for your application! ';
+            
+            if (selectedPathway === 'intern' && wilCheckbox.checked) {
+                message += 'As you are completing a WIL placement, please ensure your university contacts us to establish the placement agreement. We will follow up once we hear from them.';
+            } else {
+                message += 'Our team will review your application and be in touch soon.';
+            }
+            
+            alert(message);
             closeModal();
             this.reset();
+            document.getElementById('pathwayStep').style.display = 'block';
+            document.getElementById('formStep').style.display = 'none';
+            document.getElementById('internFields').classList.remove('active');
+            document.getElementById('wilNotice').classList.remove('active');
         });
     </script>
 </body>

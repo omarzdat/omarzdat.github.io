@@ -495,6 +495,55 @@
             transform: translateY(-3px);
         }
         
+        /* LANGUAGE RESOURCES SECTION */
+        .language-section {
+            padding: 80px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .language-section h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .language-section p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+        
+        .language-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .language-btn {
+            padding: 15px 30px;
+            border: 2px solid #a64d79;
+            background: white;
+            color: #a64d79;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .language-btn:hover {
+            background-color: #a64d79;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(166, 77, 121, 0.3);
+        }
+        
         /* CLINICIANS SECTION */
         .clinicians-section {
             background: linear-gradient(135deg, #f0e6ec 0%, #faf5f8 100%);
@@ -828,6 +877,15 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
+            
+            .language-buttons {
+                gap: 15px;
+            }
+            
+            .language-btn {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -967,6 +1025,20 @@
         <div class="support-content">
             <h2>Grieving the loss of a baby is one of life's most profound challenges. You don't have to face it alone.</h2>
             <a href="#" class="support-btn">Find Support</a>
+        </div>
+    </section>
+    
+    <!-- LANGUAGE RESOURCES SECTION -->
+    <section class="language-section">
+        <h2>Find Resources in Your Language</h2>
+        <p>Access our stillbirth awareness and prevention materials in your preferred language. These resources include safe pregnancy guides, warning signs to watch for, and support information for families.</p>
+        
+        <div class="language-buttons">
+            <a href="#" class="language-btn">Stillbirth Awareness</a>
+            <a href="#" class="language-btn">التوعية بالإملاص</a>
+            <a href="#" class="language-btn">Nhận Thức Về Thai Chết Lưu</a>
+            <a href="#" class="language-btn">死产意识</a>
+            <a href="#" class="language-btn">Ufahamu wa Mtoto Kuzaliwa Akiwa Amekufa</a>
         </div>
     </section>
     
